@@ -8,6 +8,8 @@ import com.example.nutri_well.entity.FoodNutrient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @RequiredArgsConstructor
 @Service
 public class BasketServiceImpl implements BasketService {
@@ -35,7 +37,7 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void delete(Food foodid) {
-        dao.delete(foodid);
+    public void delete(Long userId) {
+        dao.delete(userId,LocalDate.now());
     }
 }

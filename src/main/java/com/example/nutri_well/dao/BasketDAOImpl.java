@@ -7,10 +7,11 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+
 @Repository
 @RequiredArgsConstructor
 public class BasketDAOImpl implements BasketDAO {
-    private final EntityManager entityManager;
     private final BasketRepository basketRepository;
     @Override
     public Basket insert(Basket dto) {
@@ -18,8 +19,7 @@ public class BasketDAOImpl implements BasketDAO {
     }
 
     @Override
-    public void delete(Food foodid) {
-        Basket basket = entityManager.find(Basket.class, foodid);
-        entityManager.remove(basket);
+    public void delete(Long userId, LocalDate startDate) {
+        basketRepository.deleteByUserIdAndStartDate(userId, startDate);
     }
 }
