@@ -241,7 +241,20 @@
     function updateRangeValue() {
         $("#rangeValue").text($inputLeft.val() + " - " + $inputRight.val());
     }
+    $('.dropdown-toggle').on('click', function() {
+        var $container = $('.scrollable');
+        var $this = $(this);
+        // 컨테이너 안에서 클릭된 버튼의 위치를 계산
+        var containerOffset = $container.offset().top;
+        var elementOffset = $this.offset().top;
+        var scrollTop = $container.scrollTop();
+        var offset = elementOffset - containerOffset + scrollTop;
 
+        // 부드러운 스크롤 애니메이션
+        $container.animate({
+            scrollTop: offset
+        }, 500); // 500ms 동안 부드러운 스크롤링
+    });
     $inputLeft.on("input", setLeftValue);
     $inputRight.on("input", setRightValue);
     // 초기 값 설정

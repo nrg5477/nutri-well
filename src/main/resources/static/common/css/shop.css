@@ -102,3 +102,11 @@ input[type="range"]::-webkit-slider-thumb {
   /* appearance를 해야 위의 스타일들을 볼 수 있음 */
   -webkit-appearance: none;
 }
+.dropdown-item:hover{
+    cursor: pointer;
+    color: #81c408 !important;
+}
+#cd-category{
+    background-color: #ffe2ac !important;
+    border-radius: 10px !important;
+}

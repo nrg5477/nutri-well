@@ -65,8 +65,7 @@
                     <div class="featurs-content text-center">
                         <h5 th:text="${test.categoryName}"></h5>
                         <h5 th:text="${test.name}"></h5>
-                        <a th:if="${test.name} == ${test.categoryName} or ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name}}"><p class="mb-0" th:text="${test.name} + ' 검색하기'"></p></a>
-                        <a th:unless="${test.name} == ${test.categoryName} or ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name} + ${test.categoryName}}"><p class="mb-0" th:text="${test.name} + ' 검색하기'"></p></a>
+                        <a th:href="@{'food/detail?foodId=' + ${test.id}}"><p class="mb-0" th:text="${test.name} + ' 검색하기'"></p></a>
                     </div>
                 </div>
             </div>
