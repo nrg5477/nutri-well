@@ -1,235 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/indexLayout}">
 <head>
     <meta charset="utf-8">
-    <title>Food Approval Request</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="/common/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link href="/common/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="/common/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Template Stylesheet -->
-    <link href="/common/css/style.css" rel="stylesheet">
-
-    <!-- Custom Styles -->
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-        }
-        .form-container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .form-container h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-group input[type="button"], .form-group input[type="submit"] {
-            width: auto;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        .form-group input[type="button"]:hover, .form-group input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
-
+    <link href="/common/css/request.css" rel="stylesheet">
 </head>
 <body>
-<!-- Spinner Start -->
-<div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"></div>
-</div>
-<!-- Spinner End -->
-
-
-<!-- Navbar start -->
-<div class="container-fluid fixed-top">
-    <div class="container topbar bg-primary d-none d-lg-block">
-        <div class="d-flex justify-content-between">
-            <div class="top-info ps-2">
-                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">123 Street, New York</a></small>
-                <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
-            </div>
-
-            <div class="top-link pe-2">
-                <a href="#" class="text-white"><small class="text-white mx-2">공지사항</small>/</a>
-                <a href="#" class="text-white"><small class="text-white mx-2">문의하기</small>/</a>
-                <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#loginModal" id="login-link"><small class="text-white ms-2" id="login-text">로그인</small></a>
-                <a href="#" class="text-white d-none" id="logout-link"><small class="text-white ms-2" id="logout-text">로그아웃</small></a>
-                <span id="login-separator" class="text-white d-none"> /</span>
-                <span class="text-white ms-2" id="username-display" style="display:none;"></span>
-            </div>
-        </div>
-    </div>
-    <div class="container px-0">
-        <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="/index.do" class="navbar-brand"><h1 class="text-primary display-6">nutri-well</h1></a>
-            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars text-primary"></span>
-            </button>
-            <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-                <div class="navbar-nav mx-auto">
-                    <a href="/index.do" class="nav-item nav-link active">Home</a>
-                    <a href="shop.html" class="nav-item nav-link">Shop</a>
-                    <a href="../static/shop-detail.html" class="nav-item nav-link">Shop Detail</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                            <a href="/basket/read" class="dropdown-item">Cart</a>
-                            <a href="../static/chackout.html" class="dropdown-item">Chackout</a>
-                            <a href="../static/testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="../static/404.html" class="dropdown-item">404 Page</a>
-                        </div>
-                    </div>
-                    <a href="../static/contact.html" class="nav-item nav-link">Contact</a>
-                </div>
-                <div class="d-flex m-3 me-0">
-                    <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                    <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-solid fa-user-check"></i></button>
-                    <a href="/basket/read" class="position-relative me-4 my-auto">
-                        <i class="fa fa-shopping-bag fa-2x"></i>
-                        <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-                    </a>
-                    <a th:href="@{mypage.do}" class="my-auto">
-                        <i class="fas fa-user fa-2x"></i>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-<!-- Navbar End -->
-
-<!-- Modal Search Start -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content rounded-0">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-flex align-items-center">
-                <div class="input-group w-75 mx-auto d-flex">
-                    <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                    <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal Search End -->
-
-<!-- Login Modal Start -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content rounded-0">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Welcome back.</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-flex align-items-center">
-                <div class="container w-75 mx-auto d-flex flex-column align-items-center">
-                    <!-- ID & Password Login Form -->
-                    <div class="mb-3 w-100">
-                        <input type="text" id="login-id" class="form-control mb-2" placeholder="아이디">
-                        <input type="password" id="login-password" class="form-control mb-2" placeholder="비밀번호">
-                        <button class="btn btn-outline-secondary w-100" id="login-button">로그인</button>
-                    </div>
-
-                    <!-- Google Login Button -->
-                    <div class="mb-3 w-100">
-                        <a class="btn btn-outline-secondary w-100" href="/oauth2/authorization/google" rel="noopener follow">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="me-2">
-                                    <g fill-rule="evenodd" clip-rule="evenodd">
-                                        <path d="M20.64 12.2c0-.63-.06-1.25-.16-1.84H12v3.49h4.84a4.14 4.14 0 0 1-1.8 2.71v2.26h2.92a8.78 8.78 0 0 0 2.68-6.61z" fill="#4285F4"></path>
-                                        <path d="M12 21a8.6 8.6 0 0 0 5.96-2.18l-2.91-2.26a5.41 5.41 0 0 1-8.09-2.85h-3v2.33A9 9 0 0 0 12 21z" fill="#34A853"></path>
-                                        <path d="M6.96 13.71a5.41 5.41 0 0 1 0-3.42V7.96h-3a9 9 0 0 0 0 8.08l3-2.33z" fill="#FBBC05"></path>
-                                        <path d="M12 6.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58A9 9 0 0 0 3.96 7.96l3 2.33A5.36 5.36 0 0 1 12 6.6z" fill="#EA4335"></path>
-                                    </g>
-                                </svg>
-                                Sign in with Google
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Kakao Login Button -->
-                    <div class="mb-3 w-100">
-                        <a class="btn btn-outline-secondary w-100"
-                           th:href="@{'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=' + ${kakaoApiKey} + '&redirect_uri=' + ${redirectUri}}"
-                           rel="noopener follow">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" alt="Kakao Login" class="me-2" style="width: 24px; height: 24px;">
-                                Sign in with Kakao
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Naver Login Button -->
-                    <div class="mb-3 w-100">
-                        <a class="btn btn-outline-secondary w-100" href="/oauth2/authorization/naver" rel="noopener follow">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img src="/common/img/naver_login_logo1.png" alt="Naver Login" class="me-2" style="width: 24px; height: 24px;">
-                                Sign in with Naver
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Create Account Link -->
-                    <div class="mb-3 w-100 text-center">
-                        <p>계정이 없으신가요?
-                            <button class="btn btn-link p-0"><b><a href="member/signup">계정 만들기</a></b></button>
-                        </p>
-                    </div>
-                    <div class="mb-3 w-100 text-center">
-                        <p>이메일을 잊으셨거나 로그인에 문제가 있으신가요? <a href="https://help.medium.com/hc/en-us/requests/new?ticket_form_id=9455427953559&amp;form=true&amp;source=login-------------------------------------" rel="noopener follow" target="_blank">도움 받기</a>.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer text-center">
-                <p>로그인 버튼을 클릭하면 Medium의 <a href="https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=login-------------------------------------" rel="noopener follow" target="_blank">서비스 약관</a>과 <a href="https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=login-------------------------------------" rel="noopener follow" target="_blank">개인정보 보호정책</a>에 동의하는 것입니다.</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Login Modal End -->
-
+<div layout:fragment="content">
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
     <h1 class="text-center text-white display-6">식품 추가</h1>
@@ -299,113 +78,96 @@
 </div>
 <!-- 식품 추가 요청 끝-->
 
-<!-- Footer Start -->
-<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-    <div class="container py-5">
-        <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
-            <div class="row g-4">
-                <div class="col-lg-3">
-                    <a href="#">
-                        <h1 class="text-primary mb-0">Fruitables</h1>
-                        <p class="text-secondary mb-0">Fresh products</p>
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <div class="position-relative mx-auto">
-                        <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" placeholder="Your Email">
-                        <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+        <div class="container py-5">
+            <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+                <div class="row g-4">
+                    <div class="col-lg-3">
+                        <a href="#">
+                            <h1 class="text-primary mb-0">Nutri - Well</h1>
+                            <p class="text-secondary mb-0">Fresh products</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" >
+                            <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-flex justify-content-end pt-3">
+                            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="d-flex justify-content-end pt-3">
-                        <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-item">
+                        <h4 class="text-light mb-3">Nutri Well, 왜 이용할까요?</h4>
+                        <p class="mb-4">식품의 영양정보와 매일매일 섭취한 영양소을 기록해두세요. 개인의 영양상태를 파악하고, 다양한 식품들의 영양소 정보를 제공하여 건강한 식생활을 돕는것을 목표로 합니다.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-item">
-                    <h4 class="text-light mb-3">Why People Like us!</h4>
-                    <p class="mb-4">typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                    <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="d-flex flex-column text-start footer-item">
-                    <h4 class="text-light mb-3">Shop Info</h4>
-                    <a class="btn-link" href="">About Us</a>
-                    <a class="btn-link" href="">Contact Us</a>
-                    <a class="btn-link" href="">Privacy Policy</a>
-                    <a class="btn-link" href="">Terms & Condition</a>
-                    <a class="btn-link" href="">Return Policy</a>
-                    <a class="btn-link" href="">FAQs & Help</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="d-flex flex-column text-start footer-item">
-                    <h4 class="text-light mb-3">Account</h4>
-                    <a class="btn-link" href="">My Account</a>
-                    <a class="btn-link" href="">Shop details</a>
-                    <a class="btn-link" href="">Shopping Cart</a>
-                    <a class="btn-link" href="">Wishlist</a>
-                    <a class="btn-link" href="">Order History</a>
-                    <a class="btn-link" href="">International Orders</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-item">
-                    <h4 class="text-light mb-3">Contact</h4>
-                    <p>Address: 1429 Netus Rd, NY 48247</p>
-                    <p>Email: Example@gmail.com</p>
-                    <p>Phone: +0123 4567 8910</p>
-                    <p>Payment Accepted</p>
-                    <img src="/common/img/payment.png" class="img-fluid" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer End -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex flex-column text-start footer-item">
+                        <h4 class="text-light mb-3">개발자</h4>
+                        <p>진영록</p>
+                        <p>남정길</p>
+                        <p>조상우</p>
+                        <p>이희찬</p>
 
-<!-- Copyright Start -->
-<div class="container-fluid copyright bg-dark py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-            </div>
-            <div class="col-md-6 my-auto text-center text-md-end text-white">
-                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex flex-column text-start footer-item">
+                        <h4 class="text-light mb-3">Account</h4>
+                        <a class="btn-link" href="">My Account</a>
+                        <a class="btn-link" href="">Shop details</a>
+                        <a class="btn-link" href="">Shopping Cart</a>
+                        <a class="btn-link" href="">Wishlist</a>
+                        <a class="btn-link" href="">Order History</a>
+                        <a class="btn-link" href="">International Orders</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-item">
+                        <h4 class="text-light mb-3">Contact</h4>
+                        <a class="btn-link" href="https://github.com/6worry">진영록</a>
+                        <a class="btn-link" href="https://github.com/letsgilit">남정길</a>
+                        <a class="btn-link" href="https://github.com/sangwoo-00">조상우</a>
+                        <a class="btn-link" href="https://github.com/nrg5477">이희찬</a>
+                        <img src="/common/img/payment.png" class="img-fluid" alt="">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Copyright End -->
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright bg-dark py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nutri - Well</a>, All right reserved.</span>
+                </div>
+                <div class="col-md-6 my-auto text-center text-md-end text-white">
+                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-
-
-<!-- JavaScript Libraries -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/common/lib/easing/easing.min.js"></script>
-<script src="/common/lib/waypoints/waypoints.min.js"></script>
-<script src="/common/lib/lightbox/js/lightbox.min.js"></script>
-<script src="/common/lib/owlcarousel/owl.carousel.min.js"></script>
-
-<!-- Template Javascript -->
-<script src="/common/js/main.js"></script>
-<script src="/common/js/login.js"></script>
-
-<script src="/common/js/request.js"></script>
+</div>
 </body>
 </html>
