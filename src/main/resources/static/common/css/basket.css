@@ -65,7 +65,9 @@
     color: #777;
     margin-top: 10px;
 }
-
+.baselInfo{
+    white-space: normal !important;
+}
 .amount {
     width: 50px;
     height: 22px;
@@ -147,11 +149,11 @@ progress.over {
     display: none;
     position: relative;
     top: -350px;
-    left: -78%;
+    left: -77%;
     height: 300px; /* 필요에 따라 높이를 조정하세요 */
     overflow-y: auto;
     padding : 0px;
-    width: 82%;
+    width: 75%;
     background-color: #cefa7e;
 }
 
