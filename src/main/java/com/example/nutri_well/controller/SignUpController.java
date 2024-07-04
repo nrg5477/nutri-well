@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 //뷰에서 요청 -> 요청을 받아주는 역활
 //서비스에 있는 메소드를 부르면서 연결
@@ -22,27 +23,17 @@ public class SignUpController {
         return "signup/signup";
     }
     @PostMapping("/signup")
-    public String registerUser(@ModelAttribute("memberSignUpDTO") SignUpDTO memberSignUpDTO, Model model) {
+    public String registerUser(@ModelAttribute("memberSignUpDTO") SignUpDTO memberSignUpDTO, Model model, RedirectAttributes redirectAttributes) {
         try {
             memberService.registerUser(memberSignUpDTO);
-            return "redirect:/member/signUpsuccess";
+         //   redirectAttributes.addFlashAttribute("signupSuccess",true);
+            return "redirect:/index.do?signupSuccess=true";
         } catch (IllegalArgumentException e) {
-            model.addAttribute("에러메세지","회원가입실패"+e.getMessage());
-            return "signup/signup";
+            redirectAttributes.addFlashAttribute("signupError", e.getMessage());
+            return "redirect:/member/signup?signupSuccess=false";
         }
     }
 
-    @GetMapping("/signUpsuccess")
-    public String signupSuccess(){
-        //회원가입성공시 success페이지로 이동
-        return "signUpsuccess";
-    }
-    @GetMapping("/error")
-    public String signupError(@RequestParam("signUp_error")String loginError, Model model){
-        //회원가입실패시 signup페이지에 머무르기
-        model.addAttribute("errorMsg","회원가입실패");
-        return "signup/signup";
-    }
     @GetMapping("/main")
     public String main(){
 
