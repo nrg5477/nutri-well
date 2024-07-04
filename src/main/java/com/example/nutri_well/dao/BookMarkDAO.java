@@ -11,7 +11,7 @@ public interface BookMarkDAO {
 
     int updatePreferredState(Long id, boolean preferredState);
     int updateExcludedState(Long id, boolean excludedState);
-    List<Food> findTop5Foods();
+    List<Food> findTop4Foods();
     List<BookMark> findByUserId(Long userId);
     List<Food> findFoodNamesByUserId(Long userId);
 }

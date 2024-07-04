@@ -58,7 +58,7 @@
         var kcalPercentage = (energy / baselMetabolism * 100).toFixed(1);
         var isOver = kcalPercentage > 100;
         var progressBarHtml = '<span class="totalKcal' + (isOver ? ' over' : '') + '">' +  kcalPercentage + ' % (' + energy.toFixed(0) + ' / ' + baselMetabolism + ')</span>'
-                               + '<progress value="' + energy.toFixed(0) + '" max="' + baselMetabolism + '" class="' + (isOver ? 'over' : '') + '"></progress>'
+                               + '<br />'+ '<progress value="' + energy.toFixed(0) + '" max="' + baselMetabolism + '" class="' + (isOver ? 'over' : '') + '"></progress>'
                                + '</div>';
         var tableHtml = '<table>';
         tableHtml += '<thead>';

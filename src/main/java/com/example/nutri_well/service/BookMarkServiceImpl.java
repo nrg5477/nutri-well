@@ -63,8 +63,8 @@ public class BookMarkServiceImpl implements BookMarkService{
     }
 
     @Override
-    public List<FoodResponseDTO> findTop5Foods() {
-        List<Food> top5Foods = dao.findTop5Foods();
+    public List<FoodResponseDTO> findTop4Foods() {
+        List<Food> top5Foods = dao.findTop4Foods();
         List<FoodResponseDTO> top5FoodsList = new ArrayList<>();
         for (Food top5Food : top5Foods) {
             top5FoodsList.add(FoodResponseDTO.of(top5Food));

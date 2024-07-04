@@ -38,7 +38,7 @@ public class BookMarkController {
     //식품페이지 로드시 즐겨찾기 많은순 list
     @PostMapping("/preferredlist")
     public List<FoodResponseDTO> loadFood(){
-        List<FoodResponseDTO> top5Foods = bookMarkService.findTop5Foods();
+        List<FoodResponseDTO> top5Foods = bookMarkService.findTop4Foods();
         return top5Foods;
     }
 }

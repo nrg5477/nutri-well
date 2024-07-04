@@ -4,6 +4,7 @@ import com.example.nutri_well.entity.BookMark;
 import com.example.nutri_well.entity.Food;
 import com.example.nutri_well.repository.BookMarkRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,8 +35,8 @@ public class BookMarkDAOImpl implements BookMarkDAO{
     }
 
     @Override
-    public List<Food> findTop5Foods() {
-        return bookMarkRepository.findTop5Foods();
+    public List<Food> findTop4Foods() {
+        return bookMarkRepository.findTop4Foods(PageRequest.of(0, 4));
     }
 
     @Override

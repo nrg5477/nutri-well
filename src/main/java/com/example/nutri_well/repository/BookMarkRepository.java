@@ -4,6 +4,7 @@ import com.example.nutri_well.dto.BookMarkResponseDTO;
 import com.example.nutri_well.entity.BookMark;
 import com.example.nutri_well.entity.Food;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,7 +27,7 @@ public interface BookMarkRepository extends JpaRepository<BookMark,Long>  {
             "FROM BookMark bm " +
             "GROUP BY bm.food " +
             "ORDER BY COUNT(bm.food) DESC")
-    List<Food> findTop5Foods();
+    List<Food> findTop4Foods(Pageable pageable);
     List<BookMark> findByUser_UserId(Long userId);
     @Query("SELECT bm.food FROM BookMark bm WHERE bm.user.id = :userId")
     List<Food> findFoodNamesByUserId(@Param("userId") Long userId);

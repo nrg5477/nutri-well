@@ -247,9 +247,11 @@
 }
 
 @media (min-width: 992px) {
-    .hero-header,
-    .page-header {
+    .hero-header {
         margin-top: 100px !important;
+    }
+    .page-header {
+        margin-top: 150px !important;
     }
 }
 

@@ -55,7 +55,7 @@
     <div class="container py-5">
             <h3>인기 식품 TOP 4</h3>
         <div class="row g-4">
-            <div class="col-md-6 col-lg-3" th:each="test: ${top5Foods}">
+            <div class="col-md-6 col-lg-3" th:each="test: ${top4Foods}">
                 <div class="featurs-item text-center rounded bg-light p-4 px-6 py-6">
                     <div class="mb-3 mx-auto">
                         <a th:if="${test.name} == ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name}}"><img th:src="@{'/common/img/category/' + ${test.name} + '.jpg'}" width="120" height="120"></a>

@@ -41,9 +41,9 @@ public class IndexController {
 
     @GetMapping("/index.do")
     public String indexHtml(Model model) {
-        List<FoodResponseDTO> top5Foods = bookMarkService.findTop5Foods();
-        model.addAttribute("top5Foods", top5Foods);
-        System.out.println(top5Foods);
+        List<FoodResponseDTO> top4Foods = bookMarkService.findTop4Foods();
+        model.addAttribute("top4Foods", top4Foods);
+        System.out.println(top4Foods);
         return "include/indexContent";
     }
 

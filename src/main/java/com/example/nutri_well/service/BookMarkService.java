@@ -16,7 +16,7 @@ import java.util.List;
 public interface BookMarkService {
     BookMarkResponseDTO updateStates(BookMarkRequestDTO bookMark, boolean isPreferred);
     BookMarkResponseDTO findByFoodIdAndUserId(Long foodId, Long userId);
-    List<FoodResponseDTO> findTop5Foods();
+    List<FoodResponseDTO> findTop4Foods();
     List<BookMarkResponseDTO> findByUserId(Long userId);
     List<FoodResponseDTO> findFoodNamesByUserId(Long userId);
 }
