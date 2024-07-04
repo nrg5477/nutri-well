@@ -9,11 +9,11 @@
 <div layout:fragment="content">
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6" id="name-text">Testimonial</h1>
+    <h1 class="text-center text-white display-6" id="name-text">My Page</h1>
     <ol class="breadcrumb justify-content-center mb-0">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-        <li class="breadcrumb-item active text-white">Testimonial</li>
+        <li class="breadcrumb-item active text-white">My Page</li>
     </ol>
 </div>
 <!-- Single Page Header End -->
@@ -28,8 +28,6 @@
                     <h5 class="card-title" id="user-name" th:text="${user.username}"></h5>
                     <!--여기에 유저의 사진 보여주기-->
                     <img th:src="@{${user.picture}}" alt="User Picture" class="img-thumbnail" style="width: 150px; height: 150px;">
-                    <p class="card-text">Silver III</p>
-                    <span class="badge bg-primary">424</span>
 
                 </div>
             </div>
