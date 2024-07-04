@@ -222,5 +222,19 @@
 //        var url = '/search?' + searchParams.toString();
 //        location.href = url;
 //    }
+        function showSignupMessage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const signupSuccess = urlParams.get('signupSuccess');
+
+            console.log(signupSuccess);
+                if (signupSuccess === "true") {
+                    alert("회원가입 성공");
+                    }
+                }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                showSignupMessage();
+        });
 })(jQuery);
+
 

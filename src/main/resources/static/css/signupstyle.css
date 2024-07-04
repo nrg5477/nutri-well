@@ -1,26 +1,30 @@
 body {
-    margin: 50px;
+    margin-top: 10px;
+    margin-left: 200px;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150vh;
+    height: 200vh;
     background-color: #f8f9fa;
 }
 
-.container {
+.all {
     display: flex;
-    width: 80%;
-    max-width: 2000px;
-    height: 100%;
-    max-height: 1300px;
+    width: 90%;
+    margin-top: 50px;
+    max-width: 1500px;
+    height: 80%;
+    max-height: 1500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     overflow: hidden;
 }
+
 .ct-container{
     width: 100%;
 }
+
 .left-panel {
     background-color: #8fd792;
     color: white;
@@ -36,8 +40,8 @@ body {
     font-size: 2em;
     font-weight: bold;
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 150px;
+    left: 40px;
 }
 
 .left-panel .image {
@@ -46,7 +50,20 @@ body {
 
 .left-panel .image img {
     width: 80%;
-    max-width: 300px;
+    max-width: 600px;
+    width: 630.49px;
+    height: 673.97px;
+    transform: rotate(-9.25deg);
+    transform-origin: 0 0;
+}
+
+.left-panel .egg{
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    width: 135px;
+    height: 117px;
+    left: 10px;
 }
 
 .right-panel {
@@ -66,56 +83,11 @@ body {
     color: #333;
 }
 
-.social-signup {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    max-width: 800px;
-    margin-bottom: 20px;
-    gap: 10px;
-    font-size : 10px;
-}
-
-.social-signup button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    flex: 1;
-    max-width: 300px;
-}
-
-.social-signup button img.icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
-.google-signup {
-    background-color: #4285f4;
-    color: white;
-}
-
-.kakao-signup {
-    background-color: #fee500;
-    color: black;
-}
-
-.apple-signup {
-    background-color: #000000;
-    color: white;
-}
-
 .divider {
-    margin: 20px 0;
+    margin: 10px 0;
     font-size: 1em;
     color: #aaa;
+    border:5px solid blue;
     position: relative;
     text-align: center;
     width: 100%;
@@ -125,7 +97,7 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    width: 40%;
+    width: 50%;
     height: 1px;
     background-color: #ddd;
 }
@@ -171,10 +143,4 @@ form button {
 
 form button:hover {
     background-color: #79be78;
-}
-
-#errorMessage {
-    color: red;
-    margin-top: 10px;
-    font-size: 0.9em;
 }
