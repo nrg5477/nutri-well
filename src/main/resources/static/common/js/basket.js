@@ -119,11 +119,10 @@
             tableHtml += '<td>' + name + '</td>';
             tableHtml += '</tr>';
         });
-
         tableHtml += '</tbody>';
         tableHtml += '</table>';
 
-        $('.basketFood').html(tableHtml);
+        $('.foodTableContainer').html(tableHtml);
     }
     //클릭 이벤트
     window.addBasket = function(foodId) {
@@ -280,6 +279,9 @@
 
     $('#saveCalendarBtn').click(function() {
         saveCalendar();
+    });
+    $('.hv-basketlist').click(function() {
+        $('.foodTableContainer').toggle();
     });
 
     function saveCalendar() {
