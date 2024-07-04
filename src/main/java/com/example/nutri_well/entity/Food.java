@@ -43,6 +43,11 @@ public class Food {
     @ToString.Exclude
     @OneToMany
     private List<BookMark> userlist = new ArrayList<>();
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CalendarFood> calendarFoods = new ArrayList<>();
+
     @Builder
     public Food(String name, Category categoryId, String foodCode, String product, String manufacturer, String servingSize, int weight, Date creationDate) {
         this.name = name;

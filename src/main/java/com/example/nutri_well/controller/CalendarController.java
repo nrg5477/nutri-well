@@ -1,6 +1,8 @@
 package com.example.nutri_well.controller;
 
 import com.example.nutri_well.config.auth.dto.SessionUser;
+import com.example.nutri_well.dto.DailyNutritionRequest;
+import com.example.nutri_well.dto.DailyNutritionResponse;
 import com.example.nutri_well.model.User;
 import com.example.nutri_well.model.myCalendar;
 import com.example.nutri_well.service.CalendarService;
@@ -73,5 +75,10 @@ public class CalendarController {
         } else {
             return "#00FF00"; // Lime
         }
+    }
+
+    @PostMapping("/api/dailyNutrition")
+    public DailyNutritionResponse getDailyNutrition(@RequestBody DailyNutritionRequest request) {
+        return calendarService.getDailyNutrition(request.getCalendarId());//영양소 별 이름과 양을 반환
     }
 }

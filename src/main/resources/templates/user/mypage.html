@@ -9,11 +9,11 @@
 <div layout:fragment="content">
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6" id="name-text">Testimonial</h1>
+    <h1 class="text-center text-white display-6" id="name-text">My Page</h1>
     <ol class="breadcrumb justify-content-center mb-0">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-        <li class="breadcrumb-item active text-white">Testimonial</li>
+        <li class="breadcrumb-item active text-white">My Page</li>
     </ol>
 </div>
 <!-- Single Page Header End -->
@@ -21,22 +21,19 @@
 <!-- My Page 시작 -->
 <div class="container my-5">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-2" style="transform: translateX(-250px)">
             <!-- 유저 정보 섹션 -->
-            <div class="card">
+            <div class="card" >
                 <div class="card-body text-center">
                     <h5 class="card-title" id="user-name" th:text="${user.username}"></h5>
                     <!--여기에 유저의 사진 보여주기-->
                     <img th:src="@{${user.picture}}" alt="User Picture" class="img-thumbnail" style="width: 150px; height: 150px;">
-                    <p class="card-text">Silver III</p>
-                    <span class="badge bg-primary">424</span>
 
                 </div>
             </div>
         </div>
 
-
-        <div class="col-lg-9">
+        <div class="col-lg-9" style="max-width: none; width: 105%; margin-top: -200px;">
             <!-- 네비게이션 -->
             <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-bottom: 10px" >
                 <li class="nav-item" role="presentation">
@@ -64,6 +61,20 @@
                     <img id="captured-image" style="display:none;">
                     <!-- 이미지 다운로드 버튼 -->
                     <a id="download-link" href="#" download="calendar.png" style="display:none;">Download Image</a>
+                </div>
+
+                <!-- 모달 HTML 추가 -->
+                <div id="nutritionModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="nutritionModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document"> <!-- 'modal-lg' 클래스를 추가하여 모달 크기 증가 -->
+                        <div class="modal-content" style="max-height: 80vh; overflow-y: auto;"> <!-- 모달 내부 스크롤 추가 -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="nutritionModalLabel">영양소 섭취 정보</h5>
+                            </div>
+                            <div class="modal-body">
+                                <canvas id="nutritionChart" style="height: 4699px; width: 939px;"></canvas> <!-- 캔버스의 높이를 크게 설정 -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 회원정보 수정탭-->
@@ -283,7 +294,6 @@
 <!-- Back to Top -->
 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
         class="fa fa-arrow-up"></i></a>
-</div>
 
 
 </body>

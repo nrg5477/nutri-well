@@ -1,8 +1,7 @@
 package com.example.nutri_well.controller;
 
 import com.example.nutri_well.dao.FoodDAO;
-import com.example.nutri_well.dto.BookMarkResponseDTO;
-import com.example.nutri_well.dto.FoodResponseDTO;
+import com.example.nutri_well.dto.*;
 import com.example.nutri_well.entity.Basket;
 import com.example.nutri_well.model.User;
 import com.example.nutri_well.service.*;
@@ -47,6 +46,19 @@ public class BasketController {
     }
     @PostMapping("/delete")
     public void delete(@RequestParam("userId") Long userId) {
-        basketService.delete(userId);
+        basketService.deleteUser(userId);
+    }
+
+    @PostMapping("/saveCalendar")
+    @ResponseBody
+    public String saveCalendar(@RequestBody CalendarSaveRequest request) {
+        //basket.js에서 basket/saveCalendar 호출 -> saveToCalendar 함수로
+        //calendar 테이블 에는 user, date, kcalPercentage 저장
+        //calendarFood 테이블 에는 calendarId, foodId 저장
+        User user = userService.findById(request.getUserId()).orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
+        System.out.println(user.getUserId()+"&&&&&&&&&&&&&"+request.getFoodIds()); //여기서 null로 들어오는게 문제
+        basketService.saveToCalendar(user, request.getFoodIds(), LocalDate.now(), request.getKcalPercentage());
+
+        return "캘린더 저장 완료";
     }
 }

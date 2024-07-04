@@ -57,6 +57,8 @@ public class UserController {
         if (sessionUser != null) {
             response.put("loggedIn", true);
             response.put("username", sessionUser.getName());
+            response.put("baselMetabolism", sessionUser.getBaselMetabolism());
+            response.put("weight", sessionUser.getWeight());
         } else {
             response.put("loggedIn", false);
         }

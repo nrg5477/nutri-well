@@ -8,6 +8,7 @@
     $('#initBasket').click(function() {
         sessionStorage.removeItem('foodNames');
         sessionStorage.removeItem('nutrientData');
+        sessionStorage.removeItem('food');
         updateTable({});
         updateFoodTable([]);
         nutritionChart.destroy();
@@ -52,10 +53,13 @@
         storeNutrients(storedNutrients);
         return storedNutrients;
     }
+
     //테이블 업데이트
+    var kcalPercentage;
+    
     function updateTable(nutrientData) {
         var energy = nutrientData['에너지'] || 0;
-        var kcalPercentage = (energy / baselMetabolism * 100).toFixed(1);
+        kcalPercentage = (energy / baselMetabolism * 100).toFixed(1);
         var isOver = kcalPercentage > 100;
         var progressBarHtml = '<span class="totalKcal' + (isOver ? ' over' : '') + '">' +  kcalPercentage + ' % (' + energy.toFixed(0) + ' / ' + baselMetabolism + ')</span>'
                                + '<br />'+ '<progress value="' + energy.toFixed(0) + '" max="' + baselMetabolism + '" class="' + (isOver ? 'over' : '') + '"></progress>'
@@ -142,6 +146,12 @@
                     updateFoodTable(getStoredFoods());
                     updateChart();
                 };
+                // 세션 스토리지에서 기존 food 리스트 가져오기
+                let storedFoods = JSON.parse(sessionStorage.getItem('food')) || [];
+                // 새로운 food 객체 추가
+                storedFoods.push(response);
+                // 세션 스토리지에 저장
+                sessionStorage.setItem('food', JSON.stringify(storedFoods));
             },
             error: function(xhr, status, error) {
                 console.error("Error occurred: " + error);
@@ -212,36 +222,7 @@
             });
         }
     }
-    function saveCalender(){
-        if(userId === null){
-            alert('로그인 해주세요');
-        }else{
-            let data = {
-                "foodId": foodId,
-                "userId": userId,
-            };
-            $.ajax({
-                url: "basket/insert",
-                type: "POST",
-                dataType: "json",
-                data: data,
-                success: function(response) {
-                    console.log(response)
-                    if(storeFoods(response.name)){
-                        //새 영양소 데이터누적 들어갈땐 중량포함해서 누적한다.
-                        var accumulatedNutrients = accumulateNutrients(response.nutrientlist,response.weight);
-                        //테이블업데이트
-                        updateTable(accumulatedNutrients);
-                        updateFoodTable(getStoredFoods());
-                        updateChart();
-                    };
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error occurred: " + error);
-                }
-            });
-        }
-    }
+
     //즐겨찾기
     function loadBookMark(){
         if(userId === null){
@@ -296,4 +277,42 @@
         updateFoodTable(getStoredFoods());
         loadBookMark();
     });
+
+    $('#saveCalendarBtn').click(function() {
+        saveCalendar();
+    });
+
+    function saveCalendar() {
+        if (userId === null) {
+            alert('로그인 해주세요');
+            return;
+        }
+
+        // 세션 스토리지에서 'food' 객체 가져오기 및 배열 확인
+        let storedFoods = JSON.parse(sessionStorage.getItem('food'));
+
+
+        // foodIds 추출
+        let foodIds = storedFoods.map(food => food.id);
+
+        let data = {
+            "userId": userId,
+            "foodIds": foodIds,
+            "kcalPercentage": kcalPercentage
+        };
+
+        $.ajax({
+            url: "basket/saveCalendar",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function(response) {
+                alert("캘린더에 저장되었습니다.");
+            },
+            error: function(xhr, status, error) {
+                console.error("Error occurred: " + error);
+                alert("캘린더 저장에 실패했습니다.");
+            }
+        });
+    }
 })(jQuery);

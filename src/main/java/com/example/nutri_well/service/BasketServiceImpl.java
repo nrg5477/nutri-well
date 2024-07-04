@@ -3,17 +3,26 @@ package com.example.nutri_well.service;
 import com.example.nutri_well.dao.BasketDAO;
 import com.example.nutri_well.dto.BasketResponseDTO;
 import com.example.nutri_well.entity.Basket;
+import com.example.nutri_well.entity.CalendarFood;
 import com.example.nutri_well.entity.Food;
 import com.example.nutri_well.entity.FoodNutrient;
+import com.example.nutri_well.model.User;
+import com.example.nutri_well.model.myCalendar;
+import com.example.nutri_well.repository.CalendarFoodRepository;
+import com.example.nutri_well.repository.CalendarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class BasketServiceImpl implements BasketService {
     private  final BasketDAO dao;
+    private final CalendarRepository calendarRepository;
+    private final CalendarFoodRepository calendarFoodRepository;
+    private final FoodService foodService;
 
     @Override
     public BasketResponseDTO insert(Basket dto) {
@@ -37,7 +46,27 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void delete(Long userId) {
+    public void deleteUser(Long userId) {
         dao.delete(userId,LocalDate.now());
     }
+
+    @Override
+    public void saveToCalendar(User user, List<Long> foodIds, LocalDate date, double kcalPercentage) {
+        myCalendar calendar = myCalendar.builder()
+                .user(user)
+                .calDate(date)
+                .percentage((int) kcalPercentage)
+                .build();
+        calendarRepository.save(calendar);
+
+        for (Long foodId : foodIds) {
+            Food food = foodService.findEntityById(foodId);
+            CalendarFood calendarFood = CalendarFood.builder()
+                    .calendar(calendar)
+                    .food(food)
+                    .build();
+            calendarFoodRepository.save(calendarFood);
+        }
+    }
+
 }

@@ -98,7 +98,11 @@
                         <div class="col-lg-6">
                             <div class="border rounded">
                                 <a href="#">
-                                    <img src="/common/img/single-item.jpg" class="img-fluid rounded" alt="Image">
+<!--                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">-->
+<!--                                    &lt;!&ndash;                                                    이미지 높이 스타일 css로 이동 예정&ndash;&gt;-->
+<!--                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="">-->
+                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/' + ${food.categoryName} + '.jpg'}" class="img-fluid rounded" alt="Image">
+                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid rounded" alt="Image">
                                 </a>
                             </div>
                         </div>
@@ -206,13 +210,13 @@
                 <div class="row g-4">
                     <div class="col-lg-3">
                         <a href="#">
-                            <h1 class="text-primary mb-0">Fruitables</h1>
+                            <h1 class="text-primary mb-0">Nutri - Well</h1>
                             <p class="text-secondary mb-0">Fresh products</p>
                         </a>
                     </div>
                     <div class="col-lg-6">
                         <div class="position-relative mx-auto">
-                            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" placeholder="Your Email">
+                            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" >
                             <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
                         </div>
                     </div>
@@ -229,21 +233,18 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-item">
-                        <h4 class="text-light mb-3">Why People Like us!</h4>
-                        <p class="mb-4">typesetting, remaining essentially unchanged. It was
-                            popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                        <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
+                        <h4 class="text-light mb-3">Nutri Well, 왜 이용할까요?</h4>
+                        <p class="mb-4">식품의 영양정보와 매일매일 섭취한 영양소을 기록해두세요. 개인의 영양상태를 파악하고, 다양한 식품들의 영양소 정보를 제공하여 건강한 식생활을 돕는것을 목표로 합니다.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="d-flex flex-column text-start footer-item">
-                        <h4 class="text-light mb-3">Shop Info</h4>
-                        <a class="btn-link" href="">About Us</a>
-                        <a class="btn-link" href="">Contact Us</a>
-                        <a class="btn-link" href="">Privacy Policy</a>
-                        <a class="btn-link" href="">Terms & Condition</a>
-                        <a class="btn-link" href="">Return Policy</a>
-                        <a class="btn-link" href="">FAQs & Help</a>
+                        <h4 class="text-light mb-3">개발자</h4>
+                        <p>진영록</p>
+                        <p>남정길</p>
+                        <p>조상우</p>
+                        <p>이희찬</p>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -260,11 +261,11 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-item">
                         <h4 class="text-light mb-3">Contact</h4>
-                        <p>Address: 1429 Netus Rd, NY 48247</p>
-                        <p>Email: Example@gmail.com</p>
-                        <p>Phone: +0123 4567 8910</p>
-                        <p>Payment Accepted</p>
-                        <img src="../common/img/payment.png" class="img-fluid" alt="">
+                        <a class="btn-link" href="https://github.com/6worry">진영록</a>
+                        <a class="btn-link" href="https://github.com/letsgilit">남정길</a>
+                        <a class="btn-link" href="https://github.com/sangwoo-00">조상우</a>
+                        <a class="btn-link" href="https://github.com/nrg5477">이희찬</a>
+                        <img src="/common/img/payment.png" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -277,7 +278,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nutri - Well</a>, All right reserved.</span>
                 </div>
                 <div class="col-md-6 my-auto text-center text-md-end text-white">
                     <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
