@@ -88,9 +88,9 @@
                                     <!--                                https://www.lotteon.com/search/search/search.ecn?render=search&platform=pc&q=%EC%98%A5%EC%88%98%EC%88%98%EA%B0%80%EC%9E%90%ED%83%95%20&mallId=4-->
                                     <!--                                <h5 class="fw-bold mb-3" th:text="${food.nutrientlist[0].amount} +' '+  ${food.nutrientlist[0].value}" ></h5>-->
                                     <p class="mb-4">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-                                    <a th:href="@{https://www.ssg.com/search.ssg(target='all', query=${food.name} + ${food.categoryName})}"><p class="mb-4">쓱에서 식품보기</p></a>
-                                    <a th:href="@{https://mfront.homeplus.co.kr/search(entry='direct', keyword=${food.name} + ${food.categoryName})}"><p class="mb-4">홈플러스에서 식품보기</p></a>
-                                    <a th:href="@{https://www.lotteon.com/search/search/search.ecn(render='search', platform='pc', q=${food.name} + ${food.categoryName}, mallId='4')}"><p class="mb-4">롯데마트에서 식품보기</p></a>
+                                    <a th:href="@{https://www.ssg.com/search.ssg(target='all', query=${food.name} + ${food.categoryName})}" target="_blank"><p class="mb-4">쓱에서 식품보기</p></a>
+                                    <a th:href="@{https://mfront.homeplus.co.kr/search(entry='direct', keyword=${food.name} + ${food.categoryName})}" target="_blank"><p class="mb-4">홈플러스에서 식품보기</p></a>
+                                    <a th:href="@{https://www.lotteon.com/search/search/search.ecn(render='search', platform='pc', q=${food.name} + ${food.categoryName}, mallId='4')}" target="_blank"><p class="mb-4">롯데마트에서 식품보기</p></a>
                                 </div>
                                 <div class="chart-nutri">
                                     <canvas id="nutritionChart-detail"></canvas>
