@@ -42,9 +42,9 @@
             </div>
         </div>
     </div>
-    <div class="footer p-2">
-        <span th:text="${session.user == null || session.user.baselMetabolism == null || session.user.baselMetabolism == 0 ?
-               '1일 영양성분 기준치에 대한 비율(%)은 2,000kcal 기준입니다. 회원정보 수정을 통해 개인의 기초대사량을 확인해보세요.' :
+    <div class="footer baselInfo p-2">
+        <span th:utext="${session.user == null || session.user.baselMetabolism == null || session.user.baselMetabolism == 0 ?
+               '1일 영양성분 기준치에 대한 비율(%)은 2,000kcal 기준입니다.' :
                '나의 기초대사량은 ' + session.user.baselMetabolism + ' 입니다.'}"></span>
     </div>
     <!--   담긴 식품     -->
