@@ -22,7 +22,7 @@
     <div class="container-fluid fruite py-0">
         <div class="container-nutri">
             <div class="container py-2">
-                <h1 class="mb-4">Fresh fruits shop</h1>
+                <h1 class="mb-4">Foods</h1>
                 <div class="row g-4">
                     <div class="col-lg-12">
                         <div class="row g-4">
@@ -50,11 +50,10 @@
                                                                 <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                                                     <i class="fas fa-apple-alt me-2" th:text="' ' + ${category.categoryName}"></i>
                                                                 </a>
-                                                                <div class="dropdown-menu m-0 bg-secondary rounded-0" >
+                                                                <div class="dropdown-menu m-0 bg-nutri scrollable-dropdown" id="cd-category">
                                                                     <a class="dropdown-item searchCategory" th:each="child: ${category.childCategory}"
                                                                        th:data-filter-type="category" th:data-filter-value="${child.categoryId}"
-                                                                       th:text="${child.categoryName}" >
-
+                                                                       th:text="${child.categoryName}">
                                                                     </a>
                                                                 </div>
                                                                 <span th:text="${#lists.size(category.childCategory)}">(3)</span>
