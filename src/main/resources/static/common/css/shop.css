@@ -9,18 +9,22 @@
 .container-nutri{
     display: flex;
     justify-content: space-between;
+    margin-right: 5% !important;
+}
+.shop-header{
+  width: 75% !important;
 }
 .ct-container{
   width: 100%;
 }
 .bs-container{
     width: 17%;
-    margin-top: 10%;
+    margin-top: 8.3%;
   position: fixed;
   z-index: 1000;
   white-space: nowrap;
   /*left: 50%;*/
-  transform: translateX(495%);
+  transform: translateX(500%);
 }
 .middle {
   position: relative;

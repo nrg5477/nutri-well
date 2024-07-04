@@ -38,7 +38,7 @@
 <body>
 <div layout:fragment="content">
     <!-- Single Page Header start -->
-    <div class="container-fluid page-header py-5">
+    <div class="container-fluid page-header shop-header py-5">
         <h1 class="text-center text-white display-6">Shop Detail</h1>
         <ol class="breadcrumb justify-content-center mb-0">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -91,14 +91,6 @@
                                 <!--food_detail.js loadPreferrerdfood 동적 뷰 생성 -->
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="position-relative">
-                                <img src="../common/img/banner-fruits.jpg" class="img-fluid w-100 rounded" alt="">
-                                <div class="position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);">
-                                    <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br> Banner</h3>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-8 col-xl-9">
@@ -106,7 +98,7 @@
                         <div class="col-lg-6">
                             <div class="border rounded">
                                 <a href="#">
-                                    <img src="../common/img/single-item.jpg" class="img-fluid rounded" alt="Image">
+                                    <img src="/common/img/single-item.jpg" class="img-fluid rounded" alt="Image">
                                 </a>
                             </div>
                         </div>
@@ -118,7 +110,7 @@
                                     <button id="exclude-button" class="food-exclude" onclick="toggleExcludeFood()"><i class="bi bi-clipboard-x"></i></button>
                                 </div>
                             </div>
-                            <p class="mb-3" th:text="Category+' : ' + ${food.categoryName}"></p>
+                            <p class="mb-3" th:text="Category+' : ' + ${food.categoryName}" style="font-weight: bold; color: #000"></p>
                             <h4 id="nutriKcal"></h4>
                             <div class="top-nutri-content">
                                 <div class="showShop">

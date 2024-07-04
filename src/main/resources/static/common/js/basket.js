@@ -93,7 +93,7 @@
             tableHtml += '<tr>';
             tableHtml += '<td>' + nutrientName + '<div class="input-wrapper"><input class="amount" value="' + amount + '"><span>' + unit + '</span></div></td>';
             tableHtml += '<td><input class="percent ' + percentClass + '" value="' + percentage + '" readonly>%</td>';
-            tableHtml += '<td><div class="bar-container"><div class="bar" style="width: ' + percentage + '%;"></div></div></td>';
+            // tableHtml += '<td><div class="bar-container"><div class="bar" style="width: ' + percentage + '%;"></div></div></td>';
             tableHtml += '</tr>';
         });
         tableHtml += '</tbody>';
