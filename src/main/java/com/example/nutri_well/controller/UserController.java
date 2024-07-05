@@ -99,6 +99,7 @@ public class UserController {
             existingUser.setPicture(picture);
 
             userService.updateUser(existingUser);
+            session.setAttribute("user", new SessionUser(existingUser));
         }
         return "redirect:/mypage.do";
     }

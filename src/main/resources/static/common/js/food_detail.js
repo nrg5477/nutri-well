@@ -106,7 +106,6 @@
                 console.error('데이터를 가져오는 데 실패했습니다:', error);
         });
     }
-
     //즐겨찾기 이벤트
     function updatePreferredState() {
         const foodId = $("#foodContainer").data("food");
