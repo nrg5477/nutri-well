@@ -4,6 +4,9 @@
       layout:decorate="~{layout/indexLayout}">
 <head>
     <meta charset="UTF-8">
+    <script>
+        var basalMetabolism = [[${basalMetabolism}]];
+    </script>
 </head>
 <body>
 <div layout:fragment="content">
@@ -58,9 +61,9 @@
             <div class="col-md-6 col-lg-3" th:each="test: ${top4Foods}">
                 <div class="featurs-item text-center rounded bg-light p-4 px-6 py-6">
                     <div class="mb-3 mx-auto">
-                        <a th:if="${test.name} == ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name}}"><img th:src="@{'/common/img/category/' + ${test.name} + '.jpg'}" width="120" height="120"></a>
-                        <a th:if="${test.name} != ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name}}"><img th:src="@{'/common/img/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
-                        <a th:unless="${test.name} == ${test.categoryName} or ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name} + ${test.categoryName}}"><img th:src="@{'/common/img/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                        <a th:if="${test.name} == ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'/common/img/category/' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                        <a th:if="${test.name} != ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'/common/img/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                        <a th:unless="${test.name} == ${test.categoryName} or ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'/common/img/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
                     </div>
                     <div class="featurs-content text-center">
                         <h5 th:text="${test.categoryName}"></h5>
@@ -546,6 +549,12 @@
 <!-- Back to Top -->
 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle indexback-to-top"><i class="fa fa-arrow-up"></i></a>
 </div>
-
+<!-- 기초대사량 조회 -->
+<div th:if="${basalMetabolism == 0}">
+    <script type="text/javascript">
+        console.log(baselMetabolism);
+        alert("기초대사량이 0입니다. 개인정보를 수정해 주세요.");
+    </script>
+</div>
 </body>
 </html>

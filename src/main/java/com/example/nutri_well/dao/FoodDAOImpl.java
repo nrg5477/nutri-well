@@ -1,5 +1,6 @@
 package com.example.nutri_well.dao;
 
+import com.example.nutri_well.entity.Category;
 import com.example.nutri_well.entity.Food;
 import com.example.nutri_well.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,11 @@ public class FoodDAOImpl implements FoodDAO{
     @Override
     public Page<Food> searchByCategoryId(Long categoryid, Pageable pageable) {
         return  foodRepository.findByCategoryId(categoryid,pageable);
+    }
+
+    @Override
+    public Page<Food> findByparentCategoryFood(Category parentCategory, Pageable pageable) {
+        return foodRepository.findByparentCategoryFood(parentCategory,pageable);
     }
 
     @Override

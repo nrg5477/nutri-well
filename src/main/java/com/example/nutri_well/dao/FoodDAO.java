@@ -1,16 +1,16 @@
 package com.example.nutri_well.dao;
 
+import com.example.nutri_well.entity.Category;
 import com.example.nutri_well.entity.Food;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface FoodDAO {
     Page<Food> searchByFoodName(String name, Pageable pageable);
     Page<Food> searchByCategoryId(Long categoryid, Pageable pageable);
+    Page<Food> findByparentCategoryFood(Category parentCategory, Pageable pageable);
     int getTotalPages(Page<Food> page);
     Food findByName(String name);
     Page<Food> findAllByNutrientsNotIn(String foodname, List<String> names, Pageable pageable);

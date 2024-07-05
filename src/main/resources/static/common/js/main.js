@@ -235,6 +235,24 @@
             document.addEventListener('DOMContentLoaded', function() {
                 showSignupMessage();
         });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const activeTab = urlParams.get('tab');
+
+        if (activeTab) {
+            const tabElement = document.querySelector(`#${activeTab}-tab`);
+            if (tabElement) {
+                new bootstrap.Tab(tabElement).show();
+            }
+        }
+
+        if (basalMetabolism === 0) {
+            if (confirm("기초대사량이 0입니다. 개인정보를 수정해 주세요. 수정 페이지로 이동하시겠습니까?")) {
+                window.location.href = '/mypage.do?tab=profile';
+            }
+        }
+    });
 })(jQuery);
 
 

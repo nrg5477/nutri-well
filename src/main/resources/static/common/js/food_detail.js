@@ -11,7 +11,11 @@
     var nutritionChart;
     var userId;
     var nutrientAmounts = {};
-
+    window.setSessionUser = function(user) {
+        if (user != null) {
+            userId = user.userId;
+        }
+    };
     $('#toggleSize').click(function() {
         const isSize = $(this).toggleClass('active').hasClass('active');
         setServingSize(!isSize);
@@ -42,6 +46,7 @@
                 foodData.nutrientlist.forEach(nutrient => {
                     nutrientAmounts[nutrient.name] = nutrient.amount;
                 });
+
                 updateChart();
                 var dailyIntake = {
                     '탄수화물': baselMetabolism * 0.5 / 4 , //총 칼로리의 45-65% 탄수화물 1g 당 4 칼로리
@@ -69,18 +74,24 @@
                 nutrientTables.forEach(({ tableId }) => {//넣기전 초기화
                     $(`#${tableId} tbody`).empty();
                 });
+                let maxNutrient;
+                let maxPercentage = 0;
                 nutrientTables.forEach(({ tableId, nutrients, values }) => {
                     nutrients.forEach((nutrient, index) => {
                         const unit = values[index];
                         const nutrientData = foodData.nutrientlist.find(n => n.name === nutrient) || { name: nutrient, amount: 0, value: '' };
                         const amount = (nutrientData.amount * servingSize).toFixed(1);
-
+                        const percentage = (amount / dailyIntake[nutrientData.name] * 100).toFixed(1);// 일일권장량 계산
+                        // 가장 높은 퍼센트 값 추출
+                        if (percentage > maxPercentage) {
+                            maxNutrient = nutrientData.name;
+                        }
                         const row = $('<tr></tr>');
                         row.append($('<td></td>').addClass('nutrientname').text(nutrientData.name));
                         row.append($('<td></td>').addClass('amount').text(`${amount} ${unit}`));
 
                         const progressBar =
-                            $('<div></div>').addClass('progress-bar').css('width', `${amount / dailyIntake[nutrientData.name] * 100}%`);
+                            $('<div></div>').addClass('progress-bar').css('width', `${percentage}%`);
                         const progressDiv =
                             $('<div></div>').addClass('progress').append(progressBar);
 
@@ -88,6 +99,7 @@
                         $(`#${tableId} tbody`).append(row);
                     });
                 });
+                $("#nutriText").text(maxNutrient+" 함유량이 높은 제품입니다.")
                 //sessionStorage.setItem('nutrilist', );
             })
             .catch(error => {
@@ -230,14 +242,20 @@
                    const $foodItem = $('<div class="d-flex align-items-center justify-content-start"></div>');
 
                    const $imgDiv = $('<div class="rounded me-4" style="width: 100px; height: 100px;"></div>');
-                   const $img = $('<img class="img-fluid rounded" alt="">').attr('src', "/common/img/featur-1.jpg");
-                   $imgDiv.append($img);
+
+                   if (food.name === food.categoryName) {
+                       const $img = $('<img class="img-fluid rounded" style="width: 100px; height: 100px;" alt="Image">').attr('src', `/common/img/category/${food.categoryName}.jpg`);
+                       $imgDiv.append($img);
+                   } else {
+                       const $img = $('<img class="img-fluid rounded" style="width: 100px; height: 100px;" alt="Image">').attr('src', `/common/img/category/${food.categoryName}_${food.name}.jpg`);
+                       $imgDiv.append($img);
+                   }
 
                    const $infoDiv = $('<div></div>');
                    const $name = $('<h6 class="mb-2"></h6>').text(food.name);
 
                    const $energyDiv = $('<div class="d-flex mb-2"></div>');
-                   const $energy = $('<h5 class="fw-bold me-2"></h5>').text(`${food.nutrientlist[0].amount} kcal`);
+                   const $energy = $('<h5 class="fw-bold me-2"></h5>').html(`100g/ml당 <br/> ${food.nutrientlist[0].amount} kcal`);
                    $energyDiv.append($energy);
 
                    $infoDiv.append($name).append($energyDiv);

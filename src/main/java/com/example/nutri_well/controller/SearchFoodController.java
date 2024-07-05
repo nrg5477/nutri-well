@@ -1,7 +1,9 @@
 package com.example.nutri_well.controller;
 
+import com.example.nutri_well.dao.CategoryDAO;
 import com.example.nutri_well.dto.CategoryResponseDTO;
 import com.example.nutri_well.dto.FoodResponseDTO;
+import com.example.nutri_well.entity.Category;
 import com.example.nutri_well.model.User;
 import com.example.nutri_well.repository.CategoryRepository;
 import com.example.nutri_well.repository.FoodRepository;
@@ -26,6 +28,7 @@ import java.util.List;
 public final class SearchFoodController {
     private final FoodService foodService;
     private final CategoryService categoryService;
+    private final CategoryDAO dao;
     @GetMapping("/search")
     public ModelAndView searchPage(@RequestParam("query") String query, @RequestParam("page") int page, @RequestParam("size") int size,
                                    @RequestParam(name="nutrients",required = false) List<String> nutrients,
@@ -63,10 +66,13 @@ public final class SearchFoodController {
         List<FoodResponseDTO> foodlist = null;
 
         CategoryResponseDTO categoryDTO = categoryService.findbyId(category);
+        Category parentCategory = dao.findbyId(category);
         if(nutrients != null || min != null || max != null){
             //foodlist = foodService.findAllByNutrientsNotIn(categoryDTO,nutrients,pageRequest);
             foodlist = foodService.findAllByNutrientsInRange(category,nutrients,min,max,pageRequest);
-        }else {
+        } else if (parentCategory.getId().intValue() > 0 && parentCategory.getId().intValue() < 22) {
+            foodlist = foodService.findByparentCategoryFood(parentCategory, pageRequest);
+        } else {
             foodlist = foodService.searchByCategoryId(categoryDTO, pageRequest);
         }
         int totalpage = foodService.getTotalPages();

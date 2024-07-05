@@ -43,6 +43,12 @@ public class IndexController {
     public String indexHtml(Model model) {
         List<FoodResponseDTO> top4Foods = bookMarkService.findTop4Foods();
         model.addAttribute("top4Foods", top4Foods);
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if (sessionUser != null) {
+            model.addAttribute("basalMetabolism", sessionUser.getBaselMetabolism());
+        } else {
+            model.addAttribute("basalMetabolism", -1);
+        }
         System.out.println(top4Foods);
         return "include/indexContent";
     }

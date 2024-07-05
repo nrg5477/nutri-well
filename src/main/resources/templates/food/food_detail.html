@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <h4 class="mb-4">Preferred products</h4>
+                            <h4 class="mb-4">인기 식품</h4>
                             <div id="preferrerd-food-list">
                                 <!--food_detail.js loadPreferrerdfood 동적 뷰 생성 -->
                             </div>
@@ -63,13 +63,8 @@
                     <div class="row g-4">
                         <div class="col-lg-6">
                             <div class="border rounded">
-                                <a href="#">
-<!--                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">-->
-<!--                                    &lt;!&ndash;                                                    이미지 높이 스타일 css로 이동 예정&ndash;&gt;-->
-<!--                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="">-->
-                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/' + ${food.categoryName} + '.jpg'}" class="img-fluid rounded" alt="Image">
-                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid rounded" alt="Image">
-                                </a>
+                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid rounded foodImage" alt="Image">
+                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid rounded foodImage" alt="Image">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -87,7 +82,7 @@
                                     <!--                                https://mfront.homeplus.co.kr/search?entry=direct&keyword=%EB%B0%80%ED%82%A4%ED%8A%B8-->
                                     <!--                                https://www.lotteon.com/search/search/search.ecn?render=search&platform=pc&q=%EC%98%A5%EC%88%98%EC%88%98%EA%B0%80%EC%9E%90%ED%83%95%20&mallId=4-->
                                     <!--                                <h5 class="fw-bold mb-3" th:text="${food.nutrientlist[0].amount} +' '+  ${food.nutrientlist[0].value}" ></h5>-->
-                                    <p class="mb-4">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
+                                    <p class="mb-4" id="nutriText">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
                                     <a th:href="@{https://www.ssg.com/search.ssg(target='all', query=${food.name} + ${food.categoryName})}" target="_blank"><p class="mb-4">쓱에서 식품보기</p></a>
                                     <a th:href="@{https://mfront.homeplus.co.kr/search(entry='direct', keyword=${food.name} + ${food.categoryName})}" target="_blank"><p class="mb-4">홈플러스에서 식품보기</p></a>
                                     <a th:href="@{https://www.lotteon.com/search/search/search.ecn(render='search', platform='pc', q=${food.name} + ${food.categoryName}, mallId='4')}" target="_blank"><p class="mb-4">롯데마트에서 식품보기</p></a>
@@ -96,20 +91,21 @@
                                     <canvas id="nutritionChart-detail"></canvas>
                                 </div>
                             </div>
-                            <div class="input-group quantity mb-5" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+<!--                            <div class="input-group quantity mb-5" style="width: 100px;">-->
+<!--                                <div class="input-group-btn">-->
+<!--                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >-->
+<!--                                        <i class="fa fa-minus"></i>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                <input type="text" class="form-control form-control-sm text-center border-0" value="1">-->
+<!--                                <div class="input-group-btn">-->
+<!--                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">-->
+<!--                                        <i class="fa fa-plus"></i>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <button type="button" th:foodId="${food.id}" th:onclick="addBasket(this.getAttribute('foodId'))" class="btn border border-secondary rounded-pill px-3 text-primary">
+                            <i class="fa fa-shopping-bag me-2 text-primary"></i>담기</button>
                         </div>
                         <div class="col-lg-12">
                             <nav>
