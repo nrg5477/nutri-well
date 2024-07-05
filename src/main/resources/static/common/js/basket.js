@@ -126,12 +126,13 @@
     }
     //클릭 이벤트
     window.addBasket = function(foodId) {
+        const baseUrl = 'http://localhost:9079';
         let data = {
             "foodId": foodId,
             "userId": userId,
         };
         $.ajax({
-            url: "basket/insert",
+            url: baseUrl+"/basket/insert",
             type: "POST",
             dataType: "json",
             data: data,
