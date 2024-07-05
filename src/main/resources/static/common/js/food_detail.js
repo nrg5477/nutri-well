@@ -230,14 +230,20 @@
                    const $foodItem = $('<div class="d-flex align-items-center justify-content-start"></div>');
 
                    const $imgDiv = $('<div class="rounded me-4" style="width: 100px; height: 100px;"></div>');
-                   const $img = $('<img class="img-fluid rounded" alt="">').attr('src', "/common/img/featur-1.jpg");
-                   $imgDiv.append($img);
+
+                   if (food.name === food.categoryName) {
+                       const $img = $('<img class="img-fluid rounded" style="width: 100px; height: 100px;" alt="Image">').attr('src', `/common/img/category/${food.categoryName}.jpg`);
+                       $imgDiv.append($img);
+                   } else {
+                       const $img = $('<img class="img-fluid rounded" style="width: 100px; height: 100px;" alt="Image">').attr('src', `/common/img/category/${food.categoryName}_${food.name}.jpg`);
+                       $imgDiv.append($img);
+                   }
 
                    const $infoDiv = $('<div></div>');
                    const $name = $('<h6 class="mb-2"></h6>').text(food.name);
 
                    const $energyDiv = $('<div class="d-flex mb-2"></div>');
-                   const $energy = $('<h5 class="fw-bold me-2"></h5>').text(`${food.nutrientlist[0].amount} kcal`);
+                   const $energy = $('<h5 class="fw-bold me-2"></h5>').html(`100g/ml당 <br/> ${food.nutrientlist[0].amount} kcal`);
                    $energyDiv.append($energy);
 
                    $infoDiv.append($name).append($energyDiv);

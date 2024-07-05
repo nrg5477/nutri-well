@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <h4 class="mb-4">Preferred products</h4>
+                            <h4 class="mb-4">인기 식품</h4>
                             <div id="preferrerd-food-list">
                                 <!--food_detail.js loadPreferrerdfood 동적 뷰 생성 -->
                             </div>
@@ -63,13 +63,8 @@
                     <div class="row g-4">
                         <div class="col-lg-6">
                             <div class="border rounded">
-                                <a href="#">
-<!--                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">-->
-<!--                                    &lt;!&ndash;                                                    이미지 높이 스타일 css로 이동 예정&ndash;&gt;-->
-<!--                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="">-->
-                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/' + ${food.categoryName} + '.jpg'}" class="img-fluid rounded" alt="Image">
-                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid rounded" alt="Image">
-                                </a>
+                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid rounded foodImage" alt="Image">
+                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid rounded foodImage" alt="Image">
                             </div>
                         </div>
                         <div class="col-lg-6">
