@@ -53,6 +53,19 @@ public class FoodServiceImpl implements FoodService{
     }
 
     @Override
+    public List<FoodResponseDTO> findByparentCategoryFood(Category category, Pageable pageable) {
+        Page<Food> foods = dao.findByparentCategoryFood(category, pageable);
+        List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
+
+        for (FoodResponseDTO dto : list) {
+            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
+        }
+
+        this.totalPage = foods.getTotalPages();
+        return list;
+    }
+
+    @Override
     public List<FoodResponseDTO> findAllByNutrientsNotIn(String foodname, List<String> names ,Pageable pageable) {
         String namepattern = "%"+foodname+"%";
 

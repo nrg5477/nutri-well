@@ -1,5 +1,6 @@
 package com.example.nutri_well.repository;
 
+import com.example.nutri_well.entity.Category;
 import com.example.nutri_well.entity.Food;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +17,10 @@ public interface FoodRepository extends JpaRepository<Food,Long> {
 
     @Query("SELECT f FROM Food f WHERE f.categoryId.id = :categoryId")
     Page<Food> findByCategoryId(@Param("categoryId") Long categoryId, Pageable pageable);
+
+    @Query("SELECT f FROM Food f WHERE f.categoryId.parentCategory = :categoryId")
+    Page<Food> findByparentCategoryFood(@Param("categoryId") Category parentCategory, Pageable pageable);
+
     //이름으로 검색했을때
     @Query("SELECT f FROM Food f " +
             "WHERE f.name LIKE :name AND " +

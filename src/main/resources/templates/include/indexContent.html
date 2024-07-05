@@ -61,9 +61,9 @@
             <div class="col-md-6 col-lg-3" th:each="test: ${top4Foods}">
                 <div class="featurs-item text-center rounded bg-light p-4 px-6 py-6">
                     <div class="mb-3 mx-auto">
-                        <a th:if="${test.name} == ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name}}"><img th:src="@{'/common/img/category/' + ${test.name} + '.jpg'}" width="120" height="120"></a>
-                        <a th:if="${test.name} != ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name}}"><img th:src="@{'/common/img/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
-                        <a th:unless="${test.name} == ${test.categoryName} or ${test.name.contains(test.categoryName)}" th:href="@{'https://www.ssg.com/search.ssg?target=all&query=' + ${test.name} + ${test.categoryName}}"><img th:src="@{'/common/img/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                        <a th:if="${test.name} == ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'/common/img/category/' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                        <a th:if="${test.name} != ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'/common/img/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                        <a th:unless="${test.name} == ${test.categoryName} or ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'/common/img/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
                     </div>
                     <div class="featurs-content text-center">
                         <h5 th:text="${test.categoryName}"></h5>
@@ -305,7 +305,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="/common/img/category/빵%20및%20과자류.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/common/img/category/빵%20및%20과자류.jpg" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">빵 및 과자류</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -313,7 +313,7 @@
                                             <p>맛있는 빵과 과자들이 있습니다.</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">총 70종</p>
-                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
+                                                <a href="http://localhost:9079/searchCategory?category=2&page=0&size=12" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -329,7 +329,7 @@
                                             <p>각종 음료와 차종류들이 있습니다.</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">총 28종</p>
-                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
+                                                <a href="http://localhost:9079/searchCategory?category=18&page=0&size=12" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -337,7 +337,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="/common/img/category/유제품류%20및%20빙과류.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <img src="/common/img/category/유제품류%20및%20빙과류.jpg" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">유제품류 및 빙과류</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -345,7 +345,7 @@
                                             <p>신선한 유제품과 아이스크림이 있습니다.</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">총 7종</p>
-                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
+                                                <a href="http://localhost:9079/searchCategory?category=21&page=0&size=12" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
                                             </div>
                                         </div>
                                     </div>

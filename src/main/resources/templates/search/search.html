@@ -107,7 +107,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <h4 class="mb-3">Preferred products</h4>
+                                        <h4 class="mb-3">인기식품</h4>
                                         <div id="preferrerd-food-list">
                                             <!--shop.js loadPreferrerdfood 동적 뷰 생성 -->
                                         </div>
@@ -123,7 +123,7 @@
                                                 <div class="fruite-img">
                                                     <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
 <!--                                                    이미지 높이 스타일 css로 이동 예정-->
-                                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="">
+                                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                                 </div>
                                                 <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${food.categoryName}"></div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom" >

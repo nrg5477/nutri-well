@@ -98,3 +98,6 @@ th:last-child, td:last-child {
     display: flex;
     justify-content: space-between;
 }
+.foodImage{
+    width: 100%;
+}
