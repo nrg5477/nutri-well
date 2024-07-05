@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        var basalMetabolism = [[${basalMetabolism}]];
+        window.baselMetabolism = [[${baselMetabolism}]];
     </script>
 </head>
 <body>
@@ -548,13 +548,6 @@
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle indexback-to-top"><i class="fa fa-arrow-up"></i></a>
-</div>
-<!-- 기초대사량 조회 -->
-<div th:if="${basalMetabolism == 0}">
-    <script type="text/javascript">
-        console.log(baselMetabolism);
-        alert("기초대사량이 0입니다. 개인정보를 수정해 주세요.");
-    </script>
 </div>
 </body>
 </html>
