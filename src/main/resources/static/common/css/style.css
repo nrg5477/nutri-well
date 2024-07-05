@@ -30,11 +30,11 @@
     bottom: 30px;
     display: flex;
     width: 45px;
-    height: 45px;
+    height: 40px;
     align-items: center;
     justify-content: center;
     transition: 0.5s;
-    z-index: 99;
+    z-index: 1001;
     transform: translateX(-200px);
 }
 /*** Spinner End ***/
