@@ -1,11 +1,13 @@
 package com.example.nutri_well.controller;
 
 import com.example.nutri_well.config.auth.dto.SessionUser;
+import com.example.nutri_well.dto.CategoryResponseDTO;
 import com.example.nutri_well.dto.FoodApproveResponseDTO;
 import com.example.nutri_well.dto.FoodResponseDTO;
 import com.example.nutri_well.model.User;
 import com.example.nutri_well.model.myCalendar;
 import com.example.nutri_well.service.BookMarkService;
+import com.example.nutri_well.service.CategoryService;
 import com.example.nutri_well.service.FoodApproveServie;
 import com.example.nutri_well.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +29,7 @@ public class IndexController {
     private final HttpSession httpSession;
     private final UserService userService;
     private final BookMarkService bookMarkService;
+    private final CategoryService categoryService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -42,7 +45,10 @@ public class IndexController {
     @GetMapping("/index.do")
     public String indexHtml(Model model) {
         List<FoodResponseDTO> top4Foods = bookMarkService.findTop4Foods();
+        List<CategoryResponseDTO> parentCategory = categoryService.findByParentCategoryIsNull();
+
         model.addAttribute("top4Foods", top4Foods);
+        model.addAttribute("category", parentCategory);
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
 
         if (sessionUser != null) {

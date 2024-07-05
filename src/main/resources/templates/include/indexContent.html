@@ -114,7 +114,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
-                                <span class="text-dark" style="width: 130px;">더보기</span>
+                                <span class="text-dark" style="width: 130px;">기타</span>
                                 <!--                                        8 10 11 12 19-->
                             </a>
                         </li>
@@ -302,54 +302,54 @@
                     <div class="row g-4">
                         <div class="col-lg-12">
                             <div class="row g-4">
-                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                <div class="col-md-6 col-lg-4 col-xl-3" th:each="category, iterStat: ${category}">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="/common/img/category/빵%20및%20과자류.jpg" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
+                                            <img th:src="@{'/common/img/category/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">빵 및 과자류</div>
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${category.categoryName}"></div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <h4>빵 및 과자류</h4>
-                                            <p>맛있는 빵과 과자들이 있습니다.</p>
+                                            <h4 th:text="${category.categoryName}"></h4>
+                                            <p th:text="'맛좋은 ' + ${category.categoryName} + '가 있습니다.'"></p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0">총 70종</p>
-                                                <a href="http://localhost:9079/searchCategory?category=2&page=0&size=12" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
+                                                <p class="text-dark fs-5 fw-bold mb-0" th:text="'총 ' + ${#lists.size(category.childCategory)}+ '종'"></p>
+                                                <a th:href="@{/searchCategory(category= ${category.categoryId}, page=0, size=12)}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/common/img/category/음료%20및%20차류.jpg" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
-                                        </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">음료 및 차류</div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <h4>음료 및 차류</h4>
-                                            <p>각종 음료와 차종류들이 있습니다.</p>
-                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0">총 28종</p>
-                                                <a href="http://localhost:9079/searchCategory?category=18&page=0&size=12" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="/common/img/category/유제품류%20및%20빙과류.jpg" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
-                                        </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">유제품류 및 빙과류</div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <h4>유제품류 및 빙과류</h4>
-                                            <p>신선한 유제품과 아이스크림이 있습니다.</p>
-                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0">총 7종</p>
-                                                <a href="http://localhost:9079/searchCategory?category=21&page=0&size=12" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="col-md-6 col-lg-4 col-xl-3">-->
+<!--                                    <div class="rounded position-relative fruite-item">-->
+<!--                                        <div class="fruite-img">-->
+<!--                                            <img src="/common/img/category/음료%20및%20차류.jpg" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">-->
+<!--                                        </div>-->
+<!--                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">음료 및 차류</div>-->
+<!--                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">-->
+<!--                                            <h4>음료 및 차류</h4>-->
+<!--                                            <p>각종 음료와 차종류들이 있습니다.</p>-->
+<!--                                            <div class="d-flex justify-content-between flex-lg-wrap">-->
+<!--                                                <p class="text-dark fs-5 fw-bold mb-0">총 28종</p>-->
+<!--                                                <a href="http://localhost:9079/searchCategory?category=18&page=0&size=12" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6 col-lg-4 col-xl-3">-->
+<!--                                    <div class="rounded position-relative fruite-item">-->
+<!--                                        <div class="fruite-img">-->
+<!--                                            <img src="/common/img/category/유제품류%20및%20빙과류.jpg" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">-->
+<!--                                        </div>-->
+<!--                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">유제품류 및 빙과류</div>-->
+<!--                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">-->
+<!--                                            <h4>유제품류 및 빙과류</h4>-->
+<!--                                            <p>신선한 유제품과 아이스크림이 있습니다.</p>-->
+<!--                                            <div class="d-flex justify-content-between flex-lg-wrap">-->
+<!--                                                <p class="text-dark fs-5 fw-bold mb-0">총 7종</p>-->
+<!--                                                <a href="http://localhost:9079/searchCategory?category=21&page=0&size=12" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 보러가기</a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
