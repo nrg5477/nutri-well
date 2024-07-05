@@ -235,6 +235,12 @@
             document.addEventListener('DOMContentLoaded', function() {
                 showSignupMessage();
         });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        if (basalMetabolism === 0) {
+            alert("기초대사량이 0입니다. 개인정보를 수정해 주세요.");
+        }
+    });
 })(jQuery);
 
 
