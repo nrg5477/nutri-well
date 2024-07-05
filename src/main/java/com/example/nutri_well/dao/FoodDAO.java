@@ -19,6 +19,7 @@ public interface FoodDAO {
     Food findByFoodCode(String foodcode);
     Page<Food> findAllByNutrientsInRange( String foodname, List<String> names, Integer min, Integer max, Pageable pageable);
     Page<Food> findAllByNutrientsInRange(Long category,  List<String> names, Integer min,  Integer max, Pageable pageable);
+    Page<Food> findAllByNutrientsParentCategoryInRange(Long category,  List<String> names, Integer min,  Integer max, Pageable pageable);
     Food save(Food food);
     List<Food> findByNameStartingWith(String prefix,Pageable pageable);
 }

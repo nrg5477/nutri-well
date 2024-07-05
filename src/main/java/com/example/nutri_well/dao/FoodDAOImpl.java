@@ -71,6 +71,11 @@ public class FoodDAOImpl implements FoodDAO{
     }
 
     @Override
+    public Page<Food> findAllByNutrientsParentCategoryInRange(Long category, List<String> names, Integer min, Integer max, Pageable pageable) {
+        return foodRepository.findAllByNutrientsParentCategoryInRange(category,names,min,max,pageable);
+    }
+
+    @Override
     public Food save(Food food) {
         return foodRepository.save(food);
     }

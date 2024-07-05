@@ -148,6 +148,18 @@ public class FoodServiceImpl implements FoodService{
     }
 
     @Override
+    public List<FoodResponseDTO> findAllByNutrientsParentCategoryInRange(Long categoryId, List<String> names, Integer min, Integer max, Pageable pageable) {
+
+        Page<Food> foods = dao.findAllByNutrientsParentCategoryInRange(categoryId, names, min, max, pageable);
+        List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
+        for (FoodResponseDTO dto : list) {
+            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
+        }
+        this.totalPage = foods.getTotalPages();
+        return list;
+    }
+
+    @Override
     public Food findEntityById(Long foodId) {
         return dao.findById(foodId);
     }

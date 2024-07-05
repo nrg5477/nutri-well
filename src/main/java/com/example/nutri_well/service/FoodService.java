@@ -24,6 +24,6 @@ public interface FoodService {
     FoodResponseDTO findById(Long foodId);
     List<FoodResponseDTO> findAllByNutrientsInRange(String foodname, List<String> names, Integer min, Integer max, Pageable pageable);
     List<FoodResponseDTO> findAllByNutrientsInRange(Long category, List<String> names, Integer min, Integer max, Pageable pageable);
-
+    List<FoodResponseDTO> findAllByNutrientsParentCategoryInRange(Long category, List<String> names, Integer min, Integer max, Pageable pageable);
     Food findEntityById(Long foodId);
 }
