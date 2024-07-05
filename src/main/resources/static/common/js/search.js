@@ -227,7 +227,7 @@
             value = $inputLeft.val();
         }
 
-        value = Math.min(value, parseInt($inputRight.val()) - 1);
+        value = Math.min(value, parseInt($inputRight.val())); // 초기 왼쪽 input값
         $inputLeft.val(value);
         $("#leftValue").val(value);
 
@@ -246,7 +246,7 @@
             value = $inputRight.val();
         }
 
-        value = Math.max(value, parseInt($inputLeft.val()) + 1);
+        value = Math.max(value, parseInt($inputLeft.val()) + 100); // 초기 오른쪽 input값
         $inputRight.val(value);
         $("#rightValue").val(value);
 
