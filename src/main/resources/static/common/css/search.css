@@ -89,7 +89,14 @@ input[type="range"] {
   width: 100%;
   opacity: 0;
 }
-
+.inputRange {
+    display: flex;
+    justify-content: space-between;
+}
+.inputRange input{
+    width: 20%;
+    text-align: center
+}
 input[type="range"]::-webkit-slider-thumb {
   /* 겹쳐진 두 thumb를 모두 활성화 */
   pointer-events: all;

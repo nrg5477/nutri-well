@@ -267,7 +267,7 @@
         if(left > right ){
             alert('최소값은 최댓값보다 클 수 없습니다.');
             return;
-        }else if(left >=499 || right >=500){
+        }else if(left >=499 || right >500){
             alert('최댓값은'+ $('#rightValue').attr('max') +'이하입니다.');
             return;
         }else{
