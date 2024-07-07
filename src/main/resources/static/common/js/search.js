@@ -142,6 +142,7 @@
     const totalPage = $('#pageContainer').data("pages");
     const maxPagesToShow = 10;
     let currentPageGroup = 0;
+    let currentPage = parseInt(new URLSearchParams(window.location.search).get('page')) || 0;
 
     function renderPagination() {
         $('#page-container').empty();
@@ -153,6 +154,10 @@
             $pageLink.attr('data-filter-type', 'itemPage');
             $pageLink.attr('data-filter-value', i);
             $pageLink.text(i + 1);
+
+            if (i === currentPage) {
+                $pageLink.addClass('active');
+            }
 
             $('#page-container').append($pageLink);
         }
@@ -202,6 +207,7 @@
         var url = (queryValue) ? '/search?' : '/searchCategory?';
         url += params.toString();
 
+        currentPage = page;
         $(this).addClass('active');
         location.href = url;
     });
