@@ -19,7 +19,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class FoodServiceImpl implements FoodService{
+public class FoodServiceImpl implements FoodService {
     private final FoodDAO dao;
     private int totalPage;
 
@@ -66,8 +66,8 @@ public class FoodServiceImpl implements FoodService{
     }
 
     @Override
-    public List<FoodResponseDTO> findAllByNutrientsNotIn(String foodname, List<String> names ,Pageable pageable) {
-        String namepattern = "%"+foodname+"%";
+    public List<FoodResponseDTO> findAllByNutrientsNotIn(String foodname, List<String> names, Pageable pageable) {
+        String namepattern = "%" + foodname + "%";
 
         Page<Food> foods = dao.findAllByNutrientsNotIn(namepattern, names, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
@@ -85,7 +85,7 @@ public class FoodServiceImpl implements FoodService{
         ModelMapper mapper = new ModelMapper();
         Category entity = mapper.map(category, Category.class);
 
-        Page<Food> foods = dao.findAllByNutrientsNotIn(entity.getId(),names, pageable);
+        Page<Food> foods = dao.findAllByNutrientsNotIn(entity.getId(), names, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
 
         this.totalPage = foods.getTotalPages();
@@ -109,7 +109,7 @@ public class FoodServiceImpl implements FoodService{
 
     @Override
     public List<FoodSuggestResponseDTO> findByNameStartingWith(String prefix, Pageable pageable) {
-        List<Food> foods = dao.findByNameStartingWith(prefix,pageable);
+        List<Food> foods = dao.findByNameStartingWith(prefix, pageable);
         List<FoodSuggestResponseDTO> list = new ArrayList<>();
         for (Food food : foods) {
             list.add(FoodSuggestResponseDTO.of(food));
@@ -125,7 +125,7 @@ public class FoodServiceImpl implements FoodService{
 
     @Override
     public List<FoodResponseDTO> findAllByNutrientsInRange(String foodname, List<String> names, Integer min, Integer max, Pageable pageable) {
-        String namepattern = "%"+foodname+"%";//LIKE절 처리
+        String namepattern = "%" + foodname + "%";//LIKE절 처리
 
         Page<Food> foods = dao.findAllByNutrientsInRange(namepattern, names, min, max, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
@@ -135,6 +135,7 @@ public class FoodServiceImpl implements FoodService{
         this.totalPage = foods.getTotalPages();
         return list;
     }
+
     @Override
     public List<FoodResponseDTO> findAllByNutrientsInRange(Long categoryId, List<String> names, Integer min, Integer max, Pageable pageable) {
 
@@ -164,8 +165,8 @@ public class FoodServiceImpl implements FoodService{
         return dao.findById(foodId);
     }
 
-    public List<FoodNutrientResponseDTO> findMainNutrients(FoodResponseDTO dto){
-        String[] mainNutrients = {"에너지","탄수화물","단백질","지방","당류"};
+    public List<FoodNutrientResponseDTO> findMainNutrients(FoodResponseDTO dto) {
+        String[] mainNutrients = {"에너지", "탄수화물", "단백질", "지방", "당류"};
         List<FoodNutrientResponseDTO> filteredNutrients = new ArrayList<>();
 
         for (FoodNutrientResponseDTO nutrient : dto.getNutrientlist()) {

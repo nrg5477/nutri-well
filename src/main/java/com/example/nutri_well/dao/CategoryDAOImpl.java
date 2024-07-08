@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class CategoryDAOImpl implements CategoryDAO{
+public class CategoryDAOImpl implements CategoryDAO {
     private final CategoryRepository categoryRepository;
 
     @Override
@@ -22,12 +22,8 @@ public class CategoryDAOImpl implements CategoryDAO{
         return categoryRepository.findByParentCategoryIsNull();
     }
 
-
     @Override
     public Category findbyId(Long id) {
         return categoryRepository.findById(id).get();
     }
-
-
-
 }

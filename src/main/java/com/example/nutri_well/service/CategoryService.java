@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface CategoryService {
     List<CategoryResponseDTO> findAll();
+
     List<CategoryResponseDTO> findByParentCategoryIsNull();
+
     CategoryResponseDTO findbyId(Long id);
 
     List<CategoryResponseDTO> getAllCategories();

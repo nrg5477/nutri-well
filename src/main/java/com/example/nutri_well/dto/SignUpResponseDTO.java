@@ -14,11 +14,4 @@ public class SignUpResponseDTO {
     private Long UserId;
     private String username;
     private String email;
-
-    public SignUpResponseDTO(User user){
-        this.UserId = user.getUserId();
-        this.username = user.getUsername();
-        this.email = user.getEmail();
-    }
-
 }

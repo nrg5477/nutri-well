@@ -8,27 +8,24 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * 사용자와 관련된 기능 또는 관련된 HTTP 요청을 처리하는 컨트롤러 클래스.
+ */
 @Controller
 @RequiredArgsConstructor
 public class UserController {
-
     private final UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestParam String email, @RequestParam String password, HttpSession session) {
-        System.out.println("로그인호출");
         Optional<User> userOptional = userService.findByUserEmail(email);
         Map<String, String> response = new HashMap<>();
         if (userOptional.isPresent()) {
@@ -45,7 +42,6 @@ public class UserController {
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpSession session) {
-        System.out.println("로그아웃 호출");
         session.invalidate(); // 세션 무효화
         return ResponseEntity.ok("Logged out successfully");
     }
@@ -73,12 +69,11 @@ public class UserController {
         SessionUser sessionUser = (SessionUser) session.getAttribute("user");
         if (sessionUser != null) {
             User existingUser = userService.getCurrentUser(sessionUser.getEmail());
-            System.out.println("=====================user.getemail" + sessionUser.getEmail());
             existingUser.setGender(gender);
             existingUser.setHeight(height);
             existingUser.setWeight(weight);
             // Convert birth string to Date
-            int age=0;
+            int age = 0;
             try {
                 Date birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(birth);
                 existingUser.setBirth(birthDate);
@@ -88,10 +83,10 @@ public class UserController {
             }
             //BMR 계산 공식은 Harris-Benedict 방정식 참고\
             int BMR = 0;
-            if(gender.equals("M")){//남자일경우
-                BMR = (int) (88.362 + (13.397*weight) + (4.799*height)-(5.677 * age));
-            }else{//여자일경우
-                BMR = (int) (447.593 + (9.247*weight) + (3.098*height)-(4.330 * age));
+            if (gender.equals("M")) {//남자일경우
+                BMR = (int) (88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age));
+            } else {//여자일경우
+                BMR = (int) (447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age));
             }
             BMR = (int) (BMR * 1.55);//보통의 활동량을 기준으로 계산
             existingUser.setBaselMetabolism(BMR);

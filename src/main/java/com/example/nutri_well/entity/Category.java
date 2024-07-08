@@ -1,7 +1,5 @@
 package com.example.nutri_well.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,11 +8,15 @@ import lombok.ToString;
 
 import java.util.List;
 
+/**
+ * 카테고리를 나타내는 엔티티.
+ * 항목을 정리하고 분류하는데 사용되는 데이터 객체.
+ */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="category")
+@Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue
@@ -34,5 +36,4 @@ public class Category {
         this.name = name;
         this.parentCategory = parent;
     }
-
 }

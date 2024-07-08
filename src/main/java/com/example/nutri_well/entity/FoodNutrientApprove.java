@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 승인요청된 식품에 대한 영양소의 승인을 나타내는 엔티티.
+ */
 @Entity
 @Data
 @NoArgsConstructor

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
     private final CategoryDAO dao;
     private final CategoryRepository categoryRepository;
     private final ModelMapper modelMapper;
@@ -52,5 +52,4 @@ public class CategoryServiceImpl implements CategoryService{
                 .map(category -> modelMapper.map(category, CategoryResponseDTO.class))
                 .collect(Collectors.toList());
     }
-
 }

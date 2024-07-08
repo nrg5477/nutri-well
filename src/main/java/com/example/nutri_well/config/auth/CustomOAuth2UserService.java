@@ -18,10 +18,14 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.Optional;
 
+/**
+ * OAuth2UserServcie 의 구현.
+ * 소셜 로그인 성공 후 취해야할 조치를 담당.
+ * 사용자 등록, 정보 업데이트, 세션 저장등을 담당.
+ */
 @Service
 @RequiredArgsConstructor
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
-    //소셜 로그인 성공후 후속 조치를 취할 클래스 => OAuth2UserService 사용자의 정보들을 기반으로 가입, 정보수정, 세션 저장등의 기능을 지원
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
@@ -38,15 +42,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         // OAuth2UserService
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes()); //사용자 정보를 받아서 OAuthAttributes로 전환
         if (attributes == null) {
-            System.out.println("OAuthAttributes is nullOAuthAttributes is nullOAuthAttributes is nullOAuthAttributes is nullOAuthAttributes is null");
+            System.out.println("OAuthAttributes is null");
             throw new OAuth2AuthenticationException("OAuthAttributes is null");
         }
-        System.out.println("=============================================================="+attributes);
-        System.out.println("OAuthAttributes: " + attributes);
-        System.out.println("NameAttributeKey: " + attributes.getNameAttributeKey());
-        System.out.println("Attributes Map: " + attributes.getAttributes());
         User user = saveOrUpdate(attributes); //데이터베이스를 확인해서 기존 유저면 업데이트 , 새로운 유저면 저장
-//        System.out.println("==============================================================="+user); toString을 부르면 calendar에서 호출이 무한루프에 걸림.
         httpSession.setAttribute("user", new SessionUser(user)); // SessionUser (직렬화된 dto 클래스 사용) => 세션에 저장
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
                 attributes.getAttributes(),
@@ -58,10 +57,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         Optional<User> userOptional = userRepository.findByEmail(attributes.getEmail()); //이메일로 사용자가 존재하는지 확인
         User user;
 
-        if (userOptional.isPresent()) { //사용자가  존재하면
+        if (userOptional.isPresent()) {
             user = userOptional.get();
             user.update(attributes.getUsername(), attributes.getPicture());
-        } else {//사용자가 존재하지 않으면
+        } else {
             user = attributes.toEntity();
             user.setPassword("oauth2user"); // 기본 비밀번호 설정
             user.setGender(attributes.getGender() != null ? attributes.getGender() : "unknown"); //성별 설정

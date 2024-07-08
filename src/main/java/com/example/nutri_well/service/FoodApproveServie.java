@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface FoodApproveServie {
     FoodApproveResponseDTO requestFoodApproval(FoodApproveRequestDTO requestDTO);
+
     FoodApproveResponseDTO approveFood(Long requestId);
 
     List<FoodApproveResponseDTO> getAllFoodApprovals();

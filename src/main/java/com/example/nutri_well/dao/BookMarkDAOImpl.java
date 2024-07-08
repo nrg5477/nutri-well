@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class BookMarkDAOImpl implements BookMarkDAO{
+public class BookMarkDAOImpl implements BookMarkDAO {
     private final BookMarkRepository bookMarkRepository;
 
     @Override
@@ -26,12 +26,12 @@ public class BookMarkDAOImpl implements BookMarkDAO{
 
     @Override
     public int updatePreferredState(Long id, boolean preferredState) {
-        return bookMarkRepository.updatePreferredState(id,preferredState);
+        return bookMarkRepository.updatePreferredState(id, preferredState);
     }
 
     @Override
     public int updateExcludedState(Long id, boolean excludedState) {
-        return bookMarkRepository.updateExcludedState(id,excludedState);
+        return bookMarkRepository.updateExcludedState(id, excludedState);
     }
 
     @Override
@@ -48,5 +48,4 @@ public class BookMarkDAOImpl implements BookMarkDAO{
     public List<Food> findFoodNamesByUserId(Long userId) {
         return bookMarkRepository.findFoodNamesByUserId(userId);
     }
-
 }
