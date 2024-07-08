@@ -22,7 +22,6 @@ public class Nutrient {
     private Long id;
 
     private String name;
-
     private String servingUnit;
 
     @OneToMany(mappedBy = "nutrient", cascade = CascadeType.ALL, orphanRemoval = true)

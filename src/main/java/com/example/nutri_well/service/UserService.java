@@ -31,8 +31,4 @@ public class UserService {
     public Optional<User> findById(Long userId) {
         return userRepository.findById(userId);
     }
-
-    public Optional<User> findByBaselMetabolism(Integer baselMetabolism) {
-        return userRepository.findByBaselMetabolism(baselMetabolism);
-    }
 }

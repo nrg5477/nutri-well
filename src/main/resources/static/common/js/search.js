@@ -1,5 +1,6 @@
 (function ($) {
     "use strict";
+
     let userid = null;
     window.setSessionUser = function(user) {
         if (user != null) {
@@ -105,7 +106,6 @@
            size: 12,
            nutrients: nutrients.join(',')
        };
-
 
        if (queryValue) {
            params.query = queryValue;
@@ -218,7 +218,6 @@
     const $thumbLeft = $(".slider .thumb.left");
     const $thumbRight = $(".slider .thumb.right");
     const $range = $(".slider .range");
-    const initRightValue = 100;
 
     $inputLeft.on("input", function() { setLeftValue(true); });
     $inputRight.on("input", function() { setRightValue(true); });
@@ -228,6 +227,7 @@
         const max = parseInt($inputLeft.attr("max"));
         let leftvalue = 0;
         let rightvalue = 100;
+
         $inputLeft.val(leftvalue);
         $("#leftValue").val(leftvalue);
 
@@ -247,6 +247,7 @@
         const min = parseInt($inputLeft.attr("min"));
         const max = parseInt($inputLeft.attr("max"));
         let value = 0;
+
         if(!isInputTag){
             value = $('#leftValue').val();
         }else{
@@ -266,6 +267,7 @@
         const min = parseInt($inputRight.attr("min"));
         const max = parseInt($inputRight.attr("max"));
         let value = 0;
+
         if(!isInputTag){
             value = $('#rightValue').val();
         }else{
@@ -285,6 +287,7 @@
     $("#setRange").on("click", function() {
         let left = parseInt($('#leftValue').val());
         let right = parseInt($('#rightValue').val());
+
         if(left > right ){
             alert('최소값은 최댓값보다 클 수 없습니다.');
             return;
@@ -319,4 +322,3 @@
     loadPreferredFood();
     setInitValue();
 })(jQuery);
-

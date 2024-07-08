@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 초기 단위 설정
     const templateSelect = document.querySelector('#nutrient-template select');
     const templateUnitElement = document.querySelector('#nutrient-template #nutrient-unit');
+
     templateSelect.addEventListener('change', function() {
         const selectedNutrient = this.options[this.selectedIndex].text;
         templateUnitElement.textContent = nutrientUnits[selectedNutrient] || '';
@@ -133,5 +134,4 @@ document.addEventListener('DOMContentLoaded', () => {
     templateUnitElement.textContent = nutrientUnits[initialNutrient] || '';
 
     window.addNutrient = addNutrient;
-
 });

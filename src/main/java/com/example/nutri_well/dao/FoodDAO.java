@@ -14,8 +14,6 @@ public interface FoodDAO {
 
     Page<Food> findByparentCategoryFood(Category parentCategory, Pageable pageable);
 
-    int getTotalPages(Page<Food> page);
-
     Food findByName(String name);
 
     Page<Food> findAllByNutrientsNotIn(String foodname, List<String> names, Pageable pageable);

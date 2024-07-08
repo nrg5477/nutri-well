@@ -4,8 +4,8 @@
     const foodId = $("#foodContainer").data("food");
     const baseUrl = '/api/food/detail';
     const urlWithParams = `${baseUrl}?foodId=${encodeURIComponent(foodId)}`;
-    var servingSize;//기준데이터
-    var foodWeight;//1회 총제공량
+    var servingSize; //기준데이터
+    var foodWeight; //1회 총제공량
     var baselMetabolism;
     var userWeight;
     var nutritionChart;
@@ -48,15 +48,15 @@
 
                 updateChart();
                 var dailyIntake = {
-                    '탄수화물': baselMetabolism * 0.5 / 4 , //총 칼로리의 45-65% 탄수화물 1g 당 4 칼로리
-                    '단백질': userWeight*1, //체중(kg)당 0.8~1.0g
-                    '지방': baselMetabolism * 0.3 / 9, //총 칼로리의 20-35% 지방은 1g당 9칼로리
+                    '탄수화물': baselMetabolism * 0.5 / 4 , // 총 칼로리의 45-65% 탄수화물 1g 당 4 칼로리
+                    '단백질': userWeight*1, // 체중(kg)당 0.8~1.0g
+                    '지방': baselMetabolism * 0.3 / 9, // 총 칼로리의 20-35% 지방은 1g당 9칼로리
                     '당류': baselMetabolism * 0.1 /4 , // 총 칼로리의 10% 당류 1g 당 4 칼로리
                     '나트륨': 2300, // 나트륨 제한
                     '비타민 C': 70, //
                     '칼슘': 1000,
-                    '포화지방산': baselMetabolism * 0.1 /9, //총 칼로리의 10% 이하로 제한 지방은 1g당 9칼로리
-                    '콜레스테롤': 300, //미국심장협회(American Heart Association, AHA) 참고 심장약한사람은 200
+                    '포화지방산': baselMetabolism * 0.1 /9, // 총 칼로리의 10% 이하로 제한 지방은 1g당 9칼로리
+                    '콜레스테롤': 300, // 미국심장협회(American Heart Association, AHA) 참고 심장약한사람은 200
                     '트랜스지방산': 2 // 트랜스지방산 제한
                 };
 

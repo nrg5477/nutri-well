@@ -21,19 +21,19 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
     @Query("SELECT f FROM Food f WHERE f.categoryId.parentCategory = :categoryId")
     Page<Food> findByparentCategoryFood(@Param("categoryId") Category parentCategory, Pageable pageable);
 
-    //이름으로 검색했을때
+    // 이름으로 검색했을때
     @Query("SELECT f FROM Food f " +
             "WHERE f.name LIKE :name AND " +
             "NOT EXISTS (SELECT 1 FROM f.nutrientlist fn WHERE fn.nutrient.name IN :names)")
     Page<Food> findAllByNutrientsNotIn(@Param("name") String foodname, @Param("names") List<String> names, Pageable pageable);
 
-    //카테고리로 검색했을때
+    // 카테고리로 검색했을때
     @Query("SELECT f FROM Food f " +
             "WHERE f.categoryId.id = :categoryId AND " +
             "NOT EXISTS (SELECT 1 FROM f.nutrientlist fn WHERE fn.nutrient.name IN :names)")
     Page<Food> findAllByNutrientsNotIn(@Param("categoryId") Long category, @Param("names") List<String> names, Pageable pageable);
 
-    //이름으로 했을때
+    // 이름으로 했을때
     @Query("SELECT f FROM Food f " +
             "JOIN f.nutrientlist fn " +
             "WHERE f.name LIKE :name AND " +
@@ -42,7 +42,7 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
     Page<Food> findAllByNutrientsInRange(@Param("name") String foodname, @Param("names") List<String> names,
                                          @Param("min") Integer min, @Param("max") Integer max, Pageable pageable);
 
-    //카테고리로 했을때
+    // 카테고리로 했을때
     @Query("SELECT f FROM Food f " +
             "JOIN f.nutrientlist fn " +
             "WHERE f.categoryId.id = :categoryId AND " +
@@ -51,7 +51,7 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
     Page<Food> findAllByNutrientsInRange(@Param("categoryId") Long category, @Param("names") List<String> names,
                                          @Param("min") Integer min, @Param("max") Integer max, Pageable pageable);
 
-    //대분류 카테고리로 했을때
+    // 대분류 카테고리로 했을때
     @Query("SELECT f FROM Food f " +
             "JOIN f.nutrientlist fn " +
             "WHERE f.categoryId.parentCategory.id = :categoryId AND " +

@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class NutrientResponseDTO {
     private Long id;
     private String name;
-    private String servingUnit;
+    private String servingUnit; // 단위
 }

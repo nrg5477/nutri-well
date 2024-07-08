@@ -1,19 +1,13 @@
 package com.example.nutri_well.controller;
 
-import com.example.nutri_well.dto.CategoryResponseDTO;
 import com.example.nutri_well.dto.FoodResponseDTO;
 import com.example.nutri_well.dto.FoodSuggestResponseDTO;
-import com.example.nutri_well.dto.SearchPageWrapperDTO;
 import com.example.nutri_well.service.CategoryService;
 import com.example.nutri_well.service.FoodService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,5 +32,4 @@ public final class SearchFoodAPIController {
         PageRequest pageRequest = PageRequest.of(0, 5);
         return foodService.findByNameStartingWith(query,pageRequest);
     }
-
 }

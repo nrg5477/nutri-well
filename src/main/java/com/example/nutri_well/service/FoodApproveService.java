@@ -5,7 +5,7 @@ import com.example.nutri_well.dto.FoodApproveResponseDTO;
 
 import java.util.List;
 
-public interface FoodApproveServie {
+public interface FoodApproveService {
     FoodApproveResponseDTO requestFoodApproval(FoodApproveRequestDTO requestDTO);
 
     FoodApproveResponseDTO approveFood(Long requestId);

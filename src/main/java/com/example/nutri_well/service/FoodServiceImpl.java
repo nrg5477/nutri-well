@@ -29,7 +29,7 @@ public class FoodServiceImpl implements FoodService{
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
 
         for (FoodResponseDTO dto : list) {
-            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
+            dto.setNutrientlist(findMainNutrients(dto)); //mainNutrients에 포함된 영양소만 dto에 추가
         }
         this.totalPage = foods.getTotalPages();
 
@@ -45,7 +45,7 @@ public class FoodServiceImpl implements FoodService{
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
 
         for (FoodResponseDTO dto : list) {
-            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
+            dto.setNutrientlist(findMainNutrients(dto)); //mainNutrients에 포함된 영양소만 dto에 추가
         }
 
         this.totalPage = foods.getTotalPages();
@@ -58,35 +58,8 @@ public class FoodServiceImpl implements FoodService{
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
 
         for (FoodResponseDTO dto : list) {
-            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
+            dto.setNutrientlist(findMainNutrients(dto)); //mainNutrients에 포함된 영양소만 dto에 추가
         }
-
-        this.totalPage = foods.getTotalPages();
-        return list;
-    }
-
-    @Override
-    public List<FoodResponseDTO> findAllByNutrientsNotIn(String foodname, List<String> names, Pageable pageable) {
-        String namepattern = "%" + foodname + "%";//LIKE절 처리
-
-        Page<Food> foods = dao.findAllByNutrientsNotIn(namepattern, names, pageable);
-        List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
-
-        for (FoodResponseDTO dto : list) {
-            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
-        }
-
-        this.totalPage = foods.getTotalPages();
-        return list;
-    }
-
-    @Override
-    public List<FoodResponseDTO> findAllByNutrientsNotIn(CategoryResponseDTO category, List<String> names, Pageable pageable) {
-        ModelMapper mapper = new ModelMapper();
-        Category entity = mapper.map(category, Category.class);
-
-        Page<Food> foods = dao.findAllByNutrientsNotIn(entity.getId(), names, pageable);
-        List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
 
         this.totalPage = foods.getTotalPages();
         return list;
@@ -98,19 +71,10 @@ public class FoodServiceImpl implements FoodService{
     }
 
     @Override
-    public FoodResponseDTO findByName(String name) {
-        return FoodResponseDTO.of(dao.findByName(name));
-    }
-
-    @Override
-    public FoodResponseDTO findByFoodCode(String foodcode) {
-        return FoodResponseDTO.of(dao.findByFoodCode(foodcode));
-    }
-
-    @Override
     public List<FoodSuggestResponseDTO> findByNameStartingWith(String prefix, Pageable pageable) {
         List<Food> foods = dao.findByNameStartingWith(prefix, pageable);
         List<FoodSuggestResponseDTO> list = new ArrayList<>();
+
         for (Food food : foods) {
             list.add(FoodSuggestResponseDTO.of(food));
         }
@@ -129,8 +93,9 @@ public class FoodServiceImpl implements FoodService{
 
         Page<Food> foods = dao.findAllByNutrientsInRange(namepattern, names, min, max, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
+
         for (FoodResponseDTO dto : list) {
-            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
+            dto.setNutrientlist(findMainNutrients(dto)); //mainNutrients에 포함된 영양소만 dto에 추가
         }
         this.totalPage = foods.getTotalPages();
         return list;
@@ -140,8 +105,9 @@ public class FoodServiceImpl implements FoodService{
     public List<FoodResponseDTO> findAllByNutrientsInRange(Long categoryId, List<String> names, Integer min, Integer max, Pageable pageable) {
         Page<Food> foods = dao.findAllByNutrientsInRange(categoryId, names, min, max, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
+
         for (FoodResponseDTO dto : list) {
-            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
+            dto.setNutrientlist(findMainNutrients(dto)); //mainNutrients에 포함된 영양소만 dto에 추가
         }
         this.totalPage = foods.getTotalPages();
         return list;
@@ -152,7 +118,7 @@ public class FoodServiceImpl implements FoodService{
         Page<Food> foods = dao.findAllByNutrientsParentCategoryInRange(categoryId, names, min, max, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
         for (FoodResponseDTO dto : list) {
-            dto.setNutrientlist(findMainNutrients(dto));//mainNutrients에 포함된 영양소만 dto에 추가
+            dto.setNutrientlist(findMainNutrients(dto)); //mainNutrients에 포함된 영양소만 dto에 추가
         }
         this.totalPage = foods.getTotalPages();
         return list;

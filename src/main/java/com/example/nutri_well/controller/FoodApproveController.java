@@ -5,7 +5,7 @@ import com.example.nutri_well.dto.FoodApproveRequestDTO;
 import com.example.nutri_well.dto.FoodApproveResponseDTO;
 import com.example.nutri_well.dto.NutrientResponseDTO;
 import com.example.nutri_well.service.CategoryService;
-import com.example.nutri_well.service.FoodApproveServie;
+import com.example.nutri_well.service.FoodApproveService;
 import com.example.nutri_well.service.NutrientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +24,7 @@ import java.util.Map;
 @RequestMapping("/food-approve")
 @RequiredArgsConstructor
 public class FoodApproveController {
-
-    private final FoodApproveServie foodApproveService;
+    private final FoodApproveService foodApproveService;
     private final CategoryService categoryService;
     private final NutrientService nutrientService;
 

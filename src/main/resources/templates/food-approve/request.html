@@ -2,172 +2,162 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/indexLayout}">
-<head>
-    <meta charset="utf-8">
-    <!-- Template Stylesheet -->
-    <link href="/common/css/request.css" rel="stylesheet">
-</head>
-<body>
-<div layout:fragment="content">
-<!-- Single Page Header start -->
-<div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6">식품 추가</h1>
-    <ol class="breadcrumb justify-content-center mb-0">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-        <li class="breadcrumb-item active text-white">Shop</li>
-    </ol>
-</div>
-<!-- Single Page Header End -->
-
-<!-- 식품 추가 요청 시작-->
-<div class="form-container">
-    <h1>식품 추가 요청</h1>
-    <form th:action="@{/food-approve/request}" th:object="${foodApproveRequest}" method="post">
-        <div class="form-group">
-            <label for="name">식품명:</label>
-            <input type="text" id="name" th:field="*{name}" />
-        </div>
-
-        <div class="form-group">
-            <label for="category">카테고리:</label>
-            <select id="category" th:field="*{categoryId}">
-                <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="product">식품 기원명:</label>
-            <input type="text" id="product" th:field="*{product}" />
-        </div>
-
-        <div class="form-group">
-            <label for="manufacturer">제조사:</label>
-            <input type="text" id="manufacturer" th:field="*{manufacturer}" />
-        </div>
-
-        <div class="form-group">
-            <label for="servingSize">1회 제공량:</label>
-            <input type="text" id="servingSize" th:field="*{servingSize}" />
-        </div>
-
-        <div class="form-group">
-            <label for="userEmail">사용자 이메일:</label>
-            <input type="email" id="userEmail" th:field="*{userEmail}" />
-        </div>
-
-        <div id="nutrients-container" class="form-group">
-            <div id="nutrient-template" class="template">
-                <label for="nutrient">영양소:</label>
-                <select th:field="*{nutrients[0].nutrientId}">
-                    <option th:each="n : ${nutrients}" th:value="${n.id}" th:text="${n.name}"></option>
-                </select>
-                <label for="amount">양:</label>
-                <input type="text" th:field="*{nutrients[0].amount}" value=""/>
-                <span id="nutrient-unit"></span>
+    <head>
+        <meta charset="utf-8">
+        <!-- Template Stylesheet -->
+        <link href="/common/css/request.css" rel="stylesheet">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <!-- Single Page Header start -->
+            <div class="container-fluid page-header py-5">
+                <h1 class="text-center text-white display-6">식품 추가</h1>
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active text-white">Shop</li>
+                </ol>
             </div>
-        </div>
+            <!-- Single Page Header End -->
 
-        <div class="form-group">
-            <input type="button" value="영양소 추가" onclick="addNutrient()"/>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="제출"/>
-        </div>
-    </form>
-</div>
-<!-- 식품 추가 요청 끝-->
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-        <div class="container py-5">
-            <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
-                <div class="row g-4">
-                    <div class="col-lg-3">
-                        <a href="#">
-                            <h1 class="text-primary mb-0">Nutri - Well</h1>
-                            <p class="text-secondary mb-0">Fresh products</p>
-                        </a>
+            <!-- 식품 추가 요청 시작-->
+            <div class="form-container">
+                <h1>식품 추가 요청</h1>
+                <form th:action="@{/food-approve/request}" th:object="${foodApproveRequest}" method="post">
+                    <div class="form-group">
+                        <label for="name">식품명:</label>
+                        <input type="text" id="name" th:field="*{name}" />
                     </div>
-                    <div class="col-lg-6">
-                        <div class="position-relative mx-auto">
-                            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" >
-                            <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+                    <div class="form-group">
+                        <label for="category">카테고리:</label>
+                        <select id="category" th:field="*{categoryId}">
+                            <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product">식품 기원명:</label>
+                        <input type="text" id="product" th:field="*{product}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="manufacturer">제조사:</label>
+                        <input type="text" id="manufacturer" th:field="*{manufacturer}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="servingSize">1회 제공량:</label>
+                        <input type="text" id="servingSize" th:field="*{servingSize}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">사용자 이메일:</label>
+                        <input type="email" id="userEmail" th:field="*{userEmail}" />
+                    </div>
+                    <div id="nutrients-container" class="form-group">
+                        <div id="nutrient-template" class="template">
+                            <label for="nutrient">영양소:</label>
+                            <select th:field="*{nutrients[0].nutrientId}">
+                                <option th:each="n : ${nutrients}" th:value="${n.id}" th:text="${n.name}"></option>
+                            </select>
+                            <label for="amount">양:</label>
+                            <input type="text" th:field="*{nutrients[0].amount}" value=""/>
+                            <span id="nutrient-unit"></span>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="d-flex justify-content-end pt-3">
-                            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <div class="form-group">
+                        <input type="button" value="영양소 추가" onclick="addNutrient()"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="제출"/>
+                    </div>
+                </form>
+            </div>
+            <!-- 식품 추가 요청 끝-->
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+                <div class="container py-5">
+                    <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+                        <div class="row g-4">
+                            <div class="col-lg-3">
+                                <a href="#">
+                                    <h1 class="text-primary mb-0">Nutri - Well</h1>
+                                    <p class="text-secondary mb-0">Fresh products</p>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="position-relative mx-auto">
+                                    <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" >
+                                    <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="d-flex justify-content-end pt-3">
+                                    <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                                    <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-5">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-item">
+                                <h4 class="text-light mb-3">Nutri Well, 왜 이용할까요?</h4>
+                                <p class="mb-4">식품의 영양정보와 매일매일 섭취한 영양소을 기록해두세요. 개인의 영양상태를 파악하고, 다양한 식품들의 영양소 정보를 제공하여 건강한 식생활을 돕는것을 목표로 합니다.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="d-flex flex-column text-start footer-item">
+                                <h4 class="text-light mb-3">개발자</h4>
+                                <p>진영록</p>
+                                <p>남정길</p>
+                                <p>조상우</p>
+                                <p>이희찬</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="d-flex flex-column text-start footer-item">
+                                <h4 class="text-light mb-3">도움주신 분들</h4>
+                                <a class="btn-link" href="#">김서연 강사님</a>
+                                <a class="btn-link" href="#">최승호 멘토님</a>
+                                <a class="btn-link" href="#">조영일 멘토님</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-item">
+                                <h4 class="text-light mb-3">Contact</h4>
+                                <a class="btn-link" href="https://github.com/6worry">진영록</a>
+                                <a class="btn-link" href="https://github.com/letsgilit">남정길</a>
+                                <a class="btn-link" href="https://github.com/sangwoo-00">조상우</a>
+                                <a class="btn-link" href="https://github.com/nrg5477">이희찬</a>
+                                <img src="/common/img/payment.png" class="img-fluid" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-item">
-                        <h4 class="text-light mb-3">Nutri Well, 왜 이용할까요?</h4>
-                        <p class="mb-4">식품의 영양정보와 매일매일 섭취한 영양소을 기록해두세요. 개인의 영양상태를 파악하고, 다양한 식품들의 영양소 정보를 제공하여 건강한 식생활을 돕는것을 목표로 합니다.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column text-start footer-item">
-                        <h4 class="text-light mb-3">개발자</h4>
-                        <p>진영록</p>
-                        <p>남정길</p>
-                        <p>조상우</p>
-                        <p>이희찬</p>
+            <!-- Footer End -->
 
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column text-start footer-item">
-                        <h4 class="text-light mb-3">Account</h4>
-                        <a class="btn-link" href="">My Account</a>
-                        <a class="btn-link" href="">Shop details</a>
-                        <a class="btn-link" href="">Shopping Cart</a>
-                        <a class="btn-link" href="">Wishlist</a>
-                        <a class="btn-link" href="">Order History</a>
-                        <a class="btn-link" href="">International Orders</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-item">
-                        <h4 class="text-light mb-3">Contact</h4>
-                        <a class="btn-link" href="https://github.com/6worry">진영록</a>
-                        <a class="btn-link" href="https://github.com/letsgilit">남정길</a>
-                        <a class="btn-link" href="https://github.com/sangwoo-00">조상우</a>
-                        <a class="btn-link" href="https://github.com/nrg5477">이희찬</a>
-                        <img src="/common/img/payment.png" class="img-fluid" alt="">
+
+            <!-- Copyright Start -->
+            <div class="container-fluid copyright bg-dark py-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nutri - Well</a>, All right reserved.</span>
+                        </div>
+                        <div class="col-md-6 my-auto text-center text-md-end text-white">
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+            <!-- Copyright End -->
 
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright bg-dark py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nutri - Well</a>, All right reserved.</span>
-                </div>
-                <div class="col-md-6 my-auto text-center text-md-end text-white">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Copyright End -->
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-</div>
-</body>
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+        </div>
+    </body>
 </html>

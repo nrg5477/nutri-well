@@ -10,15 +10,10 @@ import com.example.nutri_well.repository.FoodRepository;
 import com.example.nutri_well.repository.NutrientRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 
 import java.io.FileInputStream;
@@ -31,14 +26,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-
 @SpringBootTest
 @Transactional
 @Rollback(value = false)
 class csvDBUpdaterTest {
-
-    @PersistenceContext
-    EntityManager entityManager;
     @Autowired
     CategoryRepository categoryRepository;
     @Autowired
@@ -50,17 +41,17 @@ class csvDBUpdaterTest {
 
     @Test
     public void updateDatabase() throws IOException {
-        String filePath = "D:\\test\\FoodDB_test1.csv";//DB파일경로
+        String filePath = "D:\\test\\FoodDB_test1.csv"; // DB파일경로
 
         try (CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream(filePath), "CP949"))) {
             List<String[]> records = reader.readAll();
-            System.out.println(records.size());
+//            System.out.println(records.size());
             List<Nutrient> nutrientList = saveNutrients(records.get(0));
-            System.out.println(records.size());
+//            System.out.println(records.size());
             records.remove(0); // 헤더 삭제
 
             for (String[] record : records) {
-                System.out.println(record.length);
+//                System.out.println(record.length);
                 saveParentCategory(record);
             }
             for (String[] record : records) {
@@ -70,7 +61,6 @@ class csvDBUpdaterTest {
                 Food food = saveFood(record);
                 saveFoodNutrients(record, food, nutrientList);
             }
-
         } catch (CsvException e) {
             throw new IOException("CSV 파일을 읽는 중 오류 발생", e);
         } catch (ParseException e) {
@@ -81,6 +71,7 @@ class csvDBUpdaterTest {
     public void saveParentCategory(String[] record) {
         // 대분류 확인 및 삽입 7-> 대분류, 9-> 소분류
         Category parentCategory = categoryRepository.findByName(record[7]);
+
         if (parentCategory == null) {
             Category category = new Category(record[7], null);
             categoryRepository.save(category);
@@ -93,12 +84,11 @@ class csvDBUpdaterTest {
             // parent를 찾아서 넣는다.
             Category parent = categoryRepository.findByName(record[7]);
             Category isExsistCategory = categoryRepository.findByName(record[9]);
+
             if (isExsistCategory == null) {
                 Category category = new Category(record[9], parent);
                 categoryRepository.save(category);
             }
-        } else {
-            //걍 놔둠
         }
     }
 
@@ -109,7 +99,7 @@ class csvDBUpdaterTest {
             String unit = header[i].split("_")[1];
             Nutrient nutrient = new Nutrient(name, unit);
             nutrientList.add(nutrient);
-            //entityManager.persist(nutrient); // 개별적으로 Nutrient 객체를 persist
+
             nutrientRepository.save(nutrient);
         }
         return nutrientList;
@@ -126,17 +116,18 @@ class csvDBUpdaterTest {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = formatter.parse(record[107]);
-        System.out.println("Parsed Date: " + date);
+//        System.out.println("Parsed Date: " + date);
         String manufacturer = record[103];
         int weight = (int)Double.parseDouble(record[102].substring(0, record[102].length() - 1));
         Food food = new Food(foodName, category, record[0], product, manufacturer, "100", weight,date);
 
-        foodRepository.save(food);//Category도 같이 생성
+        foodRepository.save(food); // Category도 같이 생성
         return food;
     }
 
     private void saveFoodNutrients(String[] record, Food food, List<Nutrient> nutrientList) {
         String[] nutrients = Arrays.copyOfRange(record, 17, 100);
+
         for (int i = 0; i < nutrients.length; i++) {
             if (!nutrients[i].isEmpty() && !nutrients[i].equals("0")) {
                 String nutrientValueStr = nutrients[i].trim();

@@ -7,7 +7,7 @@ import com.example.nutri_well.dto.FoodResponseDTO;
 import com.example.nutri_well.model.User;
 import com.example.nutri_well.service.BookMarkService;
 import com.example.nutri_well.service.CategoryService;
-import com.example.nutri_well.service.FoodApproveServie;
+import com.example.nutri_well.service.FoodApproveService;
 import com.example.nutri_well.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -25,7 +25,7 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 public class IndexController {
-    private final FoodApproveServie foodApproveService;
+    private final FoodApproveService foodApproveService;
     private final HttpSession httpSession;
     private final UserService userService;
     private final BookMarkService bookMarkService;
@@ -45,7 +45,7 @@ public class IndexController {
         } else {
             model.addAttribute("baselMetabolism", -1);
         }
-        System.out.println(top4Foods);
+
         return "include/indexContent";
     }
 
@@ -56,9 +56,8 @@ public class IndexController {
         if (sessionUser == null) {
             model.addAttribute("loginError", true);
             return "redirect:" + request.getHeader("Referer"); // 이전 페이지로 리다이렉트
-        }
-        if (sessionUser != null) {
-            Optional<User> userOptional = userService.findByUserEmail(sessionUser.getEmail());//userservice를 통해 사용자 객체 조회
+        } else {
+            Optional<User> userOptional = userService.findByUserEmail(sessionUser.getEmail()); //userservice를 통해 사용자 객체 조회
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
                 model.addAttribute("user", user);

@@ -6,7 +6,7 @@
     font-size: 18px;
     font-weight: bold;
 }
-.basket{
+.chart{
     width:80%;
 }
 .favorites {
@@ -156,7 +156,7 @@ progress.over {
     width: 75%;
     background-color: #cefa7e;
 }
-.hv-basketlist{
+.hv-chartlist{
     border-radius: 5px;
     border : 1px solid #ddd;
     text-align: center;

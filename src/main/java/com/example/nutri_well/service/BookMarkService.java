@@ -15,7 +15,5 @@ public interface BookMarkService {
 
     List<FoodResponseDTO> findTop4Foods();
 
-    List<BookMarkResponseDTO> findByUserId(Long userId);
-
     List<FoodResponseDTO> findFoodNamesByUserId(Long userId);
 }

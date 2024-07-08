@@ -24,7 +24,7 @@
 		<!-- Template Stylesheet -->
 		<link href="/common/css/style.css" rel="stylesheet">
 		<link href="/common/css/search.css" rel="stylesheet">
-		<link href="/common/css/basket.css" rel="stylesheet">
+		<link href="/common/css/chart.css" rel="stylesheet">
 		<link href="/common/css/bootstrap.min.css" rel="stylesheet">
 		<link href="/common/css/food_detail.css" rel="stylesheet">
 	</head>
@@ -42,35 +42,32 @@
 					</th:block>
 				</div>
 				<div class="bs-container">
-					<th:block th:replace="~{basket/basket :: basket}">
+					<th:block th:replace="~{chart/chart :: chart}">
 
 					</th:block>
 				</div>
 			</div>
   		</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> <!-- jQuery 로드 -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap 5 로드 -->
-	<script src="/common/lib/easing/easing.min.js"></script>
-	<script src="/common/lib/waypoints/waypoints.min.js"></script>
-	<script src="/common/lib/lightbox/js/lightbox.min.js"></script>
-	<script src="/common/lib/owlcarousel/owl.carousel.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<!-- Template Javascript -->
-	<script src="/common/js/main.js"></script>
-	<script src="/common/js/login.js"></script>
-	<script src="/common/js/search.js"></script>
-	<script src="/common/js/basket.js"></script>
-    <script src="/common/js/food_detail.js"></script>
-	<script th:inline="javascript">
-		/*<![CDATA[*/
-		var sessionUser = /*[[${session.user}]]*/;
-		/*]]>*/
-	</script>
-	<script>setSessionUser(sessionUser);</script>
-</body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> <!-- jQuery 로드 -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap 5 로드 -->
+		<script src="/common/lib/easing/easing.min.js"></script>
+		<script src="/common/lib/waypoints/waypoints.min.js"></script>
+		<script src="/common/lib/lightbox/js/lightbox.min.js"></script>
+		<script src="/common/lib/owlcarousel/owl.carousel.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		<!-- Template Javascript -->
+		<script src="/common/js/main.js"></script>
+		<script src="/common/js/login.js"></script>
+		<script src="/common/js/search.js"></script>
+		<script src="/common/js/chart.js"></script>
+		<script src="/common/js/food_detail.js"></script>
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			var sessionUser = /*[[${session.user}]]*/;
+			/*]]>*/
+		</script>
+		<script>setSessionUser(sessionUser);</script>
+	</body>
 </html>
-
-
-
-

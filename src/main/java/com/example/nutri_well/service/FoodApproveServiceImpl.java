@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class FoodApproveServieImpl implements FoodApproveServie {
+public class FoodApproveServiceImpl implements FoodApproveService {
     private final FoodApproveRepository foodApproveRepository;
     private final FoodDAO foodDAO;
     private final UserService userService;
@@ -60,8 +60,8 @@ public class FoodApproveServieImpl implements FoodApproveServie {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid request ID"));
 
         foodApprove.setApproved(true); // approved 1로 변경
-        foodApprove.setApprovalDate(new Date()); //날짜변경
-        foodApproveRepository.save(foodApprove); //foodApprove 테이블 업데이트
+        foodApprove.setApprovalDate(new Date()); // 날짜변경
+        foodApproveRepository.save(foodApprove); // foodApprove 테이블 업데이트
 
         // 이미 존재하는 Food 엔티티가 있는지 확인
         Optional<Food> existingFood = Optional.ofNullable(foodDAO.findByName(foodApprove.getName()));

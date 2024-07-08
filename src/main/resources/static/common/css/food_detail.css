@@ -1,10 +1,4 @@
 /*** 즐겨찾기 제외식품 추가***/
-/*body {
-    font-family: "Gamja Flower", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 20px;
-}*/
 #food-wrap-container {
     display: flex;
     align-items: center;
@@ -13,13 +7,13 @@
 .food-bookmark button {
     background: none;
     border: none;
-    padding: 0.5rem; /* 버튼의 클릭 영역을 늘림 */
+    padding: 0.5rem;
     cursor: pointer;
 }
 .food-exclude i {
     color: gray;
     transition: color 0.2s;
-    font-size: 3rem; /* 아이콘 크기 조정 */
+    font-size: 3rem;
 }
 .food-exclude.excluded i {
     color: red;
@@ -27,7 +21,7 @@
 .food-favorite i {
     color: gray;
     transition: color 0.2s;
-    font-size: 3rem; /* 아이콘 크기 조정 */
+    font-size: 3rem;
 }
 .food-favorite.favorited i {
     color: gold;
@@ -45,7 +39,7 @@
 table {
     width: 20%;
     margin: 5px;
-    border-collapse: separate; /* 테이블 경계선을 분리 */
+    border-collapse: separate;
     border-radius: 8px;
     border: 1px solid #ffb524;
     overflow: hidden;
@@ -67,8 +61,8 @@ th:last-child, td:last-child {
     border-right: none;
 }
 .progress {
-    width: 100%; /* 진행 바 컨테이너 너비 */
-    background-color: #ffffff; /* 진행 바 배경 색 */
+    width: 100%;
+    background-color: #ffffff;
 }
 #nutritablerow{
     display: flex;
@@ -83,7 +77,7 @@ th:last-child, td:last-child {
 }
 #nutri-row{
     display: flex;
-    justify-content: flex-end; /* 요소를 오른쪽에 정렬 */
+    justify-content: flex-end;
 }
 .progress-bar {
     width: 0%;

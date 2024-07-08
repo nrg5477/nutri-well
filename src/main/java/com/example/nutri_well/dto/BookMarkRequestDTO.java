@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class BookMarkRequestDTO {
     private Long foodId;
     private Long userId;
-    private boolean preferredState;
-    private boolean excludedState;
+    private boolean preferredState; // 즐겨찾기 항목 상태여부
+    private boolean excludedState; // 제외식품 항목 상태여부
 }

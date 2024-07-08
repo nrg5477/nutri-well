@@ -30,8 +30,7 @@ public final class SearchFoodController {
     public ModelAndView searchPage(@RequestParam String query, @RequestParam int page, @RequestParam int size,
                                    @RequestParam(required = false) List<String> nutrients,
                                    @RequestParam(required = false) Integer min,
-                                   @RequestParam(required = false) Integer max){
-
+                                   @RequestParam(required = false) Integer max) {
         List<FoodResponseDTO> foodlist = getFoodList(query, null, page, size, nutrients, min, max);
         List<CategoryResponseDTO> categories = categoryService.findByParentCategoryIsNull();
         int totalpage = foodService.getTotalPages();
@@ -50,7 +49,6 @@ public final class SearchFoodController {
                                            @RequestParam(required = false) List<String> nutrients,
                                            @RequestParam(required = false) Integer min,
                                            @RequestParam(required = false) Integer max) {
-
         CategoryResponseDTO categoryDTO = categoryService.findbyId(category);
         Category parentCategory = dao.findbyId(category);
         List<FoodResponseDTO> foodlist = getFoodList(categoryDTO, parentCategory, page, size, nutrients, min, max);
@@ -77,14 +75,14 @@ public final class SearchFoodController {
 
         boolean isScopeSearch = nutrients != null || min != null || max != null;
 
-        if (queryOrCategory instanceof String) {//검색어 입력시
+        if (queryOrCategory instanceof String) { //검색어 입력시
             String query = (String) queryOrCategory;
             if (isScopeSearch) { //범위검색 조회
                 foodlist = foodService.findAllByNutrientsInRange(query, nutrients, min, max, pageRequest);
             } else { //검색어 입력시 조회
                 foodlist = foodService.searchByFoodName(query, pageRequest);
             }
-        } else if (queryOrCategory instanceof CategoryResponseDTO) {//카테고리별 검색시
+        } else if (queryOrCategory instanceof CategoryResponseDTO) { //카테고리별 검색시
             Long categoryId = ((CategoryResponseDTO) queryOrCategory).getCategoryId();
             if (isScopeSearch && parentCategory != null && parentCategory.getId().intValue() > 0 && parentCategory.getId().intValue() < 22) {
                 //메인 페이지 대분류 검색

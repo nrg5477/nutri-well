@@ -37,7 +37,6 @@ public class UserController {
             }
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-
     }
 
     @PostMapping("/logout")
@@ -72,7 +71,7 @@ public class UserController {
             existingUser.setGender(gender);
             existingUser.setHeight(height);
             existingUser.setWeight(weight);
-            // Convert birth string to Date
+            // birth의 Date를 string으로 변환
             int age = 0;
             try {
                 Date birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(birth);
@@ -81,14 +80,14 @@ public class UserController {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            //BMR 계산 공식은 Harris-Benedict 방정식 참고\
+            // BMR 계산 공식은 Harris-Benedict 방정식 참고
             int BMR = 0;
-            if (gender.equals("M")) {//남자일경우
+            if (gender.equals("M")) { //남성일경우
                 BMR = (int) (88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age));
-            } else {//여자일경우
+            } else { //여성일경우
                 BMR = (int) (447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age));
             }
-            BMR = (int) (BMR * 1.55);//보통의 활동량을 기준으로 계산
+            BMR = (int) (BMR * 1.55); //보통의 활동량을 기준으로 계산
             existingUser.setBaselMetabolism(BMR);
             existingUser.setTel(tel);
             existingUser.setPicture(picture);
