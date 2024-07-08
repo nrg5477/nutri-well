@@ -1,8 +1,8 @@
 package com.example.nutri_well.service;
 
-import com.example.nutri_well.dao.BasketDAO;
-import com.example.nutri_well.dto.BasketResponseDTO;
-import com.example.nutri_well.entity.Basket;
+import com.example.nutri_well.dao.ChartDAO;
+import com.example.nutri_well.dto.ChartResponseDTO;
+import com.example.nutri_well.entity.Chart;
 import com.example.nutri_well.entity.CalendarFood;
 import com.example.nutri_well.entity.Food;
 import com.example.nutri_well.entity.FoodNutrient;
@@ -18,14 +18,14 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class BasketServiceImpl implements BasketService {
-    private final BasketDAO dao;
+public class ChartServiceImpl implements ChartService {
+    private final ChartDAO dao;
     private final CalendarRepository calendarRepository;
     private final CalendarFoodRepository calendarFoodRepository;
     private final FoodService foodService;
 
     @Override
-    public BasketResponseDTO insert(Basket dto) {
+    public ChartResponseDTO insert(Chart dto) {
         //개인 기초대사량에 맞춰 음식별 기초대사량 퍼센트 계산
         double energyAmount = dto.getFoodId().getNutrientlist().stream()
                 .filter(nutrient -> "에너지".equals(nutrient.getNutrient().getName()))
@@ -42,9 +42,9 @@ public class BasketServiceImpl implements BasketService {
         double percent = totalKcal / BaselMetabolism * 100;
         dto.setPercent(percent);
 
-        Basket basket = dao.insert(dto);
-        BasketResponseDTO basketResponseDTO = BasketResponseDTO.of(basket);
-        return basketResponseDTO;
+        Chart chart = dao.insert(dto);
+        ChartResponseDTO chartResponseDTO = ChartResponseDTO.of(chart);
+        return chartResponseDTO;
     }
 
     @Override

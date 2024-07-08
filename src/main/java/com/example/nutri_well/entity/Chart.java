@@ -15,8 +15,8 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "basket")
-public class Basket {
+@Table(name = "chart")
+public class Chart {
     @Id
     @GeneratedValue
     private Long id;
@@ -33,7 +33,7 @@ public class Basket {
 
     private double percent; //기초대사량 퍼센티지
 
-    public Basket(User userId, LocalDate startDate, Food foodId) {
+    public Chart(User userId, LocalDate startDate, Food foodId) {
         this.userId = userId;
         this.startDate = startDate;
         this.foodId = foodId;

@@ -8,7 +8,7 @@
     var kcalPercentage; //칼로리 퍼센티지
 
     //Chart 초기화
-    $('#initBasket').click(function() {
+    $('#initChart').click(function() {
         sessionStorage.removeItem('foodNames');
         sessionStorage.removeItem('nutrientData');
         sessionStorage.removeItem('food');
@@ -127,7 +127,7 @@
         $('.foodTableContainer').html(tableHtml);
     }
     //클릭 이벤트
-    window.addBasket = function(foodId) {
+    window.addChart = function(foodId) {
         const baseUrl = 'http://localhost:9079';
         let data = {
             "foodId": foodId,
@@ -135,7 +135,7 @@
         };
 
         $.ajax({
-            url: baseUrl+"/basket/insert",
+            url: baseUrl+"/chart/insert",
             type: "POST",
             dataType: "json",
             data: data,
@@ -232,7 +232,7 @@
         const baseUrl = 'http://localhost:9079';
 
         $.ajax({
-            url: baseUrl + '/basket/getBookMark',
+            url: baseUrl + '/chart/getBookMark',
             type: 'POST',
             dataType: "json",
             data:  { userId: userId },
@@ -255,7 +255,7 @@
     function deleteTable(){
         const baseUrl = 'http://localhost:9079';
         $.ajax({
-            url: baseUrl + '/basket/delete',
+            url: baseUrl + '/chart/delete',
             type: 'POST',
             data:  { userId: userId },
             success: function() {
@@ -288,7 +288,7 @@
     $('#saveCalendarBtn').click(function() {
         saveCalendar();
     });
-    $('.hv-basketlist').click(function() {
+    $('.hv-chartlist').click(function() {
         $('.foodTableContainer').toggle();
     });
 
@@ -309,7 +309,7 @@
         };
 
         $.ajax({
-            url: "basket/saveCalendar",
+            url: "chart/saveCalendar",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(data),
