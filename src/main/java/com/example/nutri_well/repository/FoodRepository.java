@@ -48,6 +48,15 @@ public interface FoodRepository extends JpaRepository<Food,Long> {
     Page<Food> findAllByNutrientsInRange(@Param("categoryId")Long category, @Param("names") List<String> names,
                                          @Param("min") Integer min, @Param("max") Integer max, Pageable pageable);
 
+    //대분류 카테고리로 했을때
+    @Query("SELECT f FROM Food f " +
+            "JOIN f.nutrientlist fn " +
+            "WHERE f.categoryId.parentCategory.id = :categoryId AND " +
+            "fn.nutrient.name IN :names AND " +
+            "fn.amount BETWEEN :min AND :max")
+    Page<Food> findAllByNutrientsParentCategoryInRange(@Param("categoryId")Long category, @Param("names") List<String> names,
+                                         @Param("min") Integer min, @Param("max") Integer max, Pageable pageable);
+
     Food findByFoodCode(String foodcode);
 
     List<Food> findByNameStartingWith(String prefix, Pageable pageable);

@@ -106,6 +106,7 @@
            nutrients: nutrients.join(',')
        };
 
+
        if (queryValue) {
            params.query = queryValue;
        } else if (category != 0) {
@@ -141,6 +142,7 @@
     const totalPage = $('#pageContainer').data("pages");
     const maxPagesToShow = 10;
     let currentPageGroup = 0;
+    let currentPage = parseInt(new URLSearchParams(window.location.search).get('page')) || 0;
 
     function renderPagination() {
         $('#page-container').empty();
@@ -152,6 +154,10 @@
             $pageLink.attr('data-filter-type', 'itemPage');
             $pageLink.attr('data-filter-value', i);
             $pageLink.text(i + 1);
+
+            if (i === currentPage) {
+                $pageLink.addClass('active');
+            }
 
             $('#page-container').append($pageLink);
         }
@@ -201,6 +207,7 @@
         var url = (queryValue) ? '/search?' : '/searchCategory?';
         url += params.toString();
 
+        currentPage = page;
         $(this).addClass('active');
         location.href = url;
     });
@@ -213,40 +220,62 @@
     const $thumbRight = $(".slider .thumb.right");
     const $range = $(".slider .range");
 
-    function setLeftValue() {
+    $inputLeft.on("input", function() { setLeftValue(true); });
+    $inputRight.on("input", function() { setRightValue(true); });
+
+    function setLeftValue(isInputTag) {
         const min = parseInt($inputLeft.attr("min"));
         const max = parseInt($inputLeft.attr("max"));
-        let value = $inputLeft.val();
-        //let value = parseInt(sessionStorage.getItem('min'));
+        let value = 0;
+        if(!isInputTag){
+            value = $('#leftValue').val();
+        }else{
+            value = $inputLeft.val();
+        }
 
-        value = Math.min(value, parseInt($inputRight.val()) - 1);
+        value = Math.min(value, parseInt($inputRight.val())); // 초기 왼쪽 input값
         $inputLeft.val(value);
+        $("#leftValue").val(value);
 
         const percent = ((value - min) / (max - min)) * 100;
         $thumbLeft.css("left", percent + "%");
         $range.css("left", percent + "%");
-
-        updateRangeValue();
     }
 
-    function setRightValue() {
+    function setRightValue(isInputTag) {
         const min = parseInt($inputRight.attr("min"));
         const max = parseInt($inputRight.attr("max"));
-        let value = $inputRight.val();
+        let value = 0;
+        if(!isInputTag){
+            value = $('#rightValue').val();
+        }else{
+            value = $inputRight.val();
+        }
 
-        value = Math.max(value, parseInt($inputLeft.val()) + 1);
+        value = Math.max(value, parseInt($inputLeft.val()) + 100); // 초기 오른쪽 input값
         $inputRight.val(value);
+        $("#rightValue").val(value);
 
         const percent = ((value - min) / (max - min)) * 100;
         $thumbRight.css("right", (100 - percent) + "%");
         $range.css("right", (100 - percent) + "%");
-
-        updateRangeValue();
     }
 
-    function updateRangeValue() {
-        $("#rangeValue").text($inputLeft.val() + " - " + $inputRight.val());
-    }
+    $("#setRange").on("click", function() {
+        let left = parseInt($('#leftValue').val());
+        let right = parseInt($('#rightValue').val());
+        if(left > right ){
+            alert('최소값은 최댓값보다 클 수 없습니다.');
+            return;
+        }else if(left >=499 || right >500){
+            alert('최댓값은'+ $('#rightValue').attr('max') +'이하입니다.');
+            return;
+        }else{
+            setRightValue(false);
+            setLeftValue(false);
+        }
+    });
+
     $('.dropdown-toggle').on('click', function() {
         var $container = $('.scrollable');
         var $this = $(this);
@@ -261,11 +290,9 @@
             scrollTop: offset
         }, 500); // 500ms 동안 부드러운 스크롤링
     });
-    $inputLeft.on("input", setLeftValue);
-    $inputRight.on("input", setRightValue);
+    $inputLeft.on("input", setLeftValue(true));
+    $inputRight.on("input", setRightValue(true));
     // 초기 값 설정
-    setLeftValue();
-    setRightValue();
     loadPreferredFood();
 })(jQuery);
 

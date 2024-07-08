@@ -67,8 +67,10 @@ public final class SearchFoodController {
 
         CategoryResponseDTO categoryDTO = categoryService.findbyId(category);
         Category parentCategory = dao.findbyId(category);
-        if(nutrients != null || min != null || max != null){
+        if((nutrients != null || min != null || max != null) && (parentCategory.getId().intValue() > 0 && parentCategory.getId().intValue() < 22)) {
             //foodlist = foodService.findAllByNutrientsNotIn(categoryDTO,nutrients,pageRequest);
+            foodlist = foodService.findAllByNutrientsParentCategoryInRange(category, nutrients, min, max, pageRequest);
+        } else if(nutrients != null || min != null || max != null){
             foodlist = foodService.findAllByNutrientsInRange(category,nutrients,min,max,pageRequest);
         } else if (parentCategory.getId().intValue() > 0 && parentCategory.getId().intValue() < 22) {
             foodlist = foodService.findByparentCategoryFood(parentCategory, pageRequest);
