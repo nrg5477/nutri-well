@@ -18,14 +18,6 @@ public interface FoodService {
 
     int getTotalPages();
 
-    FoodResponseDTO findByName(String name);
-
-    List<FoodResponseDTO> findAllByNutrientsNotIn(String foodname, List<String> names, Pageable pageable);
-
-    List<FoodResponseDTO> findAllByNutrientsNotIn(CategoryResponseDTO category, List<String> names, Pageable pageable);
-
-    FoodResponseDTO findByFoodCode(String foodcode);
-
     List<FoodSuggestResponseDTO> findByNameStartingWith(String prefix, Pageable pageable);
 
     FoodResponseDTO findById(Long foodId);

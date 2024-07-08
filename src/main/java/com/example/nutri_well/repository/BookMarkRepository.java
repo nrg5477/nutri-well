@@ -1,6 +1,5 @@
 package com.example.nutri_well.repository;
 
-import com.example.nutri_well.dto.BookMarkResponseDTO;
 import com.example.nutri_well.entity.BookMark;
 import com.example.nutri_well.entity.Food;
 import jakarta.transaction.Transactional;

@@ -26,9 +26,7 @@ public class CalendarService {
     public myCalendar addCalendarEntry(Long userId, Date date, int percentage) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
-
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
 
         myCalendar calendar = myCalendar.builder()
                 .user(user)
@@ -45,7 +43,6 @@ public class CalendarService {
         return calendarRepository.findByUser(user);
     }
 
-
     public DailyNutritionResponse getDailyNutrition(Long calendarId) {
         List<CalendarFood> calendarFoods = calendarFoodRepository.findByCalendar_CalendarId(calendarId);
         DailyNutritionResponse response = new DailyNutritionResponse();
@@ -59,9 +56,5 @@ public class CalendarService {
         }
 
         return response;
-    }
-
-    public List<myCalendar> getAllCalendars() {
-        return calendarRepository.findAll();
     }
 }

@@ -7,7 +7,7 @@ import com.example.nutri_well.dto.FoodResponseDTO;
 import com.example.nutri_well.model.User;
 import com.example.nutri_well.service.BookMarkService;
 import com.example.nutri_well.service.CategoryService;
-import com.example.nutri_well.service.FoodApproveServie;
+import com.example.nutri_well.service.FoodApproveService;
 import com.example.nutri_well.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -25,7 +25,7 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 public class IndexController {
-    private final FoodApproveServie foodApproveService;
+    private final FoodApproveService foodApproveService;
     private final HttpSession httpSession;
     private final UserService userService;
     private final BookMarkService bookMarkService;

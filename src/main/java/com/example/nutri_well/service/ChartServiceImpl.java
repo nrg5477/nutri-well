@@ -70,5 +70,4 @@ public class ChartServiceImpl implements ChartService {
             calendarFoodRepository.save(calendarFood);
         }
     }
-
 }

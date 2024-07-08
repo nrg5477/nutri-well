@@ -16,7 +16,5 @@ public interface BookMarkDAO {
 
     List<Food> findTop4Foods(); //상위4개 항목
 
-    List<BookMark> findByUserId(Long userId);
-
     List<Food> findFoodNamesByUserId(Long userId);
 }

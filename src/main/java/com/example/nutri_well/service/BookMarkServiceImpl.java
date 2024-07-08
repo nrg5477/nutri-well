@@ -36,8 +36,6 @@ public class BookMarkServiceImpl implements BookMarkService{
                 } else {
                     existBookmark.setExcludedState(newState);
                 }
-            } else {
-                System.out.println(existBookmark.getId() + ": 업데이트안됨");
             }
         } else {//해당 Bookmark Data가 존재하지 않을시 insert
             User user = userService.findById(bookMark.getUserId()).orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
@@ -71,16 +69,6 @@ public class BookMarkServiceImpl implements BookMarkService{
         }
 
         return top5FoodsList;
-    }
-
-    @Override
-    public List<BookMarkResponseDTO> findByUserId(Long userId) {
-        List<BookMark> bookmark = dao.findByUserId(userId);
-        List<BookMarkResponseDTO> bookmarkList = new ArrayList<>();
-        for (BookMark bookMark : bookmark) {
-            bookmarkList.add(BookMarkResponseDTO.of(bookMark));
-        }
-        return bookmarkList;
     }
 
     @Override
