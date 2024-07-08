@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 캘린더와 음식을 연결하는 엔티티.
+ */
 @Entity
 @Table(name = "CALENDAR_FOOD")
 @Data

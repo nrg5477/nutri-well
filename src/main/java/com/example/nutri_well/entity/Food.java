@@ -1,9 +1,5 @@
 package com.example.nutri_well.entity;
 
-import com.example.nutri_well.model.User;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,11 +7,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 식품의 정보 및 attributes를 정의한 식품 엔티티.
+ */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="food")
+@Table(name = "food")
 @Builder
 public class Food {
     @Id
@@ -56,7 +55,7 @@ public class Food {
         this.product = product;
         this.manufacturer = manufacturer;
         this.servingSize = servingSize;
-        this.creationDate= creationDate;
+        this.creationDate = creationDate;
         this.weight = weight;
     }
 }

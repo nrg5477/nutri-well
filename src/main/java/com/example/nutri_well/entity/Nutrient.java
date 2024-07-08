@@ -8,11 +8,14 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 영양소를 나타내는 엔티티.
+ */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="nutrient")
+@Table(name = "nutrient")
 public class Nutrient {
     @Id
     @GeneratedValue

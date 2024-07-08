@@ -1,20 +1,19 @@
 package com.example.nutri_well.config.auth.dto;
 
-import com.example.nutri_well.entity.BookMark;
 import com.example.nutri_well.model.Role;
 import com.example.nutri_well.model.User;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
+/**
+ * 세션에 저장될 수 있는 User 엔티티의 직렬화된 버전을 제공하는 클래스.
+ * 세션에 저장될때 필요한 필드를 포함.
+ * User 엔티티를 SessionUser로 변환하기 위한 생성자를 제공.
+ */
 @Getter
 public class SessionUser implements Serializable {
-    //User클래스를 그대로 사용하면 직렬화를 구현하지 않았기 때문에 에러가 발생한다. 그래서 직렬화된 SessionUser클래스를 만들어준다.
-    //객체를 바이트스트림으로 변환하여 세션에 저장하기 위함. 이렇게 직렬화 하지 않으면 세션에 저장할 수 없음.
-    //User 클래스는 엔티티 클래스이며 직렬화가 되지 않기때문에 별도의 직렬화 클래스를 만든것.
     private Long userId;
     private String name;
     private String email;
@@ -28,12 +27,6 @@ public class SessionUser implements Serializable {
     private String password;
     private String picture;
     private Role role;
-
-//    public SessionUser(User user){
-//        this.name = user.getUsername();
-//        this.email = user.getEmail();
-//        this.picture = user.getPicture();
-//    }
 
     public SessionUser(User user) {
         this.userId = user.getUserId();

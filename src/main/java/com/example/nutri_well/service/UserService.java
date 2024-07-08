@@ -10,7 +10,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
     private final UserRepository userRepository;
 
     public Optional<User> findByUserEmail(String email) {
@@ -24,11 +23,14 @@ public class UserService {
     public void updateUser(User user) {
         userRepository.save(user);
     }
+
     public User getCurrentUser(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
 
-    public Optional<User> findById(Long userId){return userRepository.findById(userId);}
+    public Optional<User> findById(Long userId) {
+        return userRepository.findById(userId);
+    }
 
     public Optional<User> findByBaselMetabolism(Integer baselMetabolism) {
         return userRepository.findByBaselMetabolism(baselMetabolism);

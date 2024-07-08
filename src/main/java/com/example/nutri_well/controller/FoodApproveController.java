@@ -13,11 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 식품 승인와 관련된 기능 또는 관련된 요청을 처리하는 컨트롤러 클래스.
+ */
 @Controller
 @RequestMapping("/food-approve")
 @RequiredArgsConstructor

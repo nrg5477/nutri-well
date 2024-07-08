@@ -14,7 +14,7 @@ public class BookMarkResponseDTO {
     private boolean preferredState;
     private boolean excludedState;
 
-    public static BookMarkResponseDTO of(BookMark bookMark){
+    public static BookMarkResponseDTO of(BookMark bookMark) {
         return new BookMarkResponseDTO(bookMark.getUser().getUserId(), bookMark.getFood().getId(), bookMark.isPreferredState(), bookMark.isExcludedState());
     }
 }

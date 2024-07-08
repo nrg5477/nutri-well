@@ -12,22 +12,22 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class FoodDAOImpl implements FoodDAO{
+public class FoodDAOImpl implements FoodDAO {
     private final FoodRepository foodRepository;
 
     @Override
-    public Page<Food> searchByFoodName(String name , Pageable pageable) {
+    public Page<Food> searchByFoodName(String name, Pageable pageable) {
         return foodRepository.findByNameContaining(name, pageable);
     }
 
     @Override
     public Page<Food> searchByCategoryId(Long categoryid, Pageable pageable) {
-        return  foodRepository.findByCategoryId(categoryid,pageable);
+        return foodRepository.findByCategoryId(categoryid, pageable);
     }
 
     @Override
     public Page<Food> findByparentCategoryFood(Category parentCategory, Pageable pageable) {
-        return foodRepository.findByparentCategoryFood(parentCategory,pageable);
+        return foodRepository.findByparentCategoryFood(parentCategory, pageable);
     }
 
     @Override
@@ -42,12 +42,12 @@ public class FoodDAOImpl implements FoodDAO{
 
     @Override
     public Page<Food> findAllByNutrientsNotIn(String foodname, List<String> names, Pageable pageable) {
-        return foodRepository.findAllByNutrientsNotIn(foodname,names, pageable);
+        return foodRepository.findAllByNutrientsNotIn(foodname, names, pageable);
     }
 
     @Override
     public Page<Food> findAllByNutrientsNotIn(Long categoryid, List<String> names, Pageable pageable) {
-        return foodRepository.findAllByNutrientsNotIn(categoryid,names,pageable);
+        return foodRepository.findAllByNutrientsNotIn(categoryid, names, pageable);
     }
 
     @Override
@@ -62,17 +62,17 @@ public class FoodDAOImpl implements FoodDAO{
 
     @Override
     public Page<Food> findAllByNutrientsInRange(String foodname, List<String> names, Integer min, Integer max, Pageable pageable) {
-        return foodRepository.findAllByNutrientsInRange(foodname,names,min,max,pageable);
+        return foodRepository.findAllByNutrientsInRange(foodname, names, min, max, pageable);
     }
 
     @Override
     public Page<Food> findAllByNutrientsInRange(Long category, List<String> names, Integer min, Integer max, Pageable pageable) {
-        return foodRepository.findAllByNutrientsInRange(category,names,min,max,pageable);
+        return foodRepository.findAllByNutrientsInRange(category, names, min, max, pageable);
     }
 
     @Override
     public Page<Food> findAllByNutrientsParentCategoryInRange(Long category, List<String> names, Integer min, Integer max, Pageable pageable) {
-        return foodRepository.findAllByNutrientsParentCategoryInRange(category,names,min,max,pageable);
+        return foodRepository.findAllByNutrientsParentCategoryInRange(category, names, min, max, pageable);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class FoodDAOImpl implements FoodDAO{
     }
 
     @Override
-    public List<Food> findByNameStartingWith(String prefix,Pageable pageable) {
-        return foodRepository.findByNameStartingWith(prefix,pageable);
+    public List<Food> findByNameStartingWith(String prefix, Pageable pageable) {
+        return foodRepository.findByNameStartingWith(prefix, pageable);
     }
 }

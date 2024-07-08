@@ -18,11 +18,13 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * 캘린더와 관련된 기능 또는 관련된 요청을 처리하는 컨트롤러 클래스.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/calendar")
 public class CalendarController {
-
     private final CalendarService calendarService;
     private final HttpSession httpSession;
     private final UserService userService;

@@ -5,7 +5,6 @@ import com.example.nutri_well.dto.CategoryResponseDTO;
 import com.example.nutri_well.dto.FoodApproveResponseDTO;
 import com.example.nutri_well.dto.FoodResponseDTO;
 import com.example.nutri_well.model.User;
-import com.example.nutri_well.model.myCalendar;
 import com.example.nutri_well.service.BookMarkService;
 import com.example.nutri_well.service.CategoryService;
 import com.example.nutri_well.service.FoodApproveServie;
@@ -17,11 +16,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Optional;
 
+/**
+ * 인덱스페이지 또는 페이지이동과 관련된 기능 또는 관련된 요청을 처리하는 컨트롤러 클래스.
+ */
 @Controller
 @RequiredArgsConstructor
 public class IndexController {
@@ -30,17 +30,6 @@ public class IndexController {
     private final UserService userService;
     private final BookMarkService bookMarkService;
     private final CategoryService categoryService;
-
-    @GetMapping("/")
-    public String index(Model model) {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-
-        if (user != null) {
-            model.addAttribute("userName", user.getName());
-        }
-        //src/main/resources/templates/indecs.mustache
-        return "indecs";
-    }
 
     @GetMapping("/index.do")
     public String indexHtml(Model model) {
@@ -53,7 +42,6 @@ public class IndexController {
 
         if (sessionUser != null) {
             model.addAttribute("baselMetabolism", sessionUser.getBaselMetabolism());
-            System.out.println("basel=========================================================================" + sessionUser.getBaselMetabolism()); //<< 정상
         } else {
             model.addAttribute("baselMetabolism", -1);
         }

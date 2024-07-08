@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 식품승인받을 식품에 대해 정의한 엔티티.
+ */
 @Entity
 @Data
 @NoArgsConstructor
@@ -48,5 +51,4 @@ public class FoodApprove {
     @ToString.Exclude
     @OneToMany(mappedBy = "foodApprove", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FoodNutrientApprove> nutrientlist = new ArrayList<>();
-
 }
