@@ -1,160 +1,159 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8">
-</head>
-
-<body>
-<div th:fragment="top">
-  <!-- Spinner Start -->
-  <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"></div>
-  </div>
-  <!-- Spinner End -->
-
-
-  <!-- Navbar start -->
-  <div class="container-fluid fixed-top">
-    <div class="container topbar bg-primary d-none d-lg-block">
-      <div class="d-flex justify-content-between">
-        <div class="top-info ps-2">
-          <small class="me-3"><i class="fa-brands fa-github"></i> <a href="https://github.com/6worry/nutri-well" class="text-white">6worry GitHub</a></small>
-          <small class="me-3"><i class="fa-brands fa-github"></i> <a href="https://github.com/nrg5477/nutri-well" class="text-white">nrg5477 GitHub</a></small>
-          <small class="me-3"><i class="fa-brands fa-github"></i> <a href="https://github.com/letsgilit/nutri-well" class="text-white">letsgilit GitHub</a></small>
-          <small class="me-3"><i class="fa-brands fa-github"></i> <a href="https://github.com/sangwoo-00/test123" class="text-white">sangwoo-00 GitHub</a></small>
-        </div>
-
-        <div class="top-link pe-2">
-          <a href="#" class="text-white"><small class="text-white mx-2">공지사항</small>/</a>
-          <a th:href="@{/member/signup}" class="text-white"><small class="text-white mx-2">회원가입</small>/</a>
-          <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#loginModal" id="login-link"><small class="text-white ms-2" id="login-text">로그인</small></a>
-          <a href="#" class="text-white d-none" id="logout-link"><small class="text-white ms-2" id="logout-text">로그아웃</small></a>
-          <span id="login-separator" class="text-white d-none"> /</span>
-          <span class="text-white ms-2" id="username-display" style="display:none;"></span>
-        </div>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div th:fragment="top">
+      <!-- Spinner Start -->
+      <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
       </div>
-    </div>
-    <div class="container px-0">
-      <nav class="navbar navbar-light bg-white navbar-expand-xl">
-        <a th:href="@{/index.do}" class="navbar-brand"><h1 class="text-primary display-6">nutri-well</h1></a>
-        <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-          <span class="fa fa-bars text-primary"></span>
-        </button>
-        <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-          <div class="navbar-nav mx-auto d-flex align-items-center">
+      <!-- Spinner End -->
+
+
+      <!-- Navbar start -->
+      <div class="container-fluid fixed-top">
+        <div class="container topbar bg-primary d-none d-lg-block">
+          <div class="d-flex justify-content-between">
+            <div class="top-info ps-2">
+              <small class="me-3"><i class="fa-brands fa-github"></i> <a href="https://github.com/6worry/nutri-well" class="text-white">6worry GitHub</a></small>
+              <small class="me-3"><i class="fa-brands fa-github"></i> <a href="https://github.com/nrg5477/nutri-well" class="text-white">nrg5477 GitHub</a></small>
+              <small class="me-3"><i class="fa-brands fa-github"></i> <a href="https://github.com/letsgilit/nutri-well" class="text-white">letsgilit GitHub</a></small>
+              <small class="me-3"><i class="fa-brands fa-github"></i> <a href="https://github.com/sangwoo-00/test123" class="text-white">sangwoo-00 GitHub</a></small>
+            </div>
+            <div class="top-link pe-2">
+              <a href="#" class="text-white"><small class="text-white mx-2">공지사항</small>/</a>
+              <a th:href="@{/member/signup}" class="text-white"><small class="text-white mx-2">회원가입</small>/</a>
+              <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#loginModal" id="login-link"><small class="text-white ms-2" id="login-text">로그인</small></a>
+              <a href="#" class="text-white d-none" id="logout-link"><small class="text-white ms-2" id="logout-text">로그아웃</small></a>
+              <span id="login-separator" class="text-white d-none"> /</span>
+              <span class="text-white ms-2" id="username-display"></span>
+            </div>
           </div>
-          <div class="d-flex m-3 me-0">
-            <a th:href="@{/index.do}" class="my-auto" style="margin-right: auto; padding-right: 15px">
-              <i class="fas fa-home fa-2x"></i>
-            </a>
-            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#loginModal">
-              <i class="fas fa-solid fa-user-check"></i>
+        </div>
+        <div class="container px-0">
+          <nav class="navbar navbar-light bg-white navbar-expand-xl">
+            <a th:href="@{/index.do}" class="navbar-brand"><h1 class="text-primary display-6">nutri-well</h1></a>
+            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+              <span class="fa fa-bars text-primary"></span>
             </button>
-            <a href="/food-approve/request" class="position-relative me-4 my-auto">
-              <i class="fa-solid fa-circle-plus fa-2x"></i>
-            </a>
-            <a th:href="@{/mypage.do}" class="my-auto">
-              <i class="fas fa-user fa-2x"></i>
-            </a>
+            <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+              <div class="navbar-nav mx-auto d-flex align-items-center">
+              </div>
+              <div class="d-flex m-3 me-0">
+                <a th:href="@{/index.do}" class="my-auto">
+                  <i class="fas fa-home fa-2x"></i>
+                </a>
+                <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#loginModal">
+                  <i class="fas fa-solid fa-user-check"></i>
+                </button>
+                <a href="/food-approve/request" class="position-relative me-4 my-auto">
+                  <i class="fa-solid fa-circle-plus fa-2x"></i>
+                </a>
+                <a th:href="@{/mypage.do}" class="my-auto">
+                  <i class="fas fa-user fa-2x"></i>
+                </a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <!-- Navbar End -->
+
+
+      <!-- Modal Search Start -->
+      <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content rounded-0">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex align-items-center">
+              <div class="input-group w-75 mx-auto d-flex">
+                <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
-    </div>
-  </div>
-  <!-- Navbar End -->
+      </div>
+      <!-- Modal Search End -->
 
 
-  <!-- Modal Search Start -->
-  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-      <div class="modal-content rounded-0">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body d-flex align-items-center">
-          <div class="input-group w-75 mx-auto d-flex">
-            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+      <!-- Login Modal Start -->
+      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content rounded-0">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">Welcome back.</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex align-items-center">
+              <div class="container w-75 mx-auto d-flex flex-column align-items-center">
+                <!-- ID & Password Login Form -->
+                <div class="mb-3 w-100">
+                  <input type="text" id="login-id" class="form-control mb-2" placeholder="아이디">
+                  <input type="password" id="login-password" class="form-control mb-2" placeholder="비밀번호">
+                  <button class="btn btn-outline-secondary w-100" id="login-button">로그인</button>
+                </div>
+
+                <!-- Google Login Button -->
+                <div class="mb-3 w-100">
+                  <a class="btn btn-outline-secondary w-100" href="/oauth2/authorization/google" rel="noopener follow">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="me-2">
+                        <g fill-rule="evenodd" clip-rule="evenodd">
+                          <path d="M20.64 12.2c0-.63-.06-1.25-.16-1.84H12v3.49h4.84a4.14 4.14 0 0 1-1.8 2.71v2.26h2.92a8.78 8.78 0 0 0 2.68-6.61z" fill="#4285F4"></path>
+                          <path d="M12 21a8.6 8.6 0 0 0 5.96-2.18l-2.91-2.26a5.41 5.41 0 0 1-8.09-2.85h-3v2.33A9 9 0 0 0 12 21z" fill="#34A853"></path>
+                          <path d="M6.96 13.71a5.41 5.41 0 0 1 0-3.42V7.96h-3a9 9 0 0 0 0 8.08l3-2.33z" fill="#FBBC05"></path>
+                          <path d="M12 6.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58A9 9 0 0 0 3.96 7.96l3 2.33A5.36 5.36 0 0 1 12 6.6z" fill="#EA4335"></path>
+                        </g>
+                      </svg>
+                      Sign in with Google
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Kakao Login Button -->
+                <div class="mb-3 w-100">
+                  <a class="btn btn-outline-secondary w-100"
+                     th:href="@{'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=' + ${kakaoApiKey} + '&redirect_uri=' + ${redirectUri}}"
+                     rel="noopener follow">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" alt="Kakao Login" class="kakao me-2">
+                      Sign in with Kakao
+                    </div>
+                  </a>
+                </div>
+                <!-- Naver Login Button -->
+                <div class="mb-3 w-100">
+                  <a class="btn btn-outline-secondary w-100" href="/oauth2/authorization/naver" rel="noopener follow">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <img src="/common/img/naver_login_logo1.png" alt="Naver Login" class="naver me-2">
+                      Sign in with Naver
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Create Account Link -->
+                <div class="mb-3 w-100 text-center">
+                  <p>계정이 없으신가요?
+                    <button class="btn btn-link p-0"><b><a href="member/signup">계정 만들기</a></b></button>
+                  </p>
+                </div>
+                <div class="mb-3 w-100 text-center">
+                  <p>이메일을 잊으셨거나 로그인에 문제가 있으신가요? <a href="https://help.medium.com/hc/en-us/requests/new?ticket_form_id=9455427953559&amp;form=true&amp;source=login-------------------------------------" rel="noopener follow" target="_blank">도움 받기</a>.</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer text-center">
+              <p>로그인 버튼을 클릭하면 Medium의 <a href="https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=login-------------------------------------" rel="noopener follow" target="_blank">서비스 약관</a>과 <a href="https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=login-------------------------------------" rel="noopener follow" target="_blank">개인정보 보호정책</a>에 동의하는 것입니다.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Modal Search End -->
-
-  <!-- Login Modal Start -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-      <div class="modal-content rounded-0">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Welcome back.</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body d-flex align-items-center">
-          <div class="container w-75 mx-auto d-flex flex-column align-items-center">
-            <!-- ID & Password Login Form -->
-            <div class="mb-3 w-100">
-              <input type="text" id="login-id" class="form-control mb-2" placeholder="아이디">
-              <input type="password" id="login-password" class="form-control mb-2" placeholder="비밀번호">
-              <button class="btn btn-outline-secondary w-100" id="login-button">로그인</button>
-            </div>
-
-            <!-- Google Login Button -->
-            <div class="mb-3 w-100">
-              <a class="btn btn-outline-secondary w-100" href="/oauth2/authorization/google" rel="noopener follow">
-                <div class="d-flex align-items-center justify-content-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="me-2">
-                    <g fill-rule="evenodd" clip-rule="evenodd">
-                      <path d="M20.64 12.2c0-.63-.06-1.25-.16-1.84H12v3.49h4.84a4.14 4.14 0 0 1-1.8 2.71v2.26h2.92a8.78 8.78 0 0 0 2.68-6.61z" fill="#4285F4"></path>
-                      <path d="M12 21a8.6 8.6 0 0 0 5.96-2.18l-2.91-2.26a5.41 5.41 0 0 1-8.09-2.85h-3v2.33A9 9 0 0 0 12 21z" fill="#34A853"></path>
-                      <path d="M6.96 13.71a5.41 5.41 0 0 1 0-3.42V7.96h-3a9 9 0 0 0 0 8.08l3-2.33z" fill="#FBBC05"></path>
-                      <path d="M12 6.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58A9 9 0 0 0 3.96 7.96l3 2.33A5.36 5.36 0 0 1 12 6.6z" fill="#EA4335"></path>
-                    </g>
-                  </svg>
-                  Sign in with Google
-                </div>
-              </a>
-            </div>
-
-            <!-- Kakao Login Button -->
-            <div class="mb-3 w-100">
-              <a class="btn btn-outline-secondary w-100"
-                 th:href="@{'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=' + ${kakaoApiKey} + '&redirect_uri=' + ${redirectUri}}"
-                 rel="noopener follow">
-                <div class="d-flex align-items-center justify-content-center">
-                  <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" alt="Kakao Login" class="me-2" style="width: 24px; height: 24px;">
-                  Sign in with Kakao
-                </div>
-              </a>
-            </div>
-            <!-- Naver Login Button -->
-            <div class="mb-3 w-100">
-              <a class="btn btn-outline-secondary w-100" href="/oauth2/authorization/naver" rel="noopener follow">
-                <div class="d-flex align-items-center justify-content-center">
-                  <img src="/common/img/naver_login_logo1.png" alt="Naver Login" class="me-2" style="width: 24px; height: 24px;">
-                  Sign in with Naver
-                </div>
-              </a>
-            </div>
-
-            <!-- Create Account Link -->
-            <div class="mb-3 w-100 text-center">
-              <p>계정이 없으신가요?
-                <button class="btn btn-link p-0"><b><a href="member/signup">계정 만들기</a></b></button>
-              </p>
-            </div>
-            <div class="mb-3 w-100 text-center">
-              <p>이메일을 잊으셨거나 로그인에 문제가 있으신가요? <a href="https://help.medium.com/hc/en-us/requests/new?ticket_form_id=9455427953559&amp;form=true&amp;source=login-------------------------------------" rel="noopener follow" target="_blank">도움 받기</a>.</p>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer text-center">
-          <p>로그인 버튼을 클릭하면 Medium의 <a href="https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=login-------------------------------------" rel="noopener follow" target="_blank">서비스 약관</a>과 <a href="https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=login-------------------------------------" rel="noopener follow" target="_blank">개인정보 보호정책</a>에 동의하는 것입니다.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

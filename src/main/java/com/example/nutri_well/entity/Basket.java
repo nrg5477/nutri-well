@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * 사용자가 담기한 식품 항목에 대한 정보가 포함된 영양차트를 나타냄.
@@ -31,7 +33,7 @@ public class Basket {
     @JoinColumn(name = "foodId")
     private Food foodId;
 
-    private double percent;//기ㅏ초대사량 퍼센티지
+    private double percent; //기초대사량 퍼센티지
 
     public Basket(User userId, LocalDate startDate, Food foodId) {
         this.userId = userId;
