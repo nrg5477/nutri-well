@@ -76,9 +76,6 @@ function showNutritionModal(data) {
 
     // 섭취량 데이터 생성
     const intakeData = Object.keys(data.nutrients).map(nutrient => data.nutrients[nutrient]);
-    // const intakeData = Object.keys(data.nutrients).map(nutrient => {
-    //     return data.nutrients[nutrient] * (data.weight / data.servingSize);
-    // });
 
     // 권장 섭취량 데이터 생성
     const maxIntakeData = Object.keys(data.nutrients).map(nutrient => recommendedIntake[nutrient]);
