@@ -14,7 +14,6 @@ public class FoodNutrientResponseDTO {
     private String value;
     private double amount;
 
-    // 엔티티를 DTO로 변환하는 메소드
     public static FoodNutrientResponseDTO of(FoodNutrient foodNutrient) {
         return new FoodNutrientResponseDTO(foodNutrient.getNutrient().getName(),
                 foodNutrient.getNutrient().getServingUnit(),

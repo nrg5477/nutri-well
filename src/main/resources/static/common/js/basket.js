@@ -1,11 +1,13 @@
 (function($) {
     "use strict";
 
-    var baselMetabolism = 2000;
-    var userWeight = 60;
-    var nutritionChart;
+    var baselMetabolism; //기초대사량
+    var userWeight; //사용자 무게
+    var nutritionChart; //Chart.js 전역변수
     var userId;
+    var kcalPercentage; //칼로리 퍼센티지
 
+    //Chart 초기화
     $('#initBasket').click(function() {
         sessionStorage.removeItem('foodNames');
         sessionStorage.removeItem('nutrientData');
@@ -34,8 +36,8 @@
     function storeFoods(foodData) {
         let foodNames = getStoredFoods();
 
-        if (foodNames.length > 20) {
-            alert('그만드세요;;');
+        if (foodNames.length > 30) {//Chart 음식수 제한
+            alert('30개 이상 담을 수 없습니다.');
             return false;
         }
         foodNames.push(foodData)
@@ -55,9 +57,6 @@
         storeNutrients(storedNutrients);
         return storedNutrients;
     }
-    //테이블 업데이트
-    var kcalPercentage;
-    
     function updateTable(nutrientData) {
         var energy = nutrientData['에너지'] || 0;
         kcalPercentage = (energy / baselMetabolism * 100).toFixed(1);
@@ -79,6 +78,7 @@
 
         var nutrients = ['탄수화물', '단백질', '지방', '당류', '나트륨', '트랜스지방산', '포화지방산', '콜레스테롤'];
         var values = ['g', 'g', 'g', 'g', 'mg', 'g', 'g', 'mg'];
+
         //각영양소에 대한 일일권장량 설정
         var dailyIntake = {
             '탄수화물': baselMetabolism * 0.5 / 4 , //총 칼로리의 45-65% 탄수화물 1g 당 4 칼로리
@@ -90,11 +90,12 @@
             '포화지방산': baselMetabolism * 0.1 /9, //총 칼로리의 10% 이하로 제한 지방은 1g당 9칼로리
             '콜레스테롤': 300 //미국심장협회(American Heart Association, AHA) 참고 심장약한사람은 200
         };
+
         nutrients.forEach(function(nutrientName, index) {
             var amount = (nutrientData[nutrientName] || 0).toFixed(1);
             var unit = values[index];
             var percentage = (amount / dailyIntake[nutrientName] * 100).toFixed(1);
-            var percentClass = percentage > 100 ? 'over-limit' : '';
+            var percentClass = percentage > 100 ? 'over-limit' : '';//100초과시 css효과를 위한 Class추가 변수
 
             tableHtml += '<tr>';
             tableHtml += '<td>' + nutrientName + '<div class="input-wrapper"><input class="amount" value="' + amount + '"><span>' + unit + '</span></div></td>';
@@ -180,7 +181,7 @@
                                nutri['단백질'],
                                nutri['지방'],
                                nutri['당류'],
-                               nutri['나트륨']/1000], // 예시 데이터, 실제 데이터로 변경 가능
+                               nutri['나트륨']/1000], // 나트륨 단위(mg) 계산
                         backgroundColor: [
                             'rgba(150, 250, 50, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -223,8 +224,7 @@
             });
         }
     }
-
-    //즐겨찾기
+    //즐겨찾기 목록 가져오기
     function loadBookMark(){
         if(userId === null){
             return;
@@ -237,6 +237,7 @@
             dataType: "json",
             data:  { userId: userId },
             success: function(foodlist) {
+                //즐겨찾기 목록 조회후 view 생성
                 const select = $('#bookmark-select');
                 foodlist.forEach(function(food) {
                     const option = $('<option></option>')
@@ -250,9 +251,9 @@
             }
         });
     }
+    //Chart 음식 목록 DB삭제
     function deleteTable(){
         const baseUrl = 'http://localhost:9079';
-
         $.ajax({
             url: baseUrl + '/basket/delete',
             type: 'POST',
@@ -265,12 +266,17 @@
             }
         });
     }
+
     $(document).ready(function() {
+        //user정보 초기화
         window.setSessionUser = function(user) {
             if (user != null) {
                 baselMetabolism = user.baselMetabolism === 0 ? 2000 : user.baselMetabolism;
                 userWeight = user.weight=== null ? 60 : user.weight;
                 userId = user.userId;
+            }else{
+                baselMetabolism = 2000;
+                userWeight = 60;
             }
         };
         //로드 시 데이터표시

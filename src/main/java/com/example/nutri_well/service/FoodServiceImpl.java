@@ -19,7 +19,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class FoodServiceImpl implements FoodService {
+public class FoodServiceImpl implements FoodService{
     private final FoodDAO dao;
     private int totalPage;
 
@@ -67,7 +67,7 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<FoodResponseDTO> findAllByNutrientsNotIn(String foodname, List<String> names, Pageable pageable) {
-        String namepattern = "%" + foodname + "%";
+        String namepattern = "%" + foodname + "%";//LIKE절 처리
 
         Page<Food> foods = dao.findAllByNutrientsNotIn(namepattern, names, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
@@ -138,7 +138,6 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<FoodResponseDTO> findAllByNutrientsInRange(Long categoryId, List<String> names, Integer min, Integer max, Pageable pageable) {
-
         Page<Food> foods = dao.findAllByNutrientsInRange(categoryId, names, min, max, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
         for (FoodResponseDTO dto : list) {
@@ -150,7 +149,6 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<FoodResponseDTO> findAllByNutrientsParentCategoryInRange(Long categoryId, List<String> names, Integer min, Integer max, Pageable pageable) {
-
         Page<Food> foods = dao.findAllByNutrientsParentCategoryInRange(categoryId, names, min, max, pageable);
         List<FoodResponseDTO> list = foods.map(FoodResponseDTO::of).getContent();
         for (FoodResponseDTO dto : list) {
@@ -165,7 +163,8 @@ public class FoodServiceImpl implements FoodService {
         return dao.findById(foodId);
     }
 
-    public List<FoodNutrientResponseDTO> findMainNutrients(FoodResponseDTO dto) {
+    public List<FoodNutrientResponseDTO> findMainNutrients(FoodResponseDTO dto){
+        //세부 검색 페이지 로딩시 대표영양소만 리턴
         String[] mainNutrients = {"에너지", "탄수화물", "단백질", "지방", "당류"};
         List<FoodNutrientResponseDTO> filteredNutrients = new ArrayList<>();
 

@@ -34,6 +34,7 @@ public class Food {
     private int weight;
 
     private Date creationDate;
+
     //하나의 식품은 여러개의 영양소를 가질수 있다.
     @ToString.Exclude
     @OneToMany(mappedBy = "food", cascade = CascadeType.ALL, orphanRemoval = true)
