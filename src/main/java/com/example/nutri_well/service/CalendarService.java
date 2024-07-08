@@ -2,7 +2,6 @@ package com.example.nutri_well.service;
 
 import com.example.nutri_well.dto.DailyNutritionResponse;
 import com.example.nutri_well.entity.CalendarFood;
-import com.example.nutri_well.entity.Food;
 import com.example.nutri_well.entity.FoodNutrient;
 import com.example.nutri_well.model.User;
 import com.example.nutri_well.model.myCalendar;
@@ -20,7 +19,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CalendarService {
-
     private final CalendarRepository calendarRepository;
     private final UserRepository userRepository;
     private final CalendarFoodRepository calendarFoodRepository;
@@ -51,14 +49,6 @@ public class CalendarService {
     public DailyNutritionResponse getDailyNutrition(Long calendarId) {
         List<CalendarFood> calendarFoods = calendarFoodRepository.findByCalendar_CalendarId(calendarId);
         DailyNutritionResponse response = new DailyNutritionResponse();
-
-
-//        if (!calendarFoods.isEmpty()) {
-//            Food firstFood = calendarFoods.get(0).getFood();
-//            response.setWeight(firstFood.getWeight());//900
-//            response.setServingSize(Double.parseDouble(firstFood.getServingSize()));//100
-//        }
-
 
         for (CalendarFood calendarFood : calendarFoods) {
             double weight = calendarFood.getFood().getWeight();

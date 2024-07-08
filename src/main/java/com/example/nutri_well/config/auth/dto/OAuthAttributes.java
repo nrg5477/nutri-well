@@ -5,15 +5,14 @@ import com.example.nutri_well.model.User;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.text.AttributedString;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * OAuth2를 사용하여 소셜 로그인을 통해 얻은 사용자의 attributes를 나타내고 저장.
+ */
 @Getter
 public class OAuthAttributes {
-    // OAuth2UserService 를 통해 가져온 소셜 로그인 유저의 OAuth2User의 attributes를 담을 클래스
-
     private Map<String, Object> attributes; // OAuth2 반환하는 유저 정보 Map
     private String nameAttributeKey;
     private String username;
@@ -78,5 +77,4 @@ public class OAuthAttributes {
                 .tel(mobile)
                 .build();
     }
-
 }

@@ -1,6 +1,5 @@
 package com.example.nutri_well.dto;
 
-import com.example.nutri_well.entity.Category;
 import com.example.nutri_well.entity.FoodApprove;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;

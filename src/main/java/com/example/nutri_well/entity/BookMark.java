@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 사용자가 음식에 대한 즐쳐찾기한 항목을 나태나는 엔티티.
+ */
 @Entity
 @Table(name = "bookMark", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"foodId", "userId"})

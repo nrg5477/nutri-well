@@ -1,13 +1,15 @@
 package com.example.nutri_well.model;
 
 import com.example.nutri_well.entity.BookMark;
-import com.example.nutri_well.entity.Food;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 시스템의 사용자를 나태나는 엔티티.
+ */
 @Entity
 @Table(name = "USERS")
 @Data
@@ -68,6 +70,7 @@ public class User {
         this.birth = birth;
         this.tel = tel;
     }
+
     @ToString.Exclude
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<myCalendar> calendars;
@@ -85,7 +88,4 @@ public class User {
     public String getRoleKey() {
         return this.role.getKey();
     }
-
-
-
 }

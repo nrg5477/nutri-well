@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FoodSuggestResponseDTO {
     String name;
-    public static FoodSuggestResponseDTO of(Food food){
+
+    public static FoodSuggestResponseDTO of(Food food) {
         return new FoodSuggestResponseDTO(food.getName());
     }
 }

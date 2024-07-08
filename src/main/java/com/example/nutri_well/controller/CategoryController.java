@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 카테고리와 관련된 기능 또는 관련된 요청을 처리하는 컨트롤러 클래스.
+ * 카테고리 검색을 위한 엔드포인트를 제공.
+ */
 @RestController
 @RequestMapping("/api/categories")
 @RequiredArgsConstructor

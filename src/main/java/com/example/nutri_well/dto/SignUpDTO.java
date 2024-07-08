@@ -27,5 +27,4 @@ public class SignUpDTO {
     private String picture;
     private Role role = Role.USER;
     private boolean state = true;
-
 }

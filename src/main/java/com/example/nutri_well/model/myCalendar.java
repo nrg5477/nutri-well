@@ -1,13 +1,18 @@
 package com.example.nutri_well.model;
 
 import com.example.nutri_well.entity.CalendarFood;
-import com.example.nutri_well.entity.Food;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * 사용자별 캘린더를 나타내는 엔티티.
+ */
 @Entity
 @Table(name = "CALENDAR")
 @Data

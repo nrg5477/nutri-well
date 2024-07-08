@@ -8,12 +8,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
+/**
+ * 애플리케이션의 보안 설정을 구성.
+ * 웹 보안을 활성화하고 HTTP 요청을 처리하기 위한 보안 필터 체인을 적용.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
     private final CustomOAuth2UserService customOAuth2UserService;
 
     public SecurityConfig(CustomOAuth2UserService customOAuth2UserService) {
@@ -29,9 +31,9 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())  // 최신 버전에서 CSRF 비활성화 설정, spring boot 6.1 이상버전
                 .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) // h2-console 화면을 사용하기 위해 해당 옵션 disable
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/login", "/login/**", "/oauth2/**", "/**").permitAll() //해당 url은 모두 접근가능
-                        .requestMatchers("/food-approve/list/**", "/f").hasRole(Role.USER.name()) //이 url은 USER만 접근가능
-                        .anyRequest().authenticated()// 위의 url을 제외하고 나머지 url들은 인증된 사용자만 접근가능
+                                .requestMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/login", "/login/**", "/oauth2/**", "/**").permitAll() //해당 url은 모두 접근가능
+                                .requestMatchers("/food-approve/list/**", "/f").hasRole(Role.USER.name()) //이 url은 USER만 접근가능
+                                .anyRequest().authenticated()// 위의 url을 제외하고 나머지 url들은 인증된 사용자만 접근가능
                         //.anyRequest().permitAll()
                 )
                 .logout(logout -> logout

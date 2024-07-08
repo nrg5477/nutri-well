@@ -19,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class BasketServiceImpl implements BasketService {
-    private  final BasketDAO dao;
+    private final BasketDAO dao;
     private final CalendarRepository calendarRepository;
     private final CalendarFoodRepository calendarFoodRepository;
     private final FoodService foodService;
@@ -32,14 +32,15 @@ public class BasketServiceImpl implements BasketService {
                 .findFirst()
                 .orElse(0);
         int BaselMetabolism = dto.getUserId().getBaselMetabolism();
-        if(BaselMetabolism == 0){
+        if (BaselMetabolism == 0) {
             BaselMetabolism = 2000;
-        };
-        double weight = (double) dto.getFoodId().getWeight() /100;
+        }
+        ;
+        double weight = (double) dto.getFoodId().getWeight() / 100;
         double totalKcal = (int) (energyAmount * weight);
-        double percent = totalKcal/BaselMetabolism * 100;
+        double percent = totalKcal / BaselMetabolism * 100;
         dto.setPercent(percent);
-        System.out.println("========================================="+dto.getPercent());
+        System.out.println("=========================================" + dto.getPercent());
         Basket basket = dao.insert(dto);
         BasketResponseDTO basketResponseDTO = BasketResponseDTO.of(basket);
         return basketResponseDTO;
@@ -47,7 +48,7 @@ public class BasketServiceImpl implements BasketService {
 
     @Override
     public void deleteUser(Long userId) {
-        dao.delete(userId,LocalDate.now());
+        dao.delete(userId, LocalDate.now());
     }
 
     @Override
@@ -68,5 +69,4 @@ public class BasketServiceImpl implements BasketService {
             calendarFoodRepository.save(calendarFood);
         }
     }
-
 }
