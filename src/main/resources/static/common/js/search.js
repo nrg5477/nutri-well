@@ -6,7 +6,6 @@
             userid = user.userId;
         }
     };
-
     //추천상품목록 load
     function loadPreferredFood() {
         $.ajax({
@@ -50,23 +49,24 @@
             }
         });
     }
+   //요청 url세팅
    function buildUrl(base, params) {
        return base + '?' + new URLSearchParams(params).toString();
    }
-
+   //세션 초기화
    function resetSession() {
        sessionStorage.removeItem('nutrients');
        sessionStorage.removeItem('min');
        sessionStorage.removeItem('max');
    }
-
+   //체크박스 영양소 배열 저장
    function updateNutrients() {
        const nutrients = JSON.parse(sessionStorage.getItem('nutrients') || '[]');
        $('input[type="checkbox"]').each(function() {
            $(this).prop('checked', nutrients.includes($(this).val()));
        });
    }
-
+   //검색어 입력시 버튼이벤트
    $('#searchButton').on('click', function() {
        var queryValue = $('#query').val().trim();
        if (!queryValue) {
@@ -82,7 +82,7 @@
            size: 12
        });
    });
-
+   //카테고리별 검색
    $('.searchCategory').on('click', function() {
        resetSession();
 
@@ -92,7 +92,7 @@
            size: 12
        });
    });
-
+   //영양소 범위 검색
    $('#detailSearch').on('click', function() {
        var queryValue = $('#queryContainer').data("query");
        var category = $('#categoryContainer').data("category") || 0;
@@ -121,7 +121,7 @@
 
        location.href = buildUrl(queryValue ? '/search' : '/searchCategory', params);
    });
-
+   //checkBox 변경시 load 및 save
    $('input[type="checkbox"]').change(function() {
        const nutrient = $(this).val();
        const isChecked = $(this).is(':checked');
@@ -137,8 +137,7 @@
 
        sessionStorage.setItem('nutrients', JSON.stringify(nutrients));
    });
-   updateNutrients();
-/*=============================shop.html pagination=============================*/
+/*=============================search.html pagination=============================*/
     const totalPage = $('#pageContainer').data("pages");
     const maxPagesToShow = 10;
     let currentPageGroup = 0;
@@ -211,7 +210,7 @@
         $(this).addClass('active');
         location.href = url;
     });
-    renderPagination();
+
     /*=============================slider 효과=============================*/
     const $inputLeft = $("#input-left");
     const $inputRight = $("#input-right");
@@ -219,9 +218,30 @@
     const $thumbLeft = $(".slider .thumb.left");
     const $thumbRight = $(".slider .thumb.right");
     const $range = $(".slider .range");
+    const initRightValue = 100;
 
     $inputLeft.on("input", function() { setLeftValue(true); });
     $inputRight.on("input", function() { setRightValue(true); });
+
+    function setInitValue(){
+        const min = parseInt($inputLeft.attr("min"));
+        const max = parseInt($inputLeft.attr("max"));
+        let leftvalue = 0;
+        let rightvalue = 100;
+        $inputLeft.val(leftvalue);
+        $("#leftValue").val(leftvalue);
+
+        let percent = ((leftvalue - min) / (max - min)) * 100;
+        $thumbLeft.css("left", percent + "%");
+        $range.css("left", percent + "%");
+
+        $inputRight.val(rightvalue);
+        $("#rightValue").val(rightvalue);
+
+        percent = ((rightvalue - min) / (max - min)) * 100;
+        $thumbRight.css("right", (100 - percent) + "%");
+        $range.css("right", (100 - percent) + "%");
+    }
 
     function setLeftValue(isInputTag) {
         const min = parseInt($inputLeft.attr("min"));
@@ -252,7 +272,8 @@
             value = $inputRight.val();
         }
 
-        value = Math.max(value, parseInt($inputLeft.val()) + 100); // 초기 오른쪽 input값
+        value = Math.max(value, parseInt($inputLeft.val()) + 1); // 초기 오른쪽 input값
+
         $inputRight.val(value);
         $("#rightValue").val(value);
 
@@ -267,7 +288,7 @@
         if(left > right ){
             alert('최소값은 최댓값보다 클 수 없습니다.');
             return;
-        }else if(left >=499 || right >500){
+        }else if(left > 499 || right > 500){
             alert('최댓값은'+ $('#rightValue').attr('max') +'이하입니다.');
             return;
         }else{
@@ -288,11 +309,14 @@
         // 부드러운 스크롤 애니메이션
         $container.animate({
             scrollTop: offset
-        }, 500); // 500ms 동안 부드러운 스크롤링
+        }, 500);
     });
-    $inputLeft.on("input", setLeftValue(true));
-    $inputRight.on("input", setRightValue(true));
+    renderPagination();
+    updateNutrients();
+    setLeftValue(true);
+    setRightValue(true);
     // 초기 값 설정
     loadPreferredFood();
+    setInitValue();
 })(jQuery);
 

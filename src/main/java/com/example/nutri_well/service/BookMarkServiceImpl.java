@@ -26,21 +26,20 @@ public class BookMarkServiceImpl implements BookMarkService{
         BookMark existBookmark = dao.findByFoodIdAndUserId(bookMark.getFoodId(), bookMark.getUserId());
         boolean newState = isPreferred ? !bookMark.isPreferredState() : !bookMark.isExcludedState();
 
-        if (existBookmark != null) {
+        if (existBookmark != null) {//해당 Bookmark Data가 존재할시 상태만 update
             int result = isPreferred ?
                     dao.updatePreferredState(existBookmark.getId(), newState) :
                     dao.updateExcludedState(existBookmark.getId(), newState);
-
-            if (result > 0) {
+            if (result > 0) {//업데이트 완료시
                 if (isPreferred) {
-                    existBookmark.setPreferredState(newState);
+                    existBookmark.setPreferredState(newState);//즐찾,제외 상태 리턴
                 } else {
                     existBookmark.setExcludedState(newState);
                 }
             } else {
-                System.out.println("업데이트안됨");
+                System.out.println(existBookmark.getId() + ": 업데이트안됨");
             }
-        } else {
+        } else {//해당 Bookmark Data가 존재하지 않을시 insert
             User user = userService.findById(bookMark.getUserId()).orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
             Food food = foodDAO.findById(bookMark.getFoodId());
             existBookmark = new BookMark(food, user, isPreferred ? newState : false, isPreferred ? false : newState);
@@ -53,7 +52,8 @@ public class BookMarkServiceImpl implements BookMarkService{
     public BookMarkResponseDTO findByFoodIdAndUserId(Long foodId, Long userId) {
         BookMark bookmark = dao.findByFoodIdAndUserId(foodId, userId);
         BookMarkResponseDTO dto = new BookMarkResponseDTO();
-        if(bookmark == null){
+
+        if(bookmark == null){ //user 로그인이 안되어 있을시(DB에 등록된게 없을때) 상태 초기화
             dto.setExcludedState(false);
             dto.setPreferredState(false);
         }else{

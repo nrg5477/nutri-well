@@ -4,23 +4,20 @@
     const foodId = $("#foodContainer").data("food");
     const baseUrl = '/api/food/detail';
     const urlWithParams = `${baseUrl}?foodId=${encodeURIComponent(foodId)}`;
-    var servingSize = 0;//기준데이터
-    var foodWeight = 0;//1회 총제공량
-    var baselMetabolism = 2000;
-    var userWeight = 60;
+    var servingSize;//기준데이터
+    var foodWeight;//1회 총제공량
+    var baselMetabolism;
+    var userWeight;
     var nutritionChart;
     var userId;
     var nutrientAmounts = {};
-    window.setSessionUser = function(user) {
-        if (user != null) {
-            userId = user.userId;
-        }
-    };
+    //영양소 테이블 기준량 변경
     $('#toggleSize').click(function() {
         const isSize = $(this).toggleClass('active').hasClass('active');
         setServingSize(!isSize);
         $(this).text(isSize ?  "100g기준량 보기" : "총제공량 보기");
     });
+    //기준량 변경 & 테이블 change
     function setServingSize(isSize){
         if(isSize){
             servingSize = 1;
@@ -29,6 +26,7 @@
         }
         loadNutriTable(servingSize);
     }
+    //영양소 테이블 불러오기
     function loadNutriTable(servingSize) {
         fetch(urlWithParams)
             .then(response => response.json())
@@ -72,9 +70,11 @@
                         values: ['mg', 'mg', 'g', 'mg', 'g']
                     }
                 ];
+
                 nutrientTables.forEach(({ tableId }) => {//넣기전 초기화
                     $(`#${tableId} tbody`).empty();
                 });
+
                 let maxNutrient;
                 let maxPercentage = 0;
 
@@ -168,6 +168,7 @@
             }
         });
     }
+    //즐겨찾기&제외식품 상태 업데이트
     function loadBookmark() {
         const foodId = $("#foodContainer").data("food");
         let querydata = {
@@ -194,19 +195,6 @@
                 if (typeof error_run === 'function') {
                     error_run(xhr, status, error);
                 }
-            },
-            complete: function(xhr, status) {
-                try {
-                    if (!xhr.responseText) {
-                        throw new Error("Empty response from server");
-                    }
-                    const response = JSON.parse(xhr.responseText);
-                    if (!response) {
-                        throw new Error("Response is null");
-                    }
-                } catch (error) {
-                    console.error("Error occurred during JSON parsing or empty response: " + error);
-                }
             }
         });
     }
@@ -219,7 +207,6 @@
             updatePreferredState();
         }
     };
-
     // 제외식품
     window.toggleExcludeFood = function () {
         if (userId == null) {
@@ -229,6 +216,7 @@
             updateExcludedState();
         }
     };
+    //즐겨찾기 Top4 view 생성
     function loadPreferredFood() {
         $.ajax({
             url: "/bookmark/preferredlist",
@@ -271,6 +259,7 @@
             }
         });
     }
+    //영양소 Chart 그리기
     function updateChart(){
         if (!$('#nutritionChart-detail').data('chartInitialized')) {
             if (nutritionChart) {
@@ -288,7 +277,7 @@
                                nutrientAmounts['단백질'],
                                nutrientAmounts['지방'],
                                nutrientAmounts['당류'],
-                               nutrientAmounts['나트륨']/1000], // 예시 데이터, 실제 데이터로 변경 가능
+                               nutrientAmounts['나트륨']/1000], // 나트륨 단위(mg) 계산
                         backgroundColor: [
                             'rgba(150, 250, 50, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -332,11 +321,15 @@
         }
     }
     $(document).ready(function() {
+        //user정보 초기화
         window.setSessionUser = function(user) {
             if (user != null) {
                 baselMetabolism = user.baselMetabolism === 0 ? 2000 : user.baselMetabolism;
                 userWeight = user.weight=== null ? 60 : user.weight;
                 userId = user.userId;
+            }else{
+                baselMetabolism = 2000;
+                userWeight = 60;
             }
         };
         //로드 시 데이터표시

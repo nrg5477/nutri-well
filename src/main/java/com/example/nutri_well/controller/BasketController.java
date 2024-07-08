@@ -30,7 +30,7 @@ public class BasketController {
     private final BasketService basketService;
 
     @PostMapping("/insert")
-    public FoodResponseDTO nutriInsert(@RequestParam("foodId") Long foodId, @RequestParam(value = "userId", required = false) Long userId) {//유저아이디바당야댐
+    public FoodResponseDTO nutriInsert(@RequestParam Long foodId, @RequestParam(required = false) Long userId) {//유저아이디바당야댐
         FoodResponseDTO fooddto = null;
         if (userId != null) {//로그인시 DB저장
             fooddto = foodService.findById(foodId);
@@ -43,7 +43,7 @@ public class BasketController {
     }
 
     @PostMapping("/getBookMark")
-    public List<FoodResponseDTO> getBookMark(@RequestParam("userId") Long userId) {
+    public List<FoodResponseDTO> getBookMark(@RequestParam Long userId) {
         return bookMarkService.findFoodNamesByUserId(userId);
     }
 
@@ -59,6 +59,7 @@ public class BasketController {
         //calendar 테이블 에는 user, date, kcalPercentage 저장
         //calendarFood 테이블 에는 calendarId, foodId 저장
         User user = userService.findById(request.getUserId()).orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
+        System.out.println(user.getUserId()+"&&&&&&&&&&&&&"+request.getFoodIds()); //여기서 null로 들어오는게 문제
         basketService.saveToCalendar(user, request.getFoodIds(), LocalDate.now(), request.getKcalPercentage());
 
         return "캘린더 저장 완료";
