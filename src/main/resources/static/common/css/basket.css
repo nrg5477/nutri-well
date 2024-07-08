@@ -150,13 +150,12 @@ progress.over {
     position: relative;
     top: -350px;
     left: -77%;
-    height: 300px; /* 필요에 따라 높이를 조정하세요 */
+    height: 300px;
     overflow-y: auto;
     padding : 0px;
     width: 75%;
     background-color: #cefa7e;
 }
-
 .hv-basketlist{
     border-radius: 5px;
     border : 1px solid #ddd;

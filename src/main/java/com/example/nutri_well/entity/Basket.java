@@ -30,8 +30,7 @@ public class Basket {
     @JoinColumn(name = "foodId")
     private Food foodId;
 
-    private double percent;//기ㅏ초대사량 퍼센티지
-
+    private double percent; //기초대사량 퍼센티지
 
     public Basket(User userId, LocalDate startDate, Food foodId) {
         this.userId = userId;
