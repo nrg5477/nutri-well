@@ -1,10 +1,11 @@
 (function($) {
-"use strict";
+    "use strict";
 
     var baselMetabolism = 2000;
     var userWeight = 60;
     var nutritionChart;
     var userId;
+
     $('#initBasket').click(function() {
         sessionStorage.removeItem('foodNames');
         sessionStorage.removeItem('nutrientData');
@@ -32,6 +33,7 @@
     //음식이름 저장
     function storeFoods(foodData) {
         let foodNames = getStoredFoods();
+
         if (foodNames.length > 20) {
             alert('그만드세요;;');
             return false;
@@ -53,7 +55,6 @@
         storeNutrients(storedNutrients);
         return storedNutrients;
     }
-
     //테이블 업데이트
     var kcalPercentage;
     
@@ -66,6 +67,7 @@
                                + '</div>';
         var tableHtml = '<table>';
         tableHtml += '<thead>';
+
         if (nutrientData['에너지']) {
             tableHtml += '<tr>';
             tableHtml += '<th>총 내용량</th>';
@@ -97,7 +99,6 @@
             tableHtml += '<tr>';
             tableHtml += '<td>' + nutrientName + '<div class="input-wrapper"><input class="amount" value="' + amount + '"><span>' + unit + '</span></div></td>';
             tableHtml += '<td><input class="percent ' + percentClass + '" value="' + percentage + '" readonly>%</td>';
-            // tableHtml += '<td><div class="bar-container"><div class="bar" style="width: ' + percentage + '%;"></div></div></td>';
             tableHtml += '</tr>';
         });
         tableHtml += '</tbody>';
@@ -131,13 +132,13 @@
             "foodId": foodId,
             "userId": userId,
         };
+
         $.ajax({
             url: baseUrl+"/basket/insert",
             type: "POST",
             dataType: "json",
             data: data,
             success: function(response) {
-                console.log(response)
                 if(storeFoods(response.name)){
                     //새 영양소 데이터누적 들어갈땐 중량포함해서 누적한다.
                     var accumulatedNutrients = accumulateNutrients(response.nutrientlist,response.weight);
@@ -160,7 +161,6 @@
     };
     $('#bmr-tab').on('shown.bs.tab', function () {
         updateChart();
-        //$('#nutritionChart').data('chartInitialized', true);
     });
     function updateChart(){
         if (!$('#nutritionChart').data('chartInitialized')) {
@@ -169,6 +169,7 @@
             }
             var ctx = $('#nutritionChart')[0].getContext('2d');
             let nutri = getStoredNutrients();
+
             nutritionChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
@@ -229,6 +230,7 @@
             return;
         }
         const baseUrl = 'http://localhost:9079';
+
         $.ajax({
             url: baseUrl + '/basket/getBookMark',
             type: 'POST',
@@ -277,7 +279,6 @@
         updateFoodTable(getStoredFoods());
         loadBookMark();
     });
-
     $('#saveCalendarBtn').click(function() {
         saveCalendar();
     });
@@ -293,11 +294,8 @@
 
         // 세션 스토리지에서 'food' 객체 가져오기 및 배열 확인
         let storedFoods = JSON.parse(sessionStorage.getItem('food'));
-
-
         // foodIds 추출
         let foodIds = storedFoods.map(food => food.id);
-
         let data = {
             "userId": userId,
             "foodIds": foodIds,

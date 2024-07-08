@@ -37,6 +37,7 @@
                     console.error('Food 객체나 nutrientlist 배열이 정의되지 않았습니다.');
                     return;
                 }
+
                 foodWeight = foodData.weight;
                 const kcalAmount = (foodData.nutrientlist[0].amount * servingSize).toFixed(1);
                 $('#nutriKcal').text(`${kcalAmount} kcal`);
@@ -76,6 +77,7 @@
                 });
                 let maxNutrient;
                 let maxPercentage = 0;
+
                 nutrientTables.forEach(({ tableId, nutrients, values }) => {
                     nutrients.forEach((nutrient, index) => {
                         const unit = values[index];
@@ -99,8 +101,7 @@
                         $(`#${tableId} tbody`).append(row);
                     });
                 });
-                $("#nutriText").text(maxNutrient+" 함유량이 높은 제품입니다.")
-                //sessionStorage.setItem('nutrilist', );
+                $("#nutriText").text(maxNutrient+" 함유량이 높은 제품입니다.");
             })
             .catch(error => {
                 console.error('데이터를 가져오는 데 실패했습니다:', error);
@@ -114,6 +115,7 @@
             "foodId": foodId,
             "preferredState": $('#favorite-button').hasClass('favorited'),
         };
+
         $.ajax({
             url: "/bookmark/favorited",
             type: "POST",
@@ -226,7 +228,6 @@
         }else{
             updateExcludedState();
         }
-
     };
     function loadPreferredFood() {
         $.ajax({
@@ -275,6 +276,7 @@
             if (nutritionChart) {
                 nutritionChart.destroy();
             }
+
             var ctx = $('#nutritionChart-detail')[0].getContext('2d');
             nutritionChart = new Chart(ctx, {
                 type: 'pie',
@@ -342,6 +344,5 @@
         loadBookmark();
         loadPreferredFood();
         loadNutriTable(1);
-
     });
 })(jQuery);
