@@ -23,7 +23,6 @@
   position: fixed;
   z-index: 1000;
   white-space: nowrap;
-  /*left: 50%;*/
   transform: translateX(500%);
 }
 .middle {
@@ -31,14 +30,12 @@
   width: 100%;
   max-width: 500px;
 }
-
 .slider {
   position: relative;
   z-index: 1;
   height: 10px;
   margin: 0 15px;
 }
-
 .slider > .track {
   position: absolute;
   z-index: 1;
@@ -49,7 +46,6 @@
   border-radius: 5px;
   background-color: #cefa7e;
 }
-
 .slider > .range {
   position: absolute;
   z-index: 2;
@@ -60,7 +56,6 @@
   border-radius: 5px;
   background-color: #81c408;
 }
-
 .slider > .thumb {
   position: absolute;
   z-index: 3;
@@ -69,7 +64,6 @@
   background-color: #81c408;
   border-radius: 50%;
 }
-
 .slider > .thumb.left {
   left: 25%;
   transform: translate(-10px, -5px);
@@ -78,10 +72,9 @@
   right: 25%;
   transform: translate(10px, -5px);
 }
-
 input[type="range"] {
   position: absolute;
-  /* opacity로 가린 것을 이벤트도 비활성화하기 위해 */
+  /* opacity로 가린 것을 이벤트도 비활성화하기 위해 사용*/
   pointer-events: none;
   -webkit-appearance: none;
   z-index: 2;
@@ -118,5 +111,5 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 10px !important;
 }
 .rounded.active {
-    background-color: #9acd32; /* 원하는 배경색으로 변경하세요 */
+    background-color: #9acd32;
 }

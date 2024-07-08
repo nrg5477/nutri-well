@@ -1,65 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-<div class="basket" th:fragment="basket">
-    <div class="favorites px-4">
-        <!--         즐겨찾기 목록 (for문으로 반목문 처리해서 뿌려주면 될듯)-->
-        <section>
-            <span class="star">⭐</span>
-            <select id="bookmark-select">
-                <option value="#">즐겨찾기 목록</option>
-            </select>
-        </section>
-    </div>
-    <ul class="nav nav-tabs section-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="daily-tab" data-bs-toggle="tab" href="#daily" role="tab" aria-controls="daily" aria-selected="true">일일 권장 섭취량</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="bmr-tab" data-bs-toggle="tab" href="#bmr" role="tab" aria-controls="bmr" aria-selected="false">영양성분 차트</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="daily" role="tabpanel" aria-labelledby="daily-tab">
-            <h4>영양정보</h4>
-            <h5>나의 하루섭취량은?</h5>
-            <div class="nutrition-info">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="basket" th:fragment="basket">
+            <div class="favorites px-4">
+                <!-- 즐겨찾기 목록 -->
+                <section>
+                    <span class="star">⭐</span>
+                    <select id="bookmark-select">
+                        <option value="#">즐겨찾기 목록</option>
+                    </select>
+                </section>
+            </div>
+            <ul class="nav nav-tabs section-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="daily-tab" data-bs-toggle="tab" href="#daily" role="tab" aria-controls="daily" aria-selected="true">일일 권장 섭취량</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="bmr-tab" data-bs-toggle="tab" href="#bmr" role="tab" aria-controls="bmr" aria-selected="false">영양성분 차트</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="daily" role="tabpanel" aria-labelledby="daily-tab">
+                    <h4>영양정보</h4>
+                    <h5>나의 하루섭취량은?</h5>
+                    <div class="nutrition-info"></div>
+                </div>
+                <div class="tab-pane fade" id="bmr" role="tabpanel" aria-labelledby="bmr-tab">
+                    <!-- 기초대사량 내용 -->
+                    <div class="basel">
+                        <h2>영양성분 차트</h2>
+                        <div class="baselMetabolism"></div>
+                        <div class="chart-nutri">
+                            <canvas id="nutritionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer baselInfo p-2">
+                <span th:utext="${session.user == null || session.user.baselMetabolism == null || session.user.baselMetabolism == 0 ?
+                       '1일 영양성분 기준치에 대한 비율(%)은 2,000kcal 기준입니다.' :
+                       '나의 기초대사량은 ' + session.user.baselMetabolism + ' 입니다.'}"></span>
+            </div>
+            <!--   담긴 식품     -->
+            <div class="basketFood">
+                <h5 class="hv-basketlist">음식 리스트 보기</h5>
+                <div class="submit">
+                    <button id="initBasket">초기화</button>
+                    <button type="submit" id="saveCalendarBtn">캘린더 등록</button>
+                </div>
+                <div class="scrollable foodTableContainer">
+                    <!-- 테이블이 여기에 추가됩니다 -->
+                </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="bmr" role="tabpanel" aria-labelledby="bmr-tab">
-            <!-- 기초대사량 내용 -->
-            <div class="basel">
-                <h2>영양성분 차트</h2>
-                <div class="baselMetabolism">
-                </div>
-                <div class="chart-nutri">
-                    <canvas id="nutritionChart"></canvas>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="footer baselInfo p-2">
-        <span th:utext="${session.user == null || session.user.baselMetabolism == null || session.user.baselMetabolism == 0 ?
-               '1일 영양성분 기준치에 대한 비율(%)은 2,000kcal 기준입니다.' :
-               '나의 기초대사량은 ' + session.user.baselMetabolism + ' 입니다.'}"></span>
-    </div>
-    <!--   담긴 식품     -->
-    <div class="basketFood">
-        <h5 class="hv-basketlist">음식 리스트 보기</h5>
-        <div class="submit">
-            <button id="initBasket">초기화</button>
-            <button type="submit" id="saveCalendarBtn">캘린더 등록</button>
-        </div>
-        <div class="scrollable foodTableContainer">
-            <!-- 테이블이 여기에 추가됩니다 -->
-        </div>
-    </div>
-
-</div>
-
-</body>
+    </body>
 </html>

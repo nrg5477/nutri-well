@@ -1,10 +1,4 @@
 /*** 즐겨찾기 제외식품 추가***/
-/*body {
-    font-family: "Gamja Flower", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 20px;
-}*/
 #food-wrap-container {
     display: flex;
     align-items: center;
@@ -13,13 +7,13 @@
 .food-bookmark button {
     background: none;
     border: none;
-    padding: 0.5rem; /* 버튼의 클릭 영역을 늘림 */
+    padding: 0.5rem;
     cursor: pointer;
 }
 .food-exclude i {
     color: gray;
     transition: color 0.2s;
-    font-size: 3rem; /* 아이콘 크기 조정 */
+    font-size: 3rem;
 }
 .food-exclude.excluded i {
     color: red;
@@ -27,7 +21,7 @@
 .food-favorite i {
     color: gray;
     transition: color 0.2s;
-    font-size: 3rem; /* 아이콘 크기 조정 */
+    font-size: 3rem;
 }
 .food-favorite.favorited i {
     color: gold;
@@ -43,11 +37,11 @@
     text-align: center;
 }
 table {
-    width: 20%; /* 테이블의 너비를 50%로 설정 */
-    margin: 5px; /* 테이블을 가운데 정렬 */
-    border-collapse: separate; /* 테이블 경계선을 분리 */
-    border-radius: 8px; /* 테이블 모서리를 둥글게 설정 */
-    border: 1px solid #ffb524; /* 테이블 셀 경계선 색상 */
+    width: 20%;
+    margin: 5px;
+    border-collapse: separate;
+    border-radius: 8px;
+    border: 1px solid #ffb524;
     overflow: hidden;
     background-color: #f4f6f8;
 }
@@ -55,20 +49,20 @@ th {
     text-align: center;
 }
 th, td {
-    border: 1px solid #ffb524; /* 테이블 셀 경계선 색상 */
-    padding: 8px; /* 셀 내부 여백 */
-    border-left: none; /* 왼쪽 경계선을 제거 */
-    border-top: none; /* 위쪽 경계선을 제거 */
+    border: 1px solid #ffb524;
+    padding: 8px;
+    border-left: none;
+    border-top: none;
 }
 tr:last-child td {
-    border-bottom: none; /* 마지막 행의 오른쪽 경계선을 제거 */
+    border-bottom: none;
 }
 th:last-child, td:last-child {
-    border-right: none; /* 마지막 셀의 오른쪽 경계선을 제거 */
+    border-right: none;
 }
 .progress {
-    width: 100%; /* 진행 바 컨테이너 너비 */
-    background-color: #ffffff; /* 진행 바 배경 색 */
+    width: 100%;
+    background-color: #ffffff;
 }
 #nutritablerow{
     display: flex;
@@ -83,12 +77,12 @@ th:last-child, td:last-child {
 }
 #nutri-row{
     display: flex;
-    justify-content: flex-end; /* 요소를 오른쪽에 정렬 */
+    justify-content: flex-end;
 }
 .progress-bar {
-    width: 0%; /* 시작 너비 */
-    height: 20px; /* 진행 바 높이 */
-    background-color: #4caf50; /* 진행 바 색 */
+    width: 0%;
+    height: 20px;
+    background-color: #4caf50;
 }
 .chart-nutri{
     width : 55%;!important;

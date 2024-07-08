@@ -2,266 +2,259 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/mainLayout}">
-<head>
-    <meta charset="utf-8">
-</head>
-<body>
-<div layout:fragment="content">
-    <!-- Single Page Header start -->
-    <div class="container-fluid page-header shop-header py-5">
-        <h1 class="text-center text-white display-6">Search</h1>
-    </div>
-    <!-- Single Page Header End -->
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <!-- Single Page Header start -->
+            <div class="container-fluid page-header shop-header py-5">
+                <h1 class="text-center text-white display-6">Search</h1>
+            </div>
+            <!-- Single Page Header End -->
 
-    <!-- Fruits Shop Start-->
-    <div class="container-fluid fruite py-0">
-        <div class="container-nutri">
-            <div class="container py-2">
-                <h1 class="mb-4">식품</h1>
-                <div class="row g-4">
-                    <div class="col-lg-12">
+
+            <!-- Fruits Shop Start-->
+            <div class="container-fluid fruite py-0">
+                <div class="container-nutri">
+                    <div class="container py-2">
+                        <h1 class="mb-4">식품</h1>
                         <div class="row g-4">
-                            <div class="col-xl-3">
-                                <div class="input-group w-100 mx-auto d-flex">
-                                    <input type="search" id="query" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                                    <button id="searchButton" type="submit" class="input-group-text p-3"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <h3><a href="http://localhost:9079/search?query=&page=0&size=12">전체보기</a></h3>
-                            </div>
-                        </div>
-                        <div class="row g-4">
-                            <div class="col-lg-3">
+                            <div class="col-lg-12">
                                 <div class="row g-4">
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <h4>Categories</h4>
-                                            <div class="scrollable" id="results">
-                                                <ul class="list-unstyled fruite-categorie">
-                                                    <li th:each="category: ${categories}">
-                                                        <div class="nav-item dropdown">
-                                                            <div class="d-flex justify-content-between fruite-name">
-                                                                <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                                                    <i class="fas fa-apple-alt me-2" th:text="' ' + ${category.categoryName}"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu m-0 bg-nutri scrollable-dropdown" id="cd-category">
-                                                                    <a class="dropdown-item searchCategory" th:each="child: ${category.childCategory}"
-                                                                       th:data-filter-type="category" th:data-filter-value="${child.categoryId}"
-                                                                       th:text="${child.categoryName}">
-                                                                    </a>
+                                    <div class="col-xl-3">
+                                        <div class="input-group w-100 mx-auto d-flex">
+                                            <input type="search" id="query" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                                            <button id="searchButton" type="submit" class="input-group-text p-3"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h3><a href="http://localhost:9079/search?query=&page=0&size=12">전체보기</a></h3>
+                                    </div>
+                                </div>
+                                <div class="row g-4">
+                                    <div class="col-lg-3">
+                                        <div class="row g-4">
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <h4>Categories</h4>
+                                                    <div class="scrollable" id="results">
+                                                        <ul class="list-unstyled fruite-categorie">
+                                                            <li th:each="category: ${categories}">
+                                                                <div class="nav-item dropdown">
+                                                                    <div class="d-flex justify-content-between fruite-name">
+                                                                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                                                            <i class="fas fa-apple-alt me-2" th:text="' ' + ${category.categoryName}"></i>
+                                                                        </a>
+                                                                        <div class="dropdown-menu m-0 bg-nutri scrollable-dropdown" id="cd-category">
+                                                                            <a class="dropdown-item searchCategory" th:each="child: ${category.childCategory}"
+                                                                               th:data-filter-type="category" th:data-filter-value="${child.categoryId}"
+                                                                               th:text="${child.categoryName}">
+                                                                            </a>
+                                                                        </div>
+                                                                        <span th:text="${#lists.size(category.childCategory)}">(3)</span>
+                                                                    </div>
                                                                 </div>
-                                                                <span th:text="${#lists.size(category.childCategory)}">(3)</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 mb-lg-4">
+                                                <h5 class="mb-3">영양소 세부검색</h5>
+                                                <div class="mb-3">
+                                                    <div class="mb-2">
+                                                        <input type="checkbox" class="me-2" id="Categories-1" name="nutrient" value="탄수화물">
+                                                        <label for="Categories-1"> 탄수화물</label>
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <input type="checkbox" class="me-2" id="Categories-2" name="nutrient" value="단백질">
+                                                        <label for="Categories-2"> 단백질</label>
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <input type="checkbox" class="me-2" id="Categories-3" name="nutrient" value="지방">
+                                                        <label for="Categories-3"> 지방</label>
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <input type="checkbox" class="me-2" id="Categories-4" name="nutrient" value="당류">
+                                                        <label for="Categories-4"> 당류</label>
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <input type="checkbox" class="me-2" id="Categories-5" name="nutrient" value="나트륨">
+                                                        <label for="Categories-5"> 나트륨</label>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <h4 class="mb-2">영양소 범위</h4>
+                                                    <div class="middle">
+                                                        <div class="multi-range-slider">
+                                                            <input type="range" class="form-range w-100" id="input-left" min="0" max="500" value="0" >
+                                                            <input type="range" class="form-range w-100" id="input-right" min="0" max="500" value="0" >
+                                                            <div class="slider">
+                                                                <div class="track"></div>
+                                                                <div class="range"></div>
+                                                                <div class="thumb left"></div>
+                                                                <div class="thumb right"></div>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 mb-lg-4">
-                                        <h5 class="mb-3">영양소 세부검색</h5>
-                                        <div class="mb-3">
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-1" name="nutrient" value="탄수화물">
-                                                <label for="Categories-1"> 탄수화물</label>
-                                            </div>
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-2" name="nutrient" value="단백질">
-                                                <label for="Categories-2"> 단백질</label>
-                                            </div>
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-3" name="nutrient" value="지방">
-                                                <label for="Categories-3"> 지방</label>
-                                            </div>
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-4" name="nutrient" value="당류">
-                                                <label for="Categories-4"> 당류</label>
-                                            </div>
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-5" name="nutrient" value="나트륨">
-                                                <label for="Categories-5"> 나트륨</label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <h4 class="mb-2">영양소 범위</h4>
-                                            <div class="middle">
-                                                <div class="multi-range-slider">
-                                                    <input type="range" class="form-range w-100" id="input-left" min="0" max="500" value="0" >
-                                                    <input type="range" class="form-range w-100" id="input-right" min="0" max="500" value="0" >
-                                                    <div class="slider">
-                                                        <div class="track"></div>
-                                                        <div class="range"></div>
-                                                        <div class="thumb left"></div>
-                                                        <div class="thumb right"></div>
                                                     </div>
+                                                </div>
+                                                <div class="inputRange mb-2">
+                                                    <input class="inputRangeValue" id="leftValue" min="0" max="500" value="0">
+                                                    <input class="inputRangeValue" id="rightValue" min="0" max="500" value="0">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <button id="setRange"  class="btn btn-primary">범위설정</button>
+                                                    <button id="detailSearch"  class="btn btn-primary">상세검색</button>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <a th:href="@{/food-approve/request}" class="btn btn-primary">식품 추가</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <h4 class="mb-3">인기식품</h4>
+                                                <div id="preferrerd-food-list">
+                                                    <!--shop.js loadPreferrerdfood 동적 뷰 생성 -->
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="inputRange mb-2">
-                                            <input class="inputRangeValue" id="leftValue" min="0" max="500" value="0">
-                                            <input class="inputRangeValue" id="rightValue" min="0" max="500" value="0">
-                                        </div>
-                                        <div class="mb-3">
-                                            <button id="setRange"  class="btn btn-primary">범위설정</button>
-                                            <button id="detailSearch"  class="btn btn-primary">상세검색</button>
-                                        </div>
-                                        <div class="mb-3">
-                                            <a th:href="@{/food-approve/request}" class="btn btn-primary">식품 추가</a>
-                                        </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <h4 class="mb-3">인기식품</h4>
-                                        <div id="preferrerd-food-list">
-                                            <!--shop.js loadPreferrerdfood 동적 뷰 생성 -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <div class="row g-4 justify-content-center">
-                                    <div class="col-md-6 col-lg-6 col-xl-4" th:each="food : ${foodlist}">
-                                        <form th:action="@{/insert}" method="post">
-
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
-<!--                                                    이미지 높이 스타일 css로 이동 예정-->
-                                                    <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${food.categoryName}"></div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom" >
-                                                    <input type="hidden" th:value="${food.foodCode}" th:name="foodCode">
-                                                    <h4>
-                                                        <a th:href="@{/food/detail(foodId=${food.id})}" th:text="${food.name}"></a>
-                                                    </h4>
-                                                    <div class="unit">
-                                                        <span>100g/ml 당</span>
-                                                        <span th:text="'식품중량: ' + ${food.weight} + 'g/ml'"></span>
+                                    <div class="col-lg-9">
+                                        <div class="row g-4 justify-content-center">
+                                            <div class="col-md-6 col-lg-6 col-xl-4" th:each="food : ${foodlist}">
+                                                <form th:action="@{/insert}" method="post">
+                                                    <div class="rounded position-relative fruite-item">
+                                                        <div class="fruite-img">
+                                                            <img th:if="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
+                                                            <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'/common/img/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
+                                                        </div>
+                                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${food.categoryName}"></div>
+                                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom" >
+                                                            <input type="hidden" th:value="${food.foodCode}" th:name="foodCode">
+                                                            <h4>
+                                                                <a th:href="@{/food/detail(foodId=${food.id})}" th:text="${food.name}"></a>
+                                                            </h4>
+                                                            <div class="unit">
+                                                                <span>100g/ml 당</span>
+                                                                <span th:text="'식품중량: ' + ${food.weight} + 'g/ml'"></span>
+                                                            </div>
+                                                            <span th:each="nutrient : ${food.nutrientlist}" th:text="${nutrient.name} + ': ' + ${nutrient.amount} + ${nutrient.value} + ' '"></span>
+                                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                                <p class="text-dark fs-5 fw-bold mb-0 mt-1" th:text="${food.nutrientlist[0].amount} + ${food.nutrientlist[0].value}" >$4.99 / kg</p>
+                                                                <button type="button" th:foodId="${food.id}" th:onclick="addBasket(this.getAttribute('foodId'))" class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>담기</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <span th:each="nutrient : ${food.nutrientlist}" th:text="${nutrient.name} + ': ' + ${nutrient.amount} + ${nutrient.value} + ' '"></span>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0 mt-1" th:text="${food.nutrientlist[0].amount} + ${food.nutrientlist[0].value}" >$4.99 / kg</p>
-                                                        <button type="button" th:foodId="${food.id}" th:onclick="addBasket(this.getAttribute('foodId'))" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i>담기</button>
-                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="pagination d-flex justify-content-center mt-5" >
+                                                    <a href="#"  class="rounded" id="prev">&laquo;</a>
+                                                    <span id="page-container">
+                                                        <!-- 페이지 동적 추가 10개씩-->
+                                                </span>
+                                                    <a href="#" class="rounded" id="next">&raquo;</a>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="pagination d-flex justify-content-center mt-5" >
-                                            <a href="#"  class="rounded" id="prev">&laquo;</a>
-                                            <span id="page-container">
-                                                    <!-- 페이지 동적 추가 10개씩-->
-                                            </span>
-                                            <a href="#" class="rounded" id="next">&raquo;</a>
+                                            <div id="queryContainer" th:data-query="${query}"></div>
+                                            <div id="categoryContainer" th:data-category="${category}"></div>
+                                            <div id="nutrientContainer" th:data-array='${nutrient}'></div>
+                                            <div id="pageContainer" th:data-pages="${totalPage}"></div>
                                         </div>
                                     </div>
-                                    <div id="queryContainer" th:data-query="${query}"></div>
-                                    <div id="categoryContainer" th:data-category="${category}"></div>
-                                    <div id="nutrientContainer" th:data-array='${nutrient}'></div>
-                                    <div id="pageContainer" th:data-pages="${totalPage}"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Fruits Shop End-->
+            <!-- Fruits Shop End-->
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-        <div class="container py-5">
-            <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
-                <div class="row g-4">
-                    <div class="col-lg-3">
-                        <a href="#">
-                            <h1 class="text-primary mb-0">Nutri - Well</h1>
-                            <p class="text-secondary mb-0">Fresh products</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="position-relative mx-auto">
-                            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" >
-                            <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+            <!-- Footer Start -->
+            <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+                <div class="container py-5">
+                    <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+                        <div class="row g-4">
+                            <div class="col-lg-3">
+                                <a href="#">
+                                    <h1 class="text-primary mb-0">Nutri - Well</h1>
+                                    <p class="text-secondary mb-0">Fresh products</p>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="position-relative mx-auto">
+                                    <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" >
+                                    <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="d-flex justify-content-end pt-3">
+                                    <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                                    <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="d-flex justify-content-end pt-3">
-                            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <div class="row g-5">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-item">
+                                <h4 class="text-light mb-3">Nutri Well, 왜 이용할까요?</h4>
+                                <p class="mb-4">식품의 영양정보와 매일매일 섭취한 영양소을 기록해두세요. 개인의 영양상태를 파악하고, 다양한 식품들의 영양소 정보를 제공하여 건강한 식생활을 돕는것을 목표로 합니다.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="d-flex flex-column text-start footer-item">
+                                <h4 class="text-light mb-3">개발자</h4>
+                                <p>진영록</p>
+                                <p>남정길</p>
+                                <p>조상우</p>
+                                <p>이희찬</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="d-flex flex-column text-start footer-item">
+                                <h4 class="text-light mb-3">도움주신 분들</h4>
+                                <a class="btn-link" href="#">김서연 강사님</a>
+                                <a class="btn-link" href="#">최승호 멘토님</a>
+                                <a class="btn-link" href="#">조영일 멘토님</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-item">
+                                <h4 class="text-light mb-3">Contact</h4>
+                                <a class="btn-link" href="https://github.com/6worry">진영록</a>
+                                <a class="btn-link" href="https://github.com/letsgilit">남정길</a>
+                                <a class="btn-link" href="https://github.com/sangwoo-00">조상우</a>
+                                <a class="btn-link" href="https://github.com/nrg5477">이희찬</a>
+                                <img src="/common/img/payment.png" class="img-fluid" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-item">
-                        <h4 class="text-light mb-3">Nutri Well, 왜 이용할까요?</h4>
-                        <p class="mb-4">식품의 영양정보와 매일매일 섭취한 영양소을 기록해두세요. 개인의 영양상태를 파악하고, 다양한 식품들의 영양소 정보를 제공하여 건강한 식생활을 돕는것을 목표로 합니다.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column text-start footer-item">
-                        <h4 class="text-light mb-3">개발자</h4>
-                        <p>진영록</p>
-                        <p>남정길</p>
-                        <p>조상우</p>
-                        <p>이희찬</p>
+            <!-- Footer End -->
 
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column text-start footer-item">
-                        <h4 class="text-light mb-3">Account</h4>
-                        <a class="btn-link" href="">My Account</a>
-                        <a class="btn-link" href="">Shop details</a>
-                        <a class="btn-link" href="">Shopping Cart</a>
-                        <a class="btn-link" href="">Wishlist</a>
-                        <a class="btn-link" href="">Order History</a>
-                        <a class="btn-link" href="">International Orders</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-item">
-                        <h4 class="text-light mb-3">Contact</h4>
-                        <a class="btn-link" href="https://github.com/6worry">진영록</a>
-                        <a class="btn-link" href="https://github.com/letsgilit">남정길</a>
-                        <a class="btn-link" href="https://github.com/sangwoo-00">조상우</a>
-                        <a class="btn-link" href="https://github.com/nrg5477">이희찬</a>
-                        <img src="/common/img/payment.png" class="img-fluid" alt="">
+            <!-- Copyright Start -->
+            <div class="container-fluid copyright bg-dark py-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nutri - Well</a>, All right reserved.</span>
+                        </div>
+                        <div class="col-md-6 my-auto text-center text-md-end text-white">
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+            <!-- Copyright End -->
 
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright bg-dark py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nutri - Well</a>, All right reserved.</span>
-                </div>
-                <div class="col-md-6 my-auto text-center text-md-end text-white">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Copyright End -->
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-</div>
-</body>
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+        </div>
+    </body>
 </html>
