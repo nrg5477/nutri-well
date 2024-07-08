@@ -26,6 +26,7 @@ public class BasketServiceImpl implements BasketService {
 
     @Override
     public BasketResponseDTO insert(Basket dto) {
+        //개인 기초대사량에 맞춰 음식별 기초대사량 퍼센트 계산
         double energyAmount = dto.getFoodId().getNutrientlist().stream()
                 .filter(nutrient -> "에너지".equals(nutrient.getNutrient().getName()))
                 .mapToDouble(FoodNutrient::getAmount)
@@ -34,13 +35,13 @@ public class BasketServiceImpl implements BasketService {
         int BaselMetabolism = dto.getUserId().getBaselMetabolism();
         if (BaselMetabolism == 0) {
             BaselMetabolism = 2000;
-        }
-        ;
+        };
+
         double weight = (double) dto.getFoodId().getWeight() / 100;
         double totalKcal = (int) (energyAmount * weight);
         double percent = totalKcal / BaselMetabolism * 100;
         dto.setPercent(percent);
-        System.out.println("=========================================" + dto.getPercent());
+
         Basket basket = dao.insert(dto);
         BasketResponseDTO basketResponseDTO = BasketResponseDTO.of(basket);
         return basketResponseDTO;
@@ -69,4 +70,5 @@ public class BasketServiceImpl implements BasketService {
             calendarFoodRepository.save(calendarFood);
         }
     }
+
 }

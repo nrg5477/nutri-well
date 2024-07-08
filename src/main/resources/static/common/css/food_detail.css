@@ -43,11 +43,11 @@
     text-align: center;
 }
 table {
-    width: 20%; /* 테이블의 너비를 50%로 설정 */
-    margin: 5px; /* 테이블을 가운데 정렬 */
+    width: 20%;
+    margin: 5px;
     border-collapse: separate; /* 테이블 경계선을 분리 */
-    border-radius: 8px; /* 테이블 모서리를 둥글게 설정 */
-    border: 1px solid #ffb524; /* 테이블 셀 경계선 색상 */
+    border-radius: 8px;
+    border: 1px solid #ffb524;
     overflow: hidden;
     background-color: #f4f6f8;
 }
@@ -55,16 +55,16 @@ th {
     text-align: center;
 }
 th, td {
-    border: 1px solid #ffb524; /* 테이블 셀 경계선 색상 */
-    padding: 8px; /* 셀 내부 여백 */
-    border-left: none; /* 왼쪽 경계선을 제거 */
-    border-top: none; /* 위쪽 경계선을 제거 */
+    border: 1px solid #ffb524;
+    padding: 8px;
+    border-left: none;
+    border-top: none;
 }
 tr:last-child td {
-    border-bottom: none; /* 마지막 행의 오른쪽 경계선을 제거 */
+    border-bottom: none;
 }
 th:last-child, td:last-child {
-    border-right: none; /* 마지막 셀의 오른쪽 경계선을 제거 */
+    border-right: none;
 }
 .progress {
     width: 100%; /* 진행 바 컨테이너 너비 */
@@ -86,9 +86,9 @@ th:last-child, td:last-child {
     justify-content: flex-end; /* 요소를 오른쪽에 정렬 */
 }
 .progress-bar {
-    width: 0%; /* 시작 너비 */
-    height: 20px; /* 진행 바 높이 */
-    background-color: #4caf50; /* 진행 바 색 */
+    width: 0%;
+    height: 20px;
+    background-color: #4caf50;
 }
 .chart-nutri{
     width : 55%;!important;

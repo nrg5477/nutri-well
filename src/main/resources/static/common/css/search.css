@@ -118,5 +118,5 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 10px !important;
 }
 .rounded.active {
-    background-color: #9acd32; /* 원하는 배경색으로 변경하세요 */
+    background-color: #9acd32;
 }

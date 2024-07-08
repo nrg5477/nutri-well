@@ -11,7 +11,6 @@
     };
     spinner(0);
 
-
     // Fixed Navbar
     $(window).scroll(function () {
         if ($(window).width() < 992) {
@@ -29,20 +28,18 @@
         } 
     });
     
-    
    // Back to top button
    $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-        $('.back-to-top').fadeIn('slow');
-    } else {
-        $('.back-to-top').fadeOut('slow');
-    }
-    });
-    $('.back-to-top').click(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+   });
+   $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
-    });
-
+   });
 
     // Testimonial carousel
     $(".testimonial-carousel").owlCarousel({
@@ -77,7 +74,6 @@
         }
     });
 
-
     // vegetable carousel
     $(".vegetable-carousel").owlCarousel({
         autoplay: true,
@@ -111,14 +107,13 @@
         }
     });
 
-
     // Modal Video
     $(document).ready(function () {
         var $videoSrc;
+
         $('.btn-play').click(function () {
             $videoSrc = $(this).data("src");
         });
-        console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
@@ -128,10 +123,12 @@
             $("#video").attr('src', $videoSrc);
         })
     });
+
     // Product Quantity
     $('.quantity button').on('click', function () {
         var button = $(this);
         var oldValue = button.parent().parent().find('input').val();
+
         if (button.hasClass('btn-plus')) {
             var newVal = parseFloat(oldValue) + 1;
         } else {
@@ -143,6 +140,7 @@
         }
         button.parent().parent().find('input').val(newVal);
     });
+
     //main 검색기능
     $('#searchButton').on('click', function ()  {
         search();
@@ -156,6 +154,7 @@
 
     function search() {
         var queryValue = $('#query').val();
+
         if (queryValue === null || queryValue.trim() === '') {
                alert('검색어를 입력하세요');
                return;
@@ -181,60 +180,19 @@
             window.location.href = document.referrer; // 이전 페이지로 돌아감
         }
     });
-    //검색 자동완성 *별로라서 안쓰는게 나을듯
-//    $(document).ready(function() {
-//        $("#query").on("input", function() {
-//            let query = $(this).val();
-//            if (query.length > 1) {
-//                $.ajax({
-//                    url: 'api/auto/search',
-//                    type: 'GET',
-//                    data: { query: query },
-//                    success: function(data) {
-//                        let suggestions = $("#suggestions");
-//                        suggestions.empty();
-//                        data.forEach(function(food) {
-//                            suggestions.append('<div class="suggestion-item" data-query="' + food.name + '">' + food.name + '</div>');
-//                        });
-//                        // 새로 추가된 제안 항목에 클릭 이벤트 핸들러 바인딩
-//                        $(".suggestion-item").on("click", function() {
-//                            let selectedQuery = $(this).data("query");
-//                            search(selectedQuery);
-//                        });
-//                    },
-//                    error: function(error) {
-//                        console.log("Error: ", error);
-//                    }
-//                });
-//            } else {
-//                $("#suggestions").empty();
-//            }
-//        });
-//    });
-//    function search(query){
-//        var params = {
-//            query: query,
-//            page: 0,
-//            size: 12
-//        };
-//        // URLSearchParams 객체를 사용하여 파라미터를 URL 형식으로 변환
-//        var searchParams = new URLSearchParams(params);
-//        var url = '/search?' + searchParams.toString();
-//        location.href = url;
-//    }
-        function showSignupMessage() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const signupSuccess = urlParams.get('signupSuccess');
 
-            console.log(signupSuccess);
-                if (signupSuccess === "true") {
-                    alert("회원가입 성공");
-                    }
-                }
+    function showSignupMessage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const signupSuccess = urlParams.get('signupSuccess');
 
-            document.addEventListener('DOMContentLoaded', function() {
-                showSignupMessage();
-        });
+        if (signupSuccess === "true") {
+            alert("회원가입 성공");
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        showSignupMessage();
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -247,7 +205,6 @@
             }
         }
 
-
         if (window.baselMetabolism === 0) {
             if (confirm("기초대사량이 0입니다. 개인정보를 수정해 주세요. 수정 페이지로 이동하시겠습니까?")) {
                 window.location.href = '/mypage.do?tab=profile';
@@ -255,5 +212,3 @@
         }
     });
 })(jQuery);
-
-
