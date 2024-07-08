@@ -23,7 +23,7 @@ public class FoodResponseDTO {
     private String servingSize;
     private int weight;
 
-    private List<FoodNutrientResponseDTO> nutrientlist = new ArrayList<>();
+    private List<FoodNutrientResponseDTO> nutrientlist;
 
     //엔티티를 DTO로 변환하는 메소드
     public static FoodResponseDTO of(Food food) {
@@ -33,4 +33,5 @@ public class FoodResponseDTO {
                         .map(FoodNutrientResponseDTO::of)
                         .collect(Collectors.toList()));
     }
+
 }
