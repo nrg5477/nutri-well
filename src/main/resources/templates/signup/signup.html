@@ -2,134 +2,162 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/indexLayout}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutri-Well 회원가입</title>
-    <link rel="stylesheet" th:href="@{/common/css/signupstyle.css}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nutri-Well 회원가입</title>
+        <link rel="stylesheet" th:href="@{/common/css/signupstyle.css}">
+        <script src="/common/js/signup.js"></script>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="all" style="margin-left: 200px;">
+                <div class="left-panel">
+                    <div class="egg">
+                        <img src="/common/img/egg.png">
+                    </div>
+                    <div class="logo">
+                        <p>Nutri-<br/>Well</p>
+                    </div>
+                    <div class="image">
+                        <img src="/common/img/signupleft.png">
+                    </div>
+                </div>
+                <div class="right-panel">
+                    <h2>Create Account</h2>
+                    <form th:action="@{/member/signup}" method="post" th:object="${memberSignUpDTO}">
+                        <div class="username-container">
+                            <h7>이름</h7>
+                            <input type="text" size="31.5" th:field="*{username}" placeholder="name">
+                        </div>
+                        <div class="email-container">
+                            <h7>이메일</h7>
+                            <input type="email" size="31.5" th:field="*{email}" placeholder="e-mail">
+                        </div>
+                        <div class="pass-container">
+                            <h7>비밀번호</h7>
+                            <input type="password" size="31.5" th:field="*{password}" placeholder="password" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="비밀번호는 최소 8자리 이상이어야 하며, 문자와 숫자를 포함해야 합니다">
+                        </div>
+                        <h7>생년월일</h7>
+                        <input type="date" size="30" th:field="*{birth}" id="birth" name="birth">
+                        <h7>성별</h7>
+                        <div class="gender-container">
+                            <input type="radio" th:field="*{gender}" id="male" name="gender" value="male">
+                            <label for="male">남성</label>
+                            <input type="radio" th:field="*{gender}" id="female" name="gender" value="female">
+                            <label for="female">여성</label>
+                        </div>
+                        <div class="height-container">
+                            <h7>키</h7>
+                            <input type="text" size="31.5" th:field="*{height}" id="height" name="height" placeholder="ex) 174" pattern="[0-9]{1,3}" title="키는 최대 3자리 숫자여야 합니다">
+                        </div>
+                        <div class="weight-container">
+                            <h7>몸무게</h7>
+                            <input type="text" size="31.5" th:field="*{weight}" id="weight" name="weight" placeholder="ex) 60 (소수 둘째자리까지 가능)" pattern="[0-9]{1,3}(\.[0-9]{1,2})?" title="몸무게는 최대 3자리 숫자 및 소수점 이하 2자리까지 가능합니다">
+                        </div>
+                        <div class="tel-container">
+                            <h7>전화번호</h7>
+                            <input type="text" size="31.5" th:field="*{tel}" placeholder="ex) 010-1234-1234" pattern="[0-9]{9,15}" title="전화번호는 9자리에서 15자리 숫자여야 합니다">
+                        </div>
+                        <div class="basel-container" style="width:300px">
+                            <h7>기초대사량</h7>
+                            <input type="text" size="31.5"  th:field="*{baselMetabolism}" id="basel_Metabolism" name="basel_Metabolism" placeholder="basel_Metabolism" readonly>
+                        </div>
+                        <div class="pic-container">
+                            <h7>사진 URL</h7>
+                            <input type="text" size="31.5" th:field="*{picture}" placeholder="picture">
+                        </div>
+                        <button type="submit">회원가입</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Footer Start -->
+            <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+                <div class="container py-5">
+                    <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+                        <div class="row g-4">
+                            <div class="col-lg-3">
+                                <a href="#">
+                                    <h1 class="text-primary mb-0">Nutri - Well</h1>
+                                    <p class="text-secondary mb-0">Fresh products</p>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="position-relative mx-auto">
+                                    <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" >
+                                    <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="d-flex justify-content-end pt-3">
+                                    <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                                    <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-5">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-item">
+                                <h4 class="text-light mb-3">Nutri Well, 왜 이용할까요?</h4>
+                                <p class="mb-4">식품의 영양정보와 매일매일 섭취한 영양소을 기록해두세요. 개인의 영양상태를 파악하고, 다양한 식품들의 영양소 정보를 제공하여 건강한 식생활을 돕는것을 목표로 합니다.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="d-flex flex-column text-start footer-item">
+                                <h4 class="text-light mb-3">개발자</h4>
+                                <p>진영록</p>
+                                <p>남정길</p>
+                                <p>조상우</p>
+                                <p>이희찬</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="d-flex flex-column text-start footer-item">
+                                <h4 class="text-light mb-3">도움주신 분들</h4>
+                                <a class="btn-link" href="#">김서연 강사님</a>
+                                <a class="btn-link" href="#">최승호 멘토님</a>
+                                <a class="btn-link" href="#">조영일 멘토님</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-item">
+                                <h4 class="text-light mb-3">Contact</h4>
+                                <a class="btn-link" href="https://github.com/6worry">진영록</a>
+                                <a class="btn-link" href="https://github.com/letsgilit">남정길</a>
+                                <a class="btn-link" href="https://github.com/sangwoo-00">조상우</a>
+                                <a class="btn-link" href="https://github.com/nrg5477">이희찬</a>
+                                <img src="/common/img/payment.png" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const signupSuccess = urlParams.get('signupSuccess');
-        if(signupSuccess!=null){
-          console.log(signupSuccess);
-              if (signupSuccess === "false") {
-                  alert("실패");
 
-              }
+            <!-- Copyright Start -->
+            <div class="container-fluid copyright bg-dark py-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nutri - Well</a>, All right reserved.</span>
+                        </div>
+                        <div class="col-md-6 my-auto text-center text-md-end text-white">
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Copyright End -->
 
-        }
-      function basel() {
-          let weight = parseFloat(document.getElementById("weight").value);
-          let height = parseFloat(document.getElementById("height").value);
-          let birthDate = new Date(document.getElementById("birth").value);
-          let gender = document.querySelector('input[name="gender"]:checked')?.value;
 
-          if (!weight || !height || !birthDate || !gender) {
-              return;
-          }
-
-          let today = new Date();
-          let age = today.getFullYear() - birthDate.getFullYear();
-          let monthDifference = today.getMonth() - birthDate.getMonth();
-          if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-              age--;
-          }
-
-          let bmr = 0;
-          if (gender === 'male') {
-              bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
-          } else if (gender === 'female') {
-              bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
-          }
-
-          document.getElementById("basel_Metabolism").value = bmr.toFixed(0);
-      }
-
-      document.addEventListener('DOMContentLoaded', (event) => {
-          document.getElementById("weight").addEventListener("input", basel);
-          document.getElementById("height").addEventListener("input", basel);
-          document.getElementById("birth").addEventListener("input", basel);
-          document.querySelectorAll('input[name="gender"]').forEach((elem) => {
-              elem.addEventListener("change", basel);
-          });
-      });
-    </script>
-</head>
-<body>
-<div layout:fragment="content">
-<div class="all">
-    <div class="left-panel">
-        <div class="egg">
-            <img src="/common/img/egg.png">
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top">
+                <i class="fa fa-arrow-up"></i>
+            </a>
         </div>
-        <div class="logo">Nutri-
-            <br/>Well</div>
-        <div class="image">
-            <img src="/common/img/signupleft.png">
-        </div>
-    </div>
-    <div class="right-panel">
-        <h2>Create Account</h2>
-        <form th:action="@{/member/signup}" method="post" th:object="${memberSignUpDTO}">
-
-            <div class="username-container">
-                <font size="2">이름</font><br/>
-                <input type="text" size="31.5" th:field="*{username}" placeholder="username">
-            </div>
-
-            <div class="email-container">
-                <font size="2">이메일</font><br/>
-                <input type="email" size="31.5" th:field="*{email}" placeholder="email">
-            </div>
-
-            <div class="pass-container">
-                <font size="2">비밀번호</font><br/>
-                <input type="password" size="31.5" th:field="*{password}" placeholder="password" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="비밀번호는 최소 8자리 이상이어야 하며, 문자와 숫자를 포함해야 합니다">
-            </div>
-
-            <input type="date" size="30" th:field="*{birth}" id="birth" name="birth">
-
-
-            <label>GENDER/성별</label>
-            <div class="gender-container">
-                <input type="radio" th:field="*{gender}" id="male" name="gender" value="male">
-                <label for="male">남성/MALE</label>
-                </br></br>
-                <input type="radio" th:field="*{gender}" id="female" name="gender" value="female">
-                <label for="female">여성/FEMALE</label>
-            </div>
-
-            <div class="height-container">
-                <font size="2">키</font><br/>
-                <input type="text" size="31.5" th:field="*{height}" id="height" name="height" placeholder="height" pattern="[0-9]{1,3}" title="키는 최대 3자리 숫자여야 합니다">
-            </div>
-
-            <div class="weight-container">
-                <font size="2">몸무게</font><br/>
-                <input type="text" size="31.5" th:field="*{weight}" id="weight" name="weight" placeholder="weight" pattern="[0-9]{1,3}(\.[0-9]{1,2})?" title="몸무게는 최대 3자리 숫자 및 소수점 이하 2자리까지 가능합니다">
-            </div>
-
-            <div class="tel-container">
-                <font size="2">전화번호</font><br/>
-                <input type="text" size="31.5" th:field="*{tel}" placeholder="tel" pattern="[0-9]{10,15}" title="전화번호는 10자리에서 15자리 숫자여야 합니다">
-            </div>
-
-            <div class="basel-container" style="width:300px">
-                <font size="2">기초대사량/BASELMETABOLISM</font><br/>
-                <input type="text" size="31.5"  th:field="*{baselMetabolism}" id="basel_Metabolism" name="basel_Metabolism" placeholder="basel_Metabolism" readonly>
-            </div>
-
-            <div class="pic-container">
-            <font size="2">사진 URL</font>
-            <input type="text" size="31.5" th:field="*{picture}" placeholder="picture">
-            </div>
-
-            <button type="submit">회원가입</button>
-
-        </form>
-    </div>
-</div>
-</div>
-</body>
+    </body>
 </html>

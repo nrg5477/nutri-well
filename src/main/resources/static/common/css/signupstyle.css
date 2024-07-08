@@ -1,14 +1,12 @@
 body {
-    margin-top: 10px;
-    margin-left: 200px;
+    margin-top: 150px;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200vh;
+    /*height: 200vh;*/
     background-color: #f8f9fa;
 }
-
 .all {
     display: flex;
     width: 90%;
@@ -20,11 +18,9 @@ body {
     border-radius: 10px;
     overflow: hidden;
 }
-
 .ct-container{
     width: 100%;
 }
-
 .left-panel {
     background-color: #8fd792;
     color: white;
@@ -35,7 +31,6 @@ body {
     justify-content: center;
     position: relative;
 }
-
 .left-panel .logo {
     font-size: 2em;
     font-weight: bold;
@@ -43,11 +38,9 @@ body {
     top: 150px;
     left: 40px;
 }
-
 .left-panel .image {
     margin-top: 50px;
 }
-
 .left-panel .image img {
     width: 80%;
     max-width: 600px;
@@ -56,7 +49,6 @@ body {
     transform: rotate(-9.25deg);
     transform-origin: 0 0;
 }
-
 .left-panel .egg{
     position: absolute;
     top: 20px;
@@ -65,7 +57,6 @@ body {
     height: 117px;
     left: 10px;
 }
-
 .right-panel {
     background-color: white;
     width: 60%;
@@ -75,14 +66,12 @@ body {
     justify-content: center;
     padding: 20px;
 }
-
 .right-panel h2 {
     margin-bottom: 20px;
     font-size: 1.8em;
     font-weight: bold;
     color: #333;
 }
-
 .divider {
     margin: 10px 0;
     font-size: 1em;
@@ -92,7 +81,6 @@ body {
     text-align: center;
     width: 100%;
 }
-
 .divider::before, .divider::after {
     content: '';
     position: absolute;
@@ -101,15 +89,12 @@ body {
     height: 1px;
     background-color: #ddd;
 }
-
 .divider::before {
     left: 0;
 }
-
 .divider::after {
     right: 0;
 }
-
 form {
     display: flex;
     flex-direction: column;
@@ -117,7 +102,6 @@ form {
     max-width: 300px;
     gap: 20px;
 }
-
 form input {
     padding: 10px 5px;
     font-size: 1em;
@@ -125,12 +109,10 @@ form input {
     border-bottom: 1px solid #ccc;
     transition: border-color 0.3s;
 }
-
 form input:focus {
     border-bottom: 1px solid #8fd792;
     outline: none;
 }
-
 form button {
     padding: 10px;
     font-size: 1em;
@@ -140,7 +122,6 @@ form button {
     color: white;
     cursor: pointer;
 }
-
 form button:hover {
     background-color: #79be78;
 }
