@@ -30,23 +30,18 @@ public class FoodApprove {
     @JoinColumn(name = "categoryId")
     private Category categoryId;
 
-    private String product; //식품 기원명
-
-    private Date requestDate; //신청일
-
-    private Date approvalDate; //승인일
-
+    private String product; // 식품 기원명
+    private Date requestDate; // 신청일
+    private Date approvalDate; // 승인일
     private String manufacturer;
-
-    private String servingSize; //1회 제공량
-
+    private String servingSize; // 1회 제공량
     private int foodWeight;
 
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
-    private boolean approved; //승인여부
+    private boolean approved; // 승인여부
 
     @ToString.Exclude
     @OneToMany(mappedBy = "foodApprove", cascade = CascadeType.ALL, orphanRemoval = true)

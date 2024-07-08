@@ -307,9 +307,9 @@
             "foodIds": foodIds,
             "kcalPercentage": kcalPercentage
         };
-
+        const baseUrl = 'http://localhost:9079';
         $.ajax({
-            url: "chart/saveCalendar",
+            url:  baseUrl + "/chart/saveCalendar",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(data),

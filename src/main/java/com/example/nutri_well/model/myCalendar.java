@@ -36,11 +36,4 @@ public class myCalendar {
 
     @OneToMany(mappedBy = "calendar", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CalendarFood> foods;
-
-    @Builder
-    public myCalendar(User user, LocalDate calDate, int percentage) {
-        this.user = user;
-        this.calDate = calDate;
-        this.percentage = percentage;
-    }
 }

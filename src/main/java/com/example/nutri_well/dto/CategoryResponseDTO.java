@@ -17,7 +17,6 @@ public class CategoryResponseDTO {
     private List<CategoryResponseDTO> childCategory;
 
     public static CategoryResponseDTO of(Category categories) {
-
         return new CategoryResponseDTO(categories.getId(), categories.getName(),
                 categories.getChildrenCategory().stream()
                         .map(CategoryResponseDTO::of)

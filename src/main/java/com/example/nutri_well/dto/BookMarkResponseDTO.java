@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class BookMarkResponseDTO {
     private Long userId;
     private Long foodId;
-    private boolean preferredState;
-    private boolean excludedState;
+    private boolean preferredState; // 즐겨찾기 항목 상태여부
+    private boolean excludedState; // 제외식품 항목 상태여부
 
     public static BookMarkResponseDTO of(BookMark bookMark) {
         return new BookMarkResponseDTO(bookMark.getUser().getUserId(), bookMark.getFood().getId(), bookMark.isPreferredState(), bookMark.isExcludedState());

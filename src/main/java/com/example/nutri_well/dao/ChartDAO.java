@@ -6,6 +6,5 @@ import java.time.LocalDate;
 
 public interface ChartDAO {
     Chart insert(Chart dto); // 캘린더 등록
-
     void delete(Long userId, LocalDate startDate); // 담은 식품 삭제
 }
