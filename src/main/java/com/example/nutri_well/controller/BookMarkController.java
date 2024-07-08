@@ -3,9 +3,7 @@ package com.example.nutri_well.controller;
 import com.example.nutri_well.dto.BookMarkRequestDTO;
 import com.example.nutri_well.dto.BookMarkResponseDTO;
 import com.example.nutri_well.dto.FoodResponseDTO;
-import com.example.nutri_well.entity.BookMark;
 import com.example.nutri_well.service.BookMarkService;
-import com.example.nutri_well.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

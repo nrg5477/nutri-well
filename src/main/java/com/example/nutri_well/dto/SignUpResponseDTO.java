@@ -1,6 +1,5 @@
 package com.example.nutri_well.dto;
 
-import com.example.nutri_well.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -26,7 +26,7 @@ public class FoodApproveResponseDTO {
     private boolean approved;
 
     @JsonManagedReference
-    private List<FoodNutrientApproveDTO> nutrients;
+    private List<FoodNutrientApproveDTO> nutrients; // 순환참조 방지
 
     public static FoodApproveResponseDTO of(FoodApprove foodApprove) {
         return new FoodApproveResponseDTO(

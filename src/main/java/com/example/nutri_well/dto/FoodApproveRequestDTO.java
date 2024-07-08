@@ -19,5 +19,4 @@ public class FoodApproveRequestDTO {
     private String servingSize;
     private String userEmail;
     private List<FoodNutrientApproveDTO> nutrients;
-
 }

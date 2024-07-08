@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//njg 순환참조를 방지하기위한 Response용 DTO
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

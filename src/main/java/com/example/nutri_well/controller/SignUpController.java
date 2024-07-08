@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 /**
  * 회원가입과 관련된 기능 또는 관련된 요청을 처리하는 컨트롤러 클래스.
  */

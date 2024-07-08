@@ -16,7 +16,7 @@ public class ChartResponseDTO {
     private Food food;
     private User user;
     private LocalDate date;
-    private double persent;
+    private double percent;
 
     public static ChartResponseDTO of(Chart chart) {
         return new ChartResponseDTO(chart.getFoodId(), chart.getUserId(), chart.getStartDate(), chart.getPercent());
