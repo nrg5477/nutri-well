@@ -337,6 +337,5 @@
         loadBookmark();
         loadPreferredFood();
         loadNutriTable(1);
-
     });
 })(jQuery);

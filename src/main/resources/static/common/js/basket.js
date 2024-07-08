@@ -57,7 +57,6 @@
         storeNutrients(storedNutrients);
         return storedNutrients;
     }
-
     function updateTable(nutrientData) {
         var energy = nutrientData['에너지'] || 0;
         kcalPercentage = (energy / baselMetabolism * 100).toFixed(1);
@@ -134,13 +133,13 @@
             "foodId": foodId,
             "userId": userId,
         };
+
         $.ajax({
             url: baseUrl+"/basket/insert",
             type: "POST",
             dataType: "json",
             data: data,
             success: function(response) {
-                console.log(response)
                 if(storeFoods(response.name)){
                     //새 영양소 데이터누적 들어갈땐 중량포함해서 누적한다.
                     var accumulatedNutrients = accumulateNutrients(response.nutrientlist,response.weight);
@@ -286,7 +285,6 @@
         updateFoodTable(getStoredFoods());
         loadBookMark();
     });
-
     $('#saveCalendarBtn').click(function() {
         saveCalendar();
     });
