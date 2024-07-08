@@ -28,10 +28,9 @@ public class SignUpController {
     }
 
     @PostMapping("/signup")
-    public String registerUser(@ModelAttribute("memberSignUpDTO") SignUpDTO memberSignUpDTO, Model model, RedirectAttributes redirectAttributes) {
+    public String registerUser(@ModelAttribute("memberSignUpDTO") SignUpDTO memberSignUpDTO, RedirectAttributes redirectAttributes) {
         try {
             memberService.registerUser(memberSignUpDTO);
-            //   redirectAttributes.addFlashAttribute("signupSuccess",true);
             return "redirect:/index.do?signupSuccess=true";
         } catch (IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("signupError", e.getMessage());

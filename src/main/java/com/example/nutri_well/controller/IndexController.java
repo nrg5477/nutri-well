@@ -45,7 +45,7 @@ public class IndexController {
         } else {
             model.addAttribute("baselMetabolism", -1);
         }
-        System.out.println(top4Foods);
+
         return "include/indexContent";
     }
 
@@ -56,9 +56,8 @@ public class IndexController {
         if (sessionUser == null) {
             model.addAttribute("loginError", true);
             return "redirect:" + request.getHeader("Referer"); // 이전 페이지로 리다이렉트
-        }
-        if (sessionUser != null) {
-            Optional<User> userOptional = userService.findByUserEmail(sessionUser.getEmail());//userservice를 통해 사용자 객체 조회
+        } else {
+            Optional<User> userOptional = userService.findByUserEmail(sessionUser.getEmail()); //userservice를 통해 사용자 객체 조회
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
                 model.addAttribute("user", user);

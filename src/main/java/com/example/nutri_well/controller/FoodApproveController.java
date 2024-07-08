@@ -24,7 +24,6 @@ import java.util.Map;
 @RequestMapping("/food-approve")
 @RequiredArgsConstructor
 public class FoodApproveController {
-
     private final FoodApproveServie foodApproveService;
     private final CategoryService categoryService;
     private final NutrientService nutrientService;

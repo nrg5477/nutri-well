@@ -38,5 +38,4 @@ public final class SearchFoodAPIController {
         PageRequest pageRequest = PageRequest.of(0, 5);
         return foodService.findByNameStartingWith(query,pageRequest);
     }
-
 }
