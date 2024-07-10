@@ -12,11 +12,6 @@
             <!-- Single Page Header start -->
             <div class="container-fluid page-header py-5">
                 <h1 class="text-center text-white display-6">식품 추가</h1>
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active text-white">Shop</li>
-                </ol>
             </div>
             <!-- Single Page Header End -->
 
@@ -44,8 +39,8 @@
                         <input type="text" id="manufacturer" th:field="*{manufacturer}" />
                     </div>
                     <div class="form-group">
-                        <label for="servingSize">1회 제공량:</label>
-                        <input type="text" id="servingSize" th:field="*{servingSize}" />
+                        <label for="weight">식품중량:</label>
+                        <input type="text" id="weight" th:field="*{weight}" />
                     </div>
                     <div class="form-group">
                         <label for="userEmail">사용자 이메일:</label>
@@ -57,7 +52,7 @@
                             <select th:field="*{nutrients[0].nutrientId}">
                                 <option th:each="n : ${nutrients}" th:value="${n.id}" th:text="${n.name}"></option>
                             </select>
-                            <label for="amount">양:</label>
+                            <label for="amount">100g/ml당:</label>
                             <input type="text" th:field="*{nutrients[0].amount}" value=""/>
                             <span id="nutrient-unit"></span>
                         </div>

@@ -116,17 +116,6 @@
                   </a>
                 </div>
 
-                <!-- Kakao Login Button -->
-                <div class="mb-3 w-100">
-                  <a class="btn btn-outline-secondary w-100"
-                     th:href="@{'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=' + ${kakaoApiKey} + '&redirect_uri=' + ${redirectUri}}"
-                     rel="noopener follow">
-                    <div class="d-flex align-items-center justify-content-center">
-                      <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" alt="Kakao Login" class="kakao me-2">
-                      Sign in with Kakao
-                    </div>
-                  </a>
-                </div>
                 <!-- Naver Login Button -->
                 <div class="mb-3 w-100">
                   <a class="btn btn-outline-secondary w-100" href="/oauth2/authorization/naver" rel="noopener follow">

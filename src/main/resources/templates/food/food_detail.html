@@ -35,7 +35,7 @@
                                                             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                                                 <i class="fas fa-apple-alt me-2" th:text="' ' + ${category.categoryName}"></i>
                                                             </a>
-                                                            <div class="dropdown-menu m-0 bg-secondary rounded-0" >
+                                                            <div class="dropdown-menu m-0 bg-nutri scrollable-dropdown" id="cd-category">
                                                                 <a class="dropdown-item searchCategory" th:each="child: ${category.childCategory}"
                                                                    th:data-filter-type="category" th:data-filter-value="${child.categoryId}"
                                                                    th:text="${child.categoryName}" >
