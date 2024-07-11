@@ -82,16 +82,18 @@
            page: 0,
            size: 12
        });
+       sessionStorage.setItem('page',0);
    });
    //카테고리별 검색
    $('.searchCategory').on('click', function() {
        resetSession();
-
+        console.log($(this).data("filter-value"))
        location.href = buildUrl('/searchCategory', {
            category: $(this).data("filter-value"),
            page: 0,
            size: 12
        });
+      sessionStorage.setItem('page',0);
    });
    //영양소 범위 검색
    $('#detailSearch').on('click', function() {
@@ -120,6 +122,7 @@
        sessionStorage.setItem('max', max);
 
        location.href = buildUrl(queryValue ? '/search' : '/searchCategory', params);
+       sessionStorage.setItem('page',0);
    });
    //checkBox 변경시 load 및 save
    $('input[type="checkbox"]').change(function() {
@@ -140,7 +143,8 @@
 /*=============================search.html pagination=============================*/
     const totalPage = $('#pageContainer').data("pages");
     const maxPagesToShow = 10;
-    let currentPageGroup = 0;
+    let page = sessionStorage.getItem('page') || 0;
+    let currentPageGroup = Math.floor(page / 10);
     let currentPage = parseInt(new URLSearchParams(window.location.search).get('page')) || 0;
 
     function renderPagination() {
@@ -209,6 +213,7 @@
         currentPage = page;
         $(this).addClass('active');
         location.href = url;
+        sessionStorage.setItem('page',currentPage);
     });
 
     /*=============================slider 효과=============================*/

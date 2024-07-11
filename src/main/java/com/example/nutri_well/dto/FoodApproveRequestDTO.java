@@ -11,12 +11,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FoodApproveRequestDTO {
-
     private String name;
     private Category categoryId;
     private String product;
     private String manufacturer;
-    private String servingSize;
+//    private String servingSize;
+    private int weight;
     private String userEmail;
     private List<FoodNutrientApproveDTO> nutrients;
 }

@@ -21,7 +21,7 @@ public class FoodApproveResponseDTO {
     private Date requestDate;
     private Date approvalDate;
     private String manufacturer;
-    private String servingSize;
+    private int weight;
     private String userEmail;
     private boolean approved;
 
@@ -37,7 +37,7 @@ public class FoodApproveResponseDTO {
                 foodApprove.getRequestDate(),
                 foodApprove.getApprovalDate(),
                 foodApprove.getManufacturer(),
-                foodApprove.getServingSize(),
+                foodApprove.getFoodWeight(),
                 foodApprove.getUser().getEmail(),
                 foodApprove.isApproved(),
                 foodApprove.getNutrientlist().stream()

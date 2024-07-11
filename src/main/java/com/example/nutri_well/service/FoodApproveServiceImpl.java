@@ -36,7 +36,7 @@ public class FoodApproveServiceImpl implements FoodApproveService {
         foodApprove.setCategoryId(requestDTO.getCategoryId());
         foodApprove.setProduct(requestDTO.getProduct());
         foodApprove.setManufacturer(requestDTO.getManufacturer());
-        foodApprove.setServingSize(requestDTO.getServingSize());
+        foodApprove.setFoodWeight(requestDTO.getWeight());
         foodApprove.setRequestDate(new Date());
         foodApprove.setUser(user.get());
 
@@ -78,8 +78,8 @@ public class FoodApproveServiceImpl implements FoodApproveService {
                     null, // 식품코드는 null
                     foodApprove.getProduct(),
                     foodApprove.getManufacturer(),
-                    foodApprove.getServingSize(),
-                    100,
+                    "100",
+                    foodApprove.getFoodWeight(),
                     foodApprove.getApprovalDate()
             );
 

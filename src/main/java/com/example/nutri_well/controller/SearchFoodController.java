@@ -63,11 +63,6 @@ public final class SearchFoodController {
         return mav;
     }
 
-    @GetMapping("/show")
-    public ModelAndView searchPage2() {
-        return new ModelAndView("search/search");
-    }
-
     private List<FoodResponseDTO> getFoodList(Object queryOrCategory, Category parentCategory,
                                               int page, int size, List<String> nutrients, Integer min, Integer max) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.unsorted());

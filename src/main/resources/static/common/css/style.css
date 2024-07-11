@@ -25,7 +25,6 @@
     transition: 0.5s;
     z-index: 99;
 }
-.kakao,
 .naver {
     width: 24px;
     height: 24px;
@@ -479,6 +478,21 @@
 .testimonial .owl-nav .owl-next:hover {
     background: var(--bs-secondary);
     color: var(--bs-white);
+}
+/*** testimonial End ***/
+
+
+/*** testimonial Start ***/
+.top4{
+    position: relative;
+}
+.top4 span{
+    position: absolute;
+    top: -25px;
+    left: -5px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #000;
 }
 /*** testimonial End ***/
 

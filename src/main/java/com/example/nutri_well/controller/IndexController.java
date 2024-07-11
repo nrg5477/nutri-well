@@ -66,9 +66,4 @@ public class IndexController {
         model.addAttribute("approvals", approvals);
         return "user/mypage";
     }
-
-    @GetMapping("/addFoodPage")
-    public String showAddFoodPage() {
-        return "food/addFood";
-    }
 }

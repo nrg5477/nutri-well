@@ -137,7 +137,9 @@
                                                             </div>
                                                             <span th:each="nutrient : ${food.nutrientlist}" th:text="${nutrient.name} + ': ' + ${nutrient.amount} + ${nutrient.value} + ' '"></span>
                                                             <div class="d-flex justify-content-between flex-lg-wrap">
-                                                                <p class="text-dark fs-5 fw-bold mb-0 mt-1" th:text="${food.nutrientlist[0].amount} + ${food.nutrientlist[0].value}" >$4.99 / kg</p>
+                                                                <p class="text-dark fs-5 fw-bold mb-0 mt-1"
+                                                                   th:text="${#lists.size(food.nutrientlist) != 0 ? food.nutrientlist[0].amount + ' ' + food.nutrientlist[0].value : '0Kcal'}">
+                                                                </p>
                                                                 <button type="button" th:foodId="${food.id}" th:onclick="addChart(this.getAttribute('foodId'))" class="btn border border-secondary rounded-pill px-3 text-primary">
                                                                     <i class="fa fa-shopping-bag me-2 text-primary"></i>담기</button>
                                                             </div>
