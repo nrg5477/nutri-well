@@ -31,7 +31,7 @@
 # [🥦 **Nutri - Well**](https://www.youtube.com/watch?v=nSRzYjURWPU)
 ### 🥦 Nutri - Well은 식품영양정보 제공 및 개인 영양정보 기록, 관리를 위한 웹 애플리케이션입니다.
 
-![logo](https://github.com/Weiver-project/Weiver/assets/116157924/af5207db-9c59-4600-a519-c42211897935)
+![logo](https://github.com/user-attachments/assets/4272706a-0670-45fa-864d-e90e1e306585)
 
 <br>
 
@@ -90,129 +90,116 @@
 <br><br>
 
 ## 🎯 구현 결과
-### 뮤지컬
+### Nutri - Well
 - [X] **메인 페이지**
-+ 인기 뮤지컬: '봤어요' 클릭이 가장 많은 뮤지컬 상위 3개 출력
-+ 커뮤니티 인기글: '조회수' 기준 상위 게시글 9개 출력
-+ 추천 배우: 랜덤으로 배우 프로필 사진과 출연작 출력, 클릭 시 배우 상세 페이지 이동, 새로고침 시 배우 정보 변동
-+ 공연 중인 뮤지컬: 공연 기간 기준 현재 공연 중인 뮤지컬 리스트 출력
++ 인기 식품 TOP4 : '즐겨찾기' 클릭이 가장 많은 식품 상위 4개 출력
++ 분류별 식품 : 음식 분류별 식품 목록 조회
++ 검색 : 음식 이름으로 식품 목록 조회
    <p>
-![뮤지컬 메인 페이지](https://github.com/Weiver-project/Weiver/assets/81962257/fbf2cc82-c97d-4032-8195-ba350ce451c4)
+![메인페이지](https://github.com/user-attachments/assets/fd346d02-a4c2-49b3-8dae-cbc7ebec3bcb)
 </p>
 
-- [X] **상세 페이지**
-+ 뮤지컬 기본 정보 조회
-+ '찜하기', '봤어요' 클릭
-+ 출연 배우 정보 조회
-+ Youtube API 통한 유튜브 클립 출력
+- [X] **회원가입 페이지**
++ 사용자 회원 가입 기능
++ 사용자의 정보를 받아서 기초대사량 계산
      <p>    
-![뮤지컬 상세 페이지](https://github.com/Weiver-project/Weiver/assets/81962257/2a88980a-3075-4e37-9507-e85e8976f389)
+![회원가입페이지](https://github.com/user-attachments/assets/8f70d4c6-2e84-49a9-ac59-29347b3e898b)
 </p>
 
-### 커뮤니티
-- [X] **메인 페이지**
-+ 커뮤니티 인기글: '조회수' 기준 상위 게시글 9개 출력
-+ 게시글: 카테고리(리뷰, 잡담)에 따라 게시글 구분하여 출력
-+ 로그인 시, 유저 간략 정보 측면 nav바에 출력
+- [X] **로그인**
++ 사용자 로그인 기능
++ 구글 및 네이버로 소셜 로그인가능
      <p>    
-![커뮤니티 메인 페이지](https://github.com/Weiver-project/Weiver/assets/81962257/f6d4e069-5717-4d00-957b-99b3daa58e7d)
+![로그인페이지](https://github.com/user-attachments/assets/f6fc903d-a046-48ec-972b-f1a5a8ca01c1)
 </p>
 
-- [X] **상세 페이지**
-+ 게시글 정보 상세 조회
-+ 댓글, 대댓글 작성
-+ 본인 작성에 한하여 게시글, 댓글, 대댓글 수정 및 삭제 가능
+### 마이 페이지
+- [X] **캘린더**
++ 일일 영양 섭취량 기록 기능
++ 캘린더 이미지 캡쳐 및 다운로드 기능
      <p>    
-![게시글 상세 페이지](https://github.com/Weiver-project/Weiver/assets/81962257/cb916d13-dbd6-4d7e-a8f8-6ef17936db47)
+![캘린더](https://github.com/user-attachments/assets/2d3c7c0d-39c9-4276-9f75-d2201e00b53b)
+![캘린더모달](https://github.com/user-attachments/assets/1e5f7d39-926e-447b-add9-5d9d47961b7b)
 </p>
 
-- [X] **글 작성 페이지**
-+ 글 카테고리(잡담, 리뷰) 선택 가능
-+ 리뷰 선택 시, 뮤지컬 정보 연동
-+ 이미지 첨부 가능   
-  <img src="https://github.com/Weiver-project/Weiver/assets/81962257/53a64563-cf8a-48b8-bb2d-fc76fd7cc044.gif" width="550" height="350"/>
+- [X] **회원 정보 수정**
++ 회원정보 수정기능
++ 사용자로 부터 정보를 받아 기초대사량 계산
+     <p>    
+![회원정보수정](https://github.com/user-attachments/assets/87bef016-703d-4234-b40f-1d7ac5fc9b1a)
+</p>
 
-### **마이 페이지**
-- [X] **메인 페이지**
-+ 찜 / 봤던 뮤지컬 조회
-+ 내가 쓴 글 / 댓글 / 좋아요한 글 조회
-+ 프로필 수정 / 설정(로그아웃, 비밀번호 변경, 문의하기, 회원탈퇴)
-<div>
-  <img src="https://github.com/Weiver-project/Weiver/assets/78299214/98bb8c89-2e75-4d16-8e58-edfc996c3073" width="800">
-  <br>
-  <br>
-  <img src="https://github.com/Weiver-project/Weiver/assets/78299214/f447a0bf-50b2-499b-95c1-c165207d1d85" width="300">
-  <img src="https://github.com/Weiver-project/Weiver/assets/78299214/562a57c0-0467-4792-94e8-6456ea83f21d" width="300">
-</div>
+- [X] **식품 승인 페이지**
++ 사용자가 추가 요청한 식품에 대한 승인
+    <p>    
+![image](https://github.com/user-attachments/assets/14b28ea7-a90d-47c9-b198-b50aec97f69f)
+</p>
 
-### **관리자 페이지**
-- [X] **메인 페이지**
-+ 관리자 문의 조회
-+ 전체 배우, 뮤지컬 정보 조회
-+ 유저, 게시글, 문의 조회 및 삭제
-+ 문의글 답변
-<div>
-  <img src="https://github.com/Weiver-project/Weiver/assets/78299214/439607a3-d431-43c3-bd03-fb52dad71411" width="800">
-  <br>
-  <br>
-  <img src="https://github.com/Weiver-project/Weiver/assets/78299214/311a35e0-07a8-4fe4-bb0d-52cc60df8420" width="800">
-</div>   
+### **식품 검색 페이지**
+- [X] **식품 검색**
++ 조회된 음식 목록 페이지네이션 구현
++ 카테고리별 음식검색 기능
++ 영양소 범위 검색 기능
+    <p>    
+![image](https://github.com/user-attachments/assets/6b4ca024-9343-4bf9-9fd5-498a1a8558dc)
+</p>
+
+- [X] **식품 담기**
++ 사용자가 담은 음식 목록 조회
++ 영양소별 일일 권장량 계산 및 표시
++ 영양 성분 그래프로 제공
+    <p>    
+![image](https://github.com/user-attachments/assets/f6d9206e-831f-4cc1-8885-ebf72da82eea)
+![image](https://github.com/user-attachments/assets/4cc23692-8fb6-437e-89b8-8b6ee71e15ab)
+</p>
+
+- [X] **식품 추가**
++ 검색되지 않는 식품 추가 요청
+    <p>    
+![image](https://github.com/user-attachments/assets/8e9f17bf-c2be-4b79-a836-9eb3dbd3c709)
+</p>
+
+### **식품 상세 페이지**
+- [X] **식품 상세**
++ 식품 상세영양소 테이블 제공
++ 식품 영양소 그래프 제공
++ 식품에서 가장 많은 영양소 알림
++ 식품별 즐겨찾기 기능
++ 식품 구매할 수 있는 사이트로 유도 및 페이지 이동
+    <p>    
+![image](https://github.com/user-attachments/assets/f93c70db-d4cb-4fd2-b7f5-dad6061224e3)
+</p>
 
 <br><br>
 
 ## ❗️ 힘들었던 점
-세 번의 DB 변경
-![image](https://github.com/Weiver-project/Weiver/assets/129250941/670269c8-1450-4acd-a550-69c1d3c4f010)
-1. 불규칙적인 KOPIS API 뮤지컬 정보와 PLAY DB 배우 정보와의 매핑 과정을 거쳐서 각각의 테이블에 저장하는 방법보다 한 번에 하나의 컬렉션에 전부 저장하는 방식이 조회 속도와 삽입 속도 측면에서 보다 더 효과적일 것이라고 생각되어 MongoDB를 사용
-2. 뮤지컬과 배우를 제외한 나머지 데이터들은 정형화되어있고 관계성이 높기 때문에 Oracle DB를 도입하여 두 가지 데이터베이스를 사용
-3. KOPIS API를 사용했을 때 PLAY DB 배우 정보와 서로 매핑되는 비율이 444건 중 25건인 5%정도로 매우 낮아 KOPIS API를 포기하고 PLAY DB에서 뮤지컬 정보도 같이 크롤링하는 방식을 사용 -> 뮤지컬 데이터도 정형화되었고 배우 정보와 동일한 페이지에서 데이터를 가져옴 -> 매핑 방식이 이전보다 수월해져 전체 DB를 Oracle로 사용
+1. 사용자별 기초대사량을 계산함에 있어서 근육량, 지방등 키와 몸무게로 알수 없는 계산을 전부 포함하지 못해 개인화 하는데 차이가 발생할 수 있어서 기준점을 잡기 힘들었음. -> 가장 표준적인 계산식 활용
+2. 이미지의 양이 방대해서 가져와서 처리하기 힘들었음 -> 크롤링 방법을 개선해나감. 
 
 <br><br>
 
 ## ⚠️ 트러블 슈팅
-크롤링 시 TimeOutException
-1. 크롤링 시 Timeout Option을 주는 방법과 Thread.sleep()을 주는 방식을 사용했지만 해결이 되지 않음
-2. 크롤링으로 데이터를 가져오는 과정과 DB에 데이터를 저장하는 과정이 같은 텀에서 실행되는 것이 리소스를 많이 잡아먹는다는 의문
-3. 데이터를 메모리에 전부 저장한 다음 DB에 일괄 저장하는 방식을 사용 (Exception 발생 시기가 뒤로 늦춰졌을 뿐 여전히 발생)
-4. 버퍼와 같이 일정량의 데이터를 저장한 후 비워주는 방식을 사용하여 해결
-```java
-/*뮤지컬 상세 페이지에서 뮤지컬 정보 저장*/
-@SneakyThrows
-public void saveAllMusical(List<String> musicalIds){
-  List<Musical> musicals = new ArrayList<>();
-    
-    for(int i =0; i < musicalIds.size(); i++){
-        //뮤지컬 1개에 대한 데이터 크롤링
-        Musical musical = getMusical(musicalIds.get(i));
-        musicals.add(musical);
-        log.info(i + "번 MUSICAL(" + musicalIds.get(i) + ") 저장: " + musical);
+##### 캘린더 그래프 표시 오류
+1. modal에서 그래프를 렌더링하는 과정에서 modal 이 먼저 생성되고 그래프가 생성됨
+2. modal의 크기보다 그래프가 커서 렌더링 과정에서 그래프가 제대로 출력되지 않음
+3. modal의 크기를 사용자 화면의 200배로 설정해준후 그래프가 렌더링 되는 과정에서 동적으로 modal의 크기를 세팅해서 해결
 
-        // 데이터를 1000개씩 저장
-        if(i != 0 && i % 1000 == 0){
-          // musical 저장
-          musicalRepository.saveAll(musicals);
-
-          // 새로운 MusicalId를 채우기 위해 기존 리스트 초기화
-          musicals.clear();
-        }
-    }
-```
-<br><br>
-
-## 💬 회고
-🙂 **정찬영** : 소통이 활발한 팀원들이 모여서 적극적인 참여와 피드백을 통해 수월하게 프로젝트를  진행할 수 있었던 것 같습니다.
-<br><br>
-
-😄 **곽유섭** : 초반에 여러 시행착오가 있었지만 팀워크가 좋아서 프로젝트를 무사히 마치고 좋은 결과가 있을 수 있었습니다. 모두 감사해요^^7<br><br>
-
-😆 **김현수** : 제 개발인생의 시작점이 된 프로젝트, 좋은 팀원들을 만나 많은 것을 배우고 완성도 있게 마무리 할 수 있었습니다.<br><br>
-
-😌 **이종형** : 3번의 기획안 수정, 3번의 DB 변경 등 우여곡절이 많았지만 팀원들의 많은 도움 덕분에 프로젝트를 잘 마무리 할 수 있었습니다.
-배포까지 진행되었지만 유저 반응을 보지 못한점이 아쉽습니다.<br><br>
-
-😎 **이석현** : 팀으로 프로젝트를 진행하는 것이 개인 프로젝트와 다른 부분이 많다는 것을 좋은 팀원들과 함께하며 많이 배우게 된 것 같습니다.
 
 <br><br>
+
+## 💬 프로젝트 진행 소감
+🙂 **진영록** : 부족한 저와 함께 작업해준 팀원들께 감사하고 기간 내에 프로젝트 잘 수행한 것 같다고 생각합니다.
+<br><br>
+
+😄 **남정길** : 첫 협업 프로젝트에서 좋은 팀원들과 의사소통하며 배운점이 많아서 좋았습니다.
+<br><br>
+
+😆 **이희찬** : 개인으로 작업하는 것보다 프로젝트로 진행, 협업하면서 배울 수 있는 기회가 된것 같습니다
+<br><br>
+
+😌 **조상우** : 많이 느리고 부족했지만 유능한 팀원들을 만나 많은 것을 배우고 완성도 있게 마무리 할 수 있었습니다.
+<br><br>
+
+
 
 ## 🎉 수상내역
-![image](https://github.com/Weiver-project/Weiver/assets/116157924/182f7cd6-29ad-4924-8bc9-d7ca4c4243ee)
