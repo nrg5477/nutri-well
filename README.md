@@ -19,6 +19,7 @@
   <img src="https://img.shields.io/badge/-Spring Security-6DB33F?style=flat&logo=springsecurity&logoColor=white">
   <img src="https://img.shields.io/badge/-Gradle-02303A?style=flat&logo=Gradle">
   <img src="https://img.shields.io/badge/-Java-007396?style=flat&logo=Java">
+  <img src="https://img.shields.io/badge/-Xsehll-007396?style=flat&logo=Java">
   <img src="https://img.shields.io/badge/-JPA-FF3621?style=flat&logo=Databricks&logoColor=white">
   <img src="https://img.shields.io/badge/-Oracle-F80000?style=flat&logo=oracle&logoColor=white">
   <img src="https://img.shields.io/badge/-Thymeleaf-005F0F?style=flat&logo=Thymeleaf&logoColor=white">
@@ -28,7 +29,7 @@
 </div>
 <br><br>
 
-# [🥦 **Nutri - Well**](https://www.youtube.com/watch?v=nSRzYjURWPU)
+# [🥦 **Nutri - Well**](https://www.youtube.com/watch?v=Gb5VXY6u1yA&t=3s)
 ### 🥦 Nutri - Well은 식품영양정보 제공 및 개인 영양정보 기록, 관리를 위한 웹 애플리케이션입니다.
 
 ![logo](https://github.com/Weiver-project/Weiver/assets/116157924/af5207db-9c59-4600-a519-c42211897935)
