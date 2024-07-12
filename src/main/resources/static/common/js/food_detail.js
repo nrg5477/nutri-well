@@ -232,10 +232,10 @@
                    const $imgDiv = $('<div class="rounded me-4" style="width: 100px; height: 100px;"></div>');
 
                    if (food.name === food.categoryName) {
-                       const $img = $('<img class="img-fluid rounded" style="width: 100px; height: 100px;" alt="Image">').attr('src', `https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/${food.categoryName}.jpg`);
+                       const $img = $('<img class="img-fluid rounded" style="width: 100px; height: 100px;" alt="Image">').attr('src', `https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/${food.categoryName}.jpg`);
                        $imgDiv.append($img);
                    } else {
-                       const $img = $('<img class="img-fluid rounded" style="width: 100px; height: 100px;" alt="Image">').attr('src', `https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/${food.categoryName}_${food.name}.jpg`);
+                       const $img = $('<img class="img-fluid rounded" style="width: 100px; height: 100px;" alt="Image">').attr('src', `https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/${food.categoryName}_${food.name}.jpg`);
                        $imgDiv.append($img);
                    }
 

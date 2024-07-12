@@ -61,8 +61,8 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="border rounded">
-                                            <img th:if="${food.name} == ${food.categoryName}" th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${food.categoryName} + '.jpg'}" class="img-fluid rounded foodImage" alt="Image">
-                                            <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid rounded foodImage" alt="Image">
+                                            <img th:if="${food.name} == ${food.categoryName}" th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${food.categoryName} + '.jpg'}" class="img-fluid rounded foodImage" alt="Image">
+                                            <img th:unless="${food.name} == ${food.categoryName}" th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${food.categoryName} + '_' + ${food.name} + '.jpg'}" class="img-fluid rounded foodImage" alt="Image">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

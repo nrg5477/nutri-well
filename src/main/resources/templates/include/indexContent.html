@@ -60,9 +60,9 @@
                             <div class="featurs-item text-center rounded bg-light p-4 px-6 py-6">
                                 <div class="mb-3 mx-auto top4">
                                     <span th:text="${iterStat.index + 1}"></span>
-                                    <a th:if="${test.name} == ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${test.name} + '.jpg'}" width="120" height="120"></a>
-                                    <a th:if="${test.name} != ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
-                                    <a th:unless="${test.name} == ${test.categoryName} or ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                                    <a th:if="${test.name} == ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                                    <a th:if="${test.name} != ${test.categoryName} and ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
+                                    <a th:unless="${test.name} == ${test.categoryName} or ${test.name.contains(test.categoryName)}" th:href="@{'food/detail?foodId=' + ${test.id}}"><img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${test.categoryName} + '_' + ${test.name} + '.jpg'}" width="120" height="120"></a>
                                 </div>
                                 <div class="featurs-content text-center">
                                     <h5 th:text="${test.categoryName}"></h5>
@@ -128,7 +128,7 @@
                                             <div class="col-md-6 col-lg-4 col-xl-3" th:each="category, iterStat: ${category}" th:if="${#arrays.contains({0, 2, 3, 4, 5, 6}, iterStat.index)}">
                                                 <div class="rounded position-relative fruite-item">
                                                     <div class="fruite-img">
-                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
+                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                                     </div>
                                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${category.categoryName}"></div>
                                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -152,7 +152,7 @@
                                             <div class="col-md-6 col-lg-4 col-xl-3" th:each="category, iterStat: ${category}" th:if="${#arrays.contains({1, 11, 17, 20}, iterStat.index)}">
                                                 <div class="rounded position-relative fruite-item">
                                                     <div class="fruite-img">
-                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
+                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                                     </div>
                                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${category.categoryName}"></div>
                                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -176,7 +176,7 @@
                                             <div class="col-md-6 col-lg-4 col-xl-3" th:each="category, iterStat: ${category}" th:if="${#arrays.contains({8, 12, 13, 14, 15, 16, 19}, iterStat.index)}">
                                                 <div class="rounded position-relative fruite-item">
                                                     <div class="fruite-img">
-                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
+                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                                     </div>
                                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${category.categoryName}"></div>
                                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -200,7 +200,7 @@
                                             <div class="col-md-6 col-lg-4 col-xl-3" th:each="category, iterStat: ${category}" th:if="${#arrays.contains({7, 9}, iterStat.index)}">
                                                 <div class="rounded position-relative fruite-item">
                                                     <div class="fruite-img">
-                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
+                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                                     </div>
                                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${category.categoryName}"></div>
                                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -224,7 +224,7 @@
                                             <div class="col-md-6 col-lg-4 col-xl-3" th:each="category, iterStat: ${category}" th:if="${#arrays.contains({10, 18}, iterStat.index)}">
                                                 <div class="rounded position-relative fruite-item">
                                                     <div class="fruite-img">
-                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
+                                                        <img th:src="@{'https://nutriwellnlb.s3.ap-northeast-2.amazonaws.com/category/' + ${category.categoryName} +'.jpg'}" class="img-fluid w-100 rounded-top" alt="" style="height: 180px">
                                                     </div>
                                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;" th:text="${category.categoryName}"></div>
                                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">
