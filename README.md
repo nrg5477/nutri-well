@@ -3,7 +3,7 @@
 <div align="left">
 <img src="https://img.shields.io/badge/-AWS EC2, S3, RDS, DNS, Code Deploy-232F3E?style=flat&logo=AmazonAWS">
 <img src="https://img.shields.io/badge/-Jira Software-0052CC?style=flat&logo=JiraSoftware">
-<img src="https://img.shields.io/badge/-GitHub Actions-2088FF?style=flat&logo=GitHubActions&logoColor=white">
+<img src="https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/-Notion-000000?style=flat&logo=notion&logoColor=white">
 <img src="https://img.shields.io/badge/-Slack-4A154B?style=flat&logo=slack&logoColor=white">
 <img src="https://img.shields.io/badge/-Intellij IDEA-000000?style=flat&logo=intellijidea&logoColor=white">
