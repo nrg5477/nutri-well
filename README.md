@@ -2,6 +2,8 @@
 
 <div align="left">
 <img src="https://img.shields.io/badge/-AWS EC2, S3, RDS, DNS, Code Deploy-232F3E?style=flat&logo=AmazonAWS">
+<img src="https://img.shields.io/badge/-Xshell-FF0000?style=flat&logo=Xshell">
+<img src="https://img.shields.io/badge/-Putty-808080?style=flat&logo=Putty">
 <img src="https://img.shields.io/badge/-Jira Software-0052CC?style=flat&logo=JiraSoftware">
 <img src="https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/-Notion-000000?style=flat&logo=notion&logoColor=white">
