@@ -30,7 +30,7 @@
 </div>
 <br><br>
 
-# [🥦 **Nutri - Well**](https://www.youtube.com/watch?v=nSRzYjURWPU)
+# [🥦 **Nutri - Well**](https://www.youtube.com/watch?v=Gb5VXY6u1yA)
 ### 🥦 Nutri - Well은 식품영양정보 제공 및 개인 영양정보 기록, 관리를 위한 웹 애플리케이션입니다.
 
 ![logo](https://github.com/user-attachments/assets/4272706a-0670-45fa-864d-e90e1e306585)
