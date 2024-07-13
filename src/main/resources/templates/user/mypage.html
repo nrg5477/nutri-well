@@ -73,15 +73,50 @@
                             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab">
                                 <h3 class="section-title">내 정보 </h3>
                                 <div class="user-info">
-                                    <p th:text="'이름 : '+${user.username}"></p>
-                                    <p th:text="'아이디 : '+${user.email}"></p>
-                                    <p th:text="'성별 : '+${user.gender}"></p>
-                                    <p th:text="'키 : '+${user.height}"></p>
-                                    <p th:text="'몸무게 : '+${user.weight}"></p>
-                                    <p th:text="'생년월일 : ' + ${#dates.format(user.birth, 'yyyy-MM-dd')}"></p>
-                                    <p th:text="'전화번호 : '+${user.tel}"></p>
-                                    <p th:text="'기초대사량 : '+${user.baselMetabolism}"></p>
-                                    <p th:text="'프로필 URL : '+${user.picture}"></p>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">이름</th>
+                                            <td th:text="${user.username != null ? user.username : '회원정보 수정을 통해 입력해주세요'}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">아이디</th>
+                                            <td th:text="${user.email != null ? user.email : '회원정보 수정을 통해 입력해주세요'}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">성별</th>
+                                            <td>
+                                                <span th:if="${user.gender == 'MALE'}">남성</span>
+                                                <span th:if="${user.gender == 'FEMALE'}">여성</span>
+                                                <span th:if="${user.gender == null}">회원정보 수정을 통해 입력해주세요</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">키</th>
+                                            <td th:text="${user.height != null ? user.height + ' cm' : '회원정보 수정을 통해 입력해주세요'}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">몸무게</th>
+                                            <td th:text="${user.weight != null ? user.weight + ' kg' : '회원정보 수정을 통해 입력해주세요'}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">생년월일</th>
+                                            <td th:text="${user.birth != null ? #dates.format(user.birth, 'yyyy-MM-dd') : '회원정보 수정을 통해 입력해주세요'}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">전화번호</th>
+                                            <td th:text="${user.tel != null ? user.tel : '회원정보 수정을 통해 입력해주세요'}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">기초대사량</th>
+                                            <td th:text="${user.baselMetabolism != null ? user.baselMetabolism + ' kcal' : '회원정보 수정을 통해 입력해주세요'}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">프로필 URL</th>
+                                            <td th:text="${user.picture != null ? user.picture : '회원정보 수정을 통해 입력해주세요'}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
 
                                 <h3 class="section-title">회원 정보 수정</h3>
