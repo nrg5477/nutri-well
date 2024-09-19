@@ -30,7 +30,7 @@
 </div>
 <br><br>
 
-# [🥦 **Nutri - Well**](https://www.youtube.com/watch?v=Gb5VXY6u1yA)
+# [🥦 **Nutri - Well**](https://youtu.be/6PpdjRipyP8)
 ### 🥦 Nutri - Well은 식품영양정보 제공 및 개인 영양정보 기록, 관리를 위한 웹 애플리케이션입니다.
 
 ![logo](https://github.com/user-attachments/assets/4272706a-0670-45fa-864d-e90e1e306585)
@@ -82,7 +82,7 @@
 <br><br>
 
 ## 📋 서비스 아키텍처
-![image](https://github.com/Weiver-project/Weiver/assets/76997735/6e881153-f943-4c2f-a562-c80dda027428)
+![image](https://github.com/user-attachments/assets/f19887e4-2f71-4af3-b897-8e3ed4b840ab)
 
 <br><br>
 
@@ -205,4 +205,7 @@
 
 
 
-[//]: # (## 🎉 수상내역)
+## 🎉 수상내역
+![image](https://github.com/user-attachments/assets/25387746-7a69-4730-8952-2465617aa80d)
+![image](https://github.com/user-attachments/assets/bcb4d51f-09c9-4ca8-adaa-ef11b7558dc0)
+![image](https://github.com/user-attachments/assets/8a042c4a-5f56-450b-803b-7ca7ccd269e0)
